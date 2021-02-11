@@ -151,33 +151,40 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>FRB20200125A</td>
-                                            <td>58873.510643634</td>
-                                            <td>GBT</td>
-                                            <td>14<sup>h</sup>36<sup>m</sup>31.580<sup>s</sup></td>
-                                            <td>07&#176;42<i>&#8242;</i>06.84<i>&#8243;</i></td>
-                                            <td>179.47</td>
-                                            <th><center><a title="Unverified" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-times"></i></a></center></th>
-                                        </tr>
-                                        <tr>
-                                            <td>FRB20190614D</td>
-                                            <td>58648.05071771</td>
-                                            <td>VLA</td>
-                                            <td>04<sup>h</sup>20<sup>m</sup>18.13<sup>s</sup></td>
-                                            <td>73&#176;42<i>&#8242;</i>24.3<i>&#8243;</i></td>
-                                            <td>959.2</td>
-                                            <th><center><a title="Verified" class="btn btn-success btn-circle btn-sm"><i class="fas fa-check"></i></a></center></th>
-                                        </tr>
-                                        <tr>
-                                            <td>FRB191108</td>
-                                            <td>58795.830818389</td>
-                                            <td>Apertif</td>
-                                            <td>01<sup>h</sup>33<sup>m</sup>47<sup>s</sup></td>
-                                            <td>31&#176;51<i>&#8242;</i>30<i>&#8243;</i></td>
-                                            <td>588.1</td>
-                                            <th><center><a title="Verified" class="btn btn-success btn-circle btn-sm"><i class="fas fa-check"></i></a></center></th>
-                                        </tr>
+
+                                    <?php
+                                    require "vendor/autoload.php";
+                                    $client = new MongoDB\Client(
+                                        'mongodb://localhost:27017'
+                                    );
+                                    $db = $client->frbstats;
+                                    $collection = $db->catalogue;
+                                    $cursor = $collection->find();
+                                    $itr = new IteratorIterator($cursor);
+                                    $itr -> rewind();
+                                    while ($cursor = $itr->current()){
+
+                                        //echo ;
+                                        echo "<tr>";
+                                        echo "<td>".$cursor['frb']."</td>";
+                                        echo "<td>".$cursor['mjd']."</td>";
+                                        echo "<td>".$cursor['telescope']."</td>";
+                                        echo "<td>".$cursor['ra']."</td>";
+                                        echo "<td>".$cursor['dec']."</td>";
+                                        echo "<td>".$cursor['dm']."</td>";
+                                        echo "<td>".$cursor['status']."</td>";
+                                        echo "</tr>";
+                                        $itr->next();
+                                    }
+
+
+
+
+
+                                    ?>
+
+
+                                    <!-- End Generation of table -->
                                     </tbody>
                                 </table>
                             </div>
