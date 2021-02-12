@@ -122,8 +122,12 @@
                         <div class="card-header py-3">
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                               <h6 style="font-size:22px" class="m-0 font-weight-bold text-primary">FRB Catalogue</h6>
-                                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                <div class="d-sm-inline-flex align-items-center justify-content-between mb-4">
+                                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                         class="fas fa-download fa-sm text-white-50"></i> Export as CSV</a>
+                                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                        class="fas fa-download fa-sm text-white-50"></i> Export as JSON</a>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body">
