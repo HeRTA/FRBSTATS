@@ -38,7 +38,7 @@
                 <div class="sidebar-brand-icon rotate-n-0">
                     <i class="fas fa-database"></i>
                 </div>
-                <div class="sidebar-brand-text mx-2">FRBStats</div>
+                <div class="sidebar-brand-text mx-2">FRBSTATS</div>
             </a>
 
             <!-- Divider -->
