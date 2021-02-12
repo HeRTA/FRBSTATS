@@ -123,9 +123,9 @@
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                               <abbr style="font-size:22px" class="m-0 font-weight-bold text-primary">FRB Catalogue</abbr>
                                 <div class="d-sm-inline-flex align-items-center justify-content-between mb-4">
-                                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                    <a href="catalogue.csv" download class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                         class="fas fa-download fa-sm text-white-50"></i> Export as <b>CSV</b></a>
-                                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                    <a href="catalogue.json" download class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                         class="fas fa-download fa-sm text-white-50"></i> Export as <b>JSON</b></a>
                                 </div>
                             </div>
