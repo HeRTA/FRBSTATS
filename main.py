@@ -5,7 +5,8 @@ import json
 client = MongoClient("mongodb://localhost:27017/")
 db = client["frbstats"]
 collection = db["catalogue"]
-
+#drop all data 
+collection.drop()
 
 with open('catalogue.json', 'r') as myfile:
     data=myfile.read()
