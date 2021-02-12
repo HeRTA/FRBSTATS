@@ -124,9 +124,9 @@
                               <h6 style="font-size:22px" class="m-0 font-weight-bold text-primary">FRB Catalogue</h6>
                                 <div class="d-sm-inline-flex align-items-center justify-content-between mb-4">
                                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                        class="fas fa-download fa-sm text-white-50"></i> Export as CSV</a>
+                                        class="fas fa-download fa-sm text-white-50"></i> Export as <b>CSV</b></a>
                                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                        class="fas fa-download fa-sm text-white-50"></i> Export as JSON</a>
+                                        class="fas fa-download fa-sm text-white-50"></i> Export as <b>JSON</b></a>
                                 </div>
                             </div>
                         </div>
