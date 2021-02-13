@@ -4,10 +4,12 @@ import json
 # Catalogue headers
 fieldnames = ('frb', 'utc', 'mjd', 'telescope', 'ra', 'dec', 'l', 'b', 'frequency', 'dm', 'flux', 'width', 'fluence', 'status')
 
+# Load CSV catalogue
 with open('catalogue.csv', 'r') as csvfile:
     reader = csv.DictReader(csvfile, fieldnames)
     header = reader.fieldnames
 
+    # Write to JSON
     with open('catalogue.json', 'w') as jsonfile:
         # Prepend brace
         jsonfile.write('[\n')
