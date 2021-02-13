@@ -263,7 +263,7 @@
     $('#dataTable').dataTable( {
       "columnDefs": [
         // Hide columns
-        { "visible": false, "targets": [3,4] }
+        { "visible": false, "targets": [2,6,7] }
       ]
     } );
     $(document).ready(function() {
