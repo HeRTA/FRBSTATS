@@ -134,11 +134,17 @@
                           <div>
                           Toggle columns:
                           <a style="font-weight: bold" id="frb" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="0">FRB</a> -
+                          <a style="font-weight: bold" id="utc" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="1">UTC</a> -
                           <a style="font-weight: bold" id="mjd" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="1">MJD</a> -
                           <a style="font-weight: bold" id="telescope" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="2">Telescope</a> -
                           <a style="font-weight: normal" id="ra" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="3">RA</a> -
                           <a style="font-weight: normal" id="dec" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="4">Dec.</a> -
+                          <a style="font-weight: normal" id="l" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="3">Gal. Long.</a> -
+                          <a style="font-weight: normal" id="b" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="3">Gal. Lat.</a> -
                           <a style="font-weight: bold" id="dm" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="5">DM</a> -
+                          <a style="font-weight: bold" id="flux" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="5">Peak Flux Density</a> -
+                          <a style="font-weight: bold" id="width" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="5">Pulse Width (FWHM)</a> -
+                          <a style="font-weight: bold" id="fluence" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="5">Fluence</a> -
                           <a style="font-weight: bold" id="verified" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="6">Status</a>
                         </div>
                             <div class="table-responsive">
@@ -146,11 +152,18 @@
                                     <thead>
                                         <tr>
                                             <th>FRB</th>
+                                            <th>UTC</th>
                                             <th>MJD</th>
                                             <th>Telescope</th>
                                             <th>RA (<i>α</i>)</th>
                                             <th>Dec. (<i>δ</i>)</th>
+                                            <th>Gal. Long. (<i>l</i>)</th>
+                                            <th>Gal. Lat. (<i>b</i>)</th>
+                                            <th>Frequency (MHz)</th>
                                             <th>DM (pc cm⁻³)</th>
+                                            <th>Flux (Jy)</th>
+                                            <th>Width (ms)</th>
+                                            <th>Fluence (Jy ms)</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
