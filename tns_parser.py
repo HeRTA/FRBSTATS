@@ -18,15 +18,15 @@ new_f.columns = ['frb', 'utc', 'ra', 'dec', 'dm', 'flux']
 new_f['frb'] = new_f['frb'].str.split().apply(''.join)
 
 # Insert columns
-new_f.insert(2, 'mjd', '?')
-new_f.insert(3, 'telescope', '?')
-new_f.insert(4, 'sefd', '?')
-new_f.insert(7, 'l', '?')
-new_f.insert(8, 'b', '?')
-new_f.insert(9, 'frequency', '?')
-new_f.insert(12, 'width', '?')
-new_f.insert(13, 'fluence', '?')
-new_f.insert(14, 'snr', '?')
+new_f.insert(2, 'mjd', 'x')
+new_f.insert(3, 'telescope', 'x')
+new_f.insert(4, 'sefd', 'x')
+new_f.insert(7, 'l', 'x')
+new_f.insert(8, 'b', 'x')
+new_f.insert(9, 'frequency', 'x')
+new_f.insert(12, 'width', 'x')
+new_f.insert(13, 'fluence', 'x')
+new_f.insert(14, 'snr', 'x')
 new_f.insert(15, 'status', 'N')
 
 # Write changes to file
