@@ -34,6 +34,9 @@ with open('catalogue.json', 'r') as f:
 # Append comma separators
 filedata = filedata.replace('}\n{', '},\n{').replace('}{', '},{')
 
+# Replace blanks (empty cells) with 'x'
+filedata = filedata.replace('""', '"x"')
+
 # Output parsed json
 with open('catalogue.json', 'w') as file:
     file.write(filedata)
