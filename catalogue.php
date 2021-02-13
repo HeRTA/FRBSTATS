@@ -270,7 +270,7 @@
     $('#dataTable').dataTable( {
       "columnDefs": [
         // Hide columns
-        { "visible": false, "targets": [2] }
+        { "visible": false, "targets": [2,4,7,8,9,14] }
       ]
     } );
     $(document).ready(function() {
