@@ -184,11 +184,18 @@
                                         //echo ;
                                         echo "<tr>";
                                         echo "<td>".$cursor['frb']."</td>";
+                                        echo "<td>".$cursor['utc']."</td>";
                                         echo "<td>".$cursor['mjd']."</td>";
                                         echo "<td>".$cursor['telescope']."</td>";
                                         echo "<td>".$cursor['ra']."</td>";
                                         echo "<td>".$cursor['dec']."</td>";
+                                        echo "<td>".$cursor['l']."</td>";
+                                        echo "<td>".$cursor['b']."</td>";
+                                        echo "<td>".$cursor['frequency']."</td>";
                                         echo "<td>".$cursor['dm']."</td>";
+                                        echo "<td>".$cursor['flux']."</td>";
+                                        echo "<td>".$cursor['width']."</td>";
+                                        echo "<td>".$cursor['fluence']."</td>";
                                         echo "<td>".$cursor['status']."</td>";
                                         echo "</tr>";
                                         $itr->next();
