@@ -38,7 +38,7 @@
                 <div class="sidebar-brand-icon rotate-n-0">
                     <i class="fas fa-database"></i>
                 </div>
-                <div class="sidebar-brand-text mx-2">FRBSTATS</div>
+                <div style="font-size: 18px;" class="sidebar-brand-text mx-2">FRBSTATS</div>
             </a>
 
             <!-- Divider -->
@@ -46,9 +46,9 @@
 
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-info-circle"></i>
-                    <span>About</span></a>
+                <a class="nav-link" href=".">
+                    <i style="font-size:15px" class="fas fa-fw fa-info-circle"></i>
+                    <span style="font-size:15px">Overview</span></a>
             </li>
 
             <!-- Divider -->
@@ -56,16 +56,16 @@
 
             <!-- Nav Item -->
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Catalogue</span></a>
+                <a class="nav-link" href="catalogue">
+                    <i style="font-size:15px" class="fas fa-fw fa-clipboard-list"></i>
+                    <span style="font-size:15px">Catalogue</span></a>
             </li>
 
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Plot</span></a>
+                <a class="nav-link" href="plot">
+                    <i style="font-size:15px" class="fas fa-fw fa-chart-line"></i>
+                    <span style="font-size:15px">Plot</span></a>
             </li>
 
             <!-- Divider -->
