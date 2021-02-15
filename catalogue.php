@@ -100,8 +100,8 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav">
 
-                        <a style="font-size:28px;color:#4e73df">HeRTA:</a>
-                        <a style="font-size:28px;color:#5a5c69;white-space: pre"> FRB Catalogue</a>
+                        <a style="font-size:28px;color:#4e73df">FRBSTATS:</a>
+                        <a style="font-size:28px;color:#5a5c69;white-space: pre"> Catalogue</a>
 
 
                     </ul>
