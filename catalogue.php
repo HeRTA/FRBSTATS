@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href=".">
                 <div class="sidebar-brand-icon rotate-n-0">
                     <i class="fas fa-database"></i>
                 </div>
