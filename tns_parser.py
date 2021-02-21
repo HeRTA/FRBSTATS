@@ -15,7 +15,7 @@ new_f = new_f[['Name', 'Discovery Date (UT)', 'RA', 'DEC', 'DM', 'Discovery Mag/
 new_f.columns = ['frb', 'utc', 'ra', 'dec', 'dm', 'flux']
 
 # Strip whitespace from FRB names
-new_f['frb'] = new_f['frb'].str.split().apply(''.join)
+#new_f['frb'] = new_f['frb'].str.split().apply(''.join)
 
 # Insert columns
 new_f.insert(2, 'mjd', 'x')
