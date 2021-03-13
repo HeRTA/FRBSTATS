@@ -151,7 +151,7 @@
                           <a style="font-weight: bold" id="verified" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="15">Status</a>
                         </div>
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" onload="colorize()" onmouseover="colorize()">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>FRB</th>
@@ -187,7 +187,7 @@
                                     while ($cursor = $itr->current()){
 
                                         //echo ;
-                                        echo "<tr>";
+                                        echo "<tr onload='colorize()'>";
                                         echo "<td>".$cursor['frb']."</td>";
                                         echo "<td>".$cursor['utc']."</td>";
                                         echo "<td>".$cursor['mjd']."</td>";
