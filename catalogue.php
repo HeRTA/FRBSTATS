@@ -80,7 +80,7 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column" onmouseover="colorize()">
+        <div id="content-wrapper" class="d-flex flex-column" onmouseover='$("tr:even").css("background-color", "#F2F2F2");$("tr:odd").css("background-color", "#FFFFFF");$("tr:eq(0)").css("background-color", "#ECF3FA");'>
 
             <!-- Main Content -->
             <div id="content">
