@@ -187,7 +187,7 @@
                                     while ($cursor = $itr->current()){
 
                                         //echo ;
-                                        echo "<tr onload='colorize()'>";
+                                        echo "<tr>";
                                         echo "<td>".$cursor['frb']."</td>";
                                         echo "<td>".$cursor['utc']."</td>";
                                         echo "<td>".$cursor['mjd']."</td>";
@@ -293,11 +293,13 @@
     $(document).ready(function() {
         colorize();
     });
-   function colorize() {
+    var repeat;
+    function colorize() {
         $("tr:even").css("background-color", "#F2F2F2");
         $("tr:odd").css("background-color", "#FFFFFF");
         $("tr:eq(0)").css("background-color", "#ECF3FA");
-   }
+        repeat = setTimeout(colorize(), 100);
+    }
     </script>
 
 </body>
