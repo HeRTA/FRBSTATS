@@ -293,12 +293,11 @@
     $(document).ready(function() {
         colorize();
     });
-    var repeat;
     function colorize() {
         $("tr:even").css("background-color", "#F2F2F2");
         $("tr:odd").css("background-color", "#FFFFFF");
         $("tr:eq(0)").css("background-color", "#ECF3FA");
-        repeat = setTimeout(colorize(), 100);
+        window.setInterval(colorize, 100);
     }
     </script>
 
