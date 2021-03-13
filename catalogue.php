@@ -293,9 +293,9 @@
     $(document).ready(function()
     {
         // Alternate row colors
-        $("tr:eq(0)").css("background-color", "#FF1122");
         $("tr:even").css("background-color", "#F2F2F2");
         $("tr:odd").css("background-color", "#FFFFFF");
+        $("tr:eq(0)").css("background-color", "#FF1122");
     });
     </script>
 
