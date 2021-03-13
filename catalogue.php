@@ -297,7 +297,7 @@
         $("tr:even").css("background-color", "#F2F2F2");
         $("tr:odd").css("background-color", "#FFFFFF");
         $("tr:eq(0)").css("background-color", "#ECF3FA");
-        window.setInterval(colorize, 1000);
+        window.setInterval(colorize, 500);
     }
     </script>
 
