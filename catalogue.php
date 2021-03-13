@@ -296,7 +296,7 @@
    function colorize() {
         $("tr:even").css("background-color", "#F2F2F2");
         $("tr:odd").css("background-color", "#FFFFFF");
-        $("tr:eq(0)").css("background-color", "#e9ecf7");
+        $("tr:eq(0)").css("background-color", "#ECF3FA");
    }
     </script>
 
