@@ -293,8 +293,8 @@
     $(document).ready(function()
     {
         // Alternate row colors
-        $("tr:even").css("background-color", "#BAD0FB");
-        $("tr:odd").css("background-color", "#DCE8FD");
+        $("tr:even").css("background-color", "#D4E2FE");
+        $("tr:odd").css("background-color", "#E9F1FE");
     });
     </script>
 
