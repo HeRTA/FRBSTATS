@@ -297,13 +297,15 @@
         $("tr:odd").css("background-color", "#FFFFFF");
         $("tr:eq(0)").css("background-color", "#D9D9D9");
     });*/
-    $(document).ready(function colorize() {
-        // Alternate row colors
+$( document ).ready(function() {
+   function colorized(){
         console.log('executed');
         $("tr:even").css("background-color", "#F2F2F2");
         $("tr:odd").css("background-color", "#FFFFFF");
         $("tr:eq(0)").css("background-color", "#D9D9D9");
-    })
+}
+
+});
     </script>
 
 </body>
