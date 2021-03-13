@@ -28,7 +28,7 @@
 <body id="page-top">
 
     <!-- Page Wrapper -->
-    <div id="wrapper" onmouseover="colorize()">
+    <div id="wrapper">
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -151,7 +151,7 @@
                           <a style="font-weight: bold" id="verified" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="15">Status</a>
                         </div>
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" onmouseover="colorize()">
                                     <thead>
                                         <tr>
                                             <th>FRB</th>
