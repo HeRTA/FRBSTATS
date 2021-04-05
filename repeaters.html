@@ -104,7 +104,7 @@
                     <ul class="navbar-nav">
 
                         <a style="font-size:28px;color:#4e73df">FRBSTATS:</a>
-                        <a style="font-size:28px;color:#5a5c69;white-space: pre"> Plot</a>
+                        <a style="font-size:28px;color:#5a5c69;white-space: pre"> Repeaters</a>
 
 
                     </ul>
@@ -116,94 +116,84 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Parametric Plots</h1>
-                    <p class="mb-4">The FRBSTATS platform enables astronomers and researchers to rapidly plot parameter
-                        distributions for a variety of visualizations, concerning FRB population studies and more.
-                        
-                        Select <b>two parameters</b> to map on an interactive scatter plot.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Repeating Events</h1>
+                    <p class="mb-4">This page presents the distribution of <b>FRB repeaters</b> discovered to date.
+                        The original event is linked to follow-up events that have been observed and associated with the same source in the sky, in a parent-child relationship.
+                        Following the <a target="_blank" href="https://www.wis-tns.org/astronotes/astronote/2020-70">TNS designation</a>, the trailing <code>A</code> corresponds to the initial burst.
+                    </p>
                     <!-- Content Row -->
-                    <div class="row">
+                    <div>
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-                        <!-- Grow In -->
-                        <div class="col-lg-6">
+                        <div id="sankey_multiple" style="width: 950px; height: 400px;"></div>
 
-                            <div class="card position-relative" style="margin-bottom:10px;">
-                                <div class="card-header py-3">
-                                    <h6 class="font-weight-bold text-primary">X-axis</h6>
-                                </div>
-                                <div class="card-body">
-                                    <nav class="navbar navbar-expand navbar-light bg-light">
-                                        <a class="navbar-brand">Parameter</a>
-                                        <ul class="navbar-nav ml-auto">
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Select
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="#">RA</a>
-                                                    <a class="dropdown-item" href="#">Dec.</a>
-                                                    <a class="dropdown-item" href="#">Gal. Long.</a>
-                                                    <a class="dropdown-item" href="#">Gal. Lat.</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Frequency</a>
-                                                    <a class="dropdown-item" href="#">DM</a>
-                                                    <a class="dropdown-item" href="#">Flux Density</a>
-                                                    <a class="dropdown-item" href="#">Pulse Width</a>
-                                                    <a class="dropdown-item" href="#">Fluence</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">SEFD</a>
-                                                    <a class="dropdown-item" href="#">S:N</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
+<script type="text/javascript">
+google.load("visualization", "1.1", {
+    packages: ["sankey"]
+});
 
-                        </div>
+google.setOnLoadCallback(drawChart);
 
-                        <!-- Fade In Utility -->
-                        <div class="col-lg-6">
+function drawChart() {
+    var data = new google.visualization.DataTable();
+    var formatter = new google.visualization.NumberFormat({pattern:'$###.## bn'}); 
+    data.addColumn('string', 'From');
+    data.addColumn('string', 'To');
+    data.addColumn('number', 'Repeater');
+    data.addColumn({type: 'string', role: 'tooltip'});
+    data.addRows([
+       [ 'FRB 20200324', 'FRB 20200324A', 1 ],
+       [ 'FRB 20200324', 'FRB 20200324B', 1 ],
+       [ 'FRB 20200324', 'FRB 20200324C', 1 ],
 
-                            <div class="card position-relative">
-                                <div class="card-header py-3">
-                                    <h6 class="font-weight-bold text-primary">Y-axis</h6>
-                                </div>
-                                <div class="card-body">
-                                    <nav class="navbar navbar-expand navbar-light bg-light">
-                                        <a class="navbar-brand">Parameter</a>
-                                        <ul class="navbar-nav ml-auto">
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Select
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="#">RA</a>
-                                                    <a class="dropdown-item" href="#">Dec.</a>
-                                                    <a class="dropdown-item" href="#">Gal. Long.</a>
-                                                    <a class="dropdown-item" href="#">Gal. Lat.</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Frequency</a>
-                                                    <a class="dropdown-item" href="#">DM</a>
-                                                    <a class="dropdown-item" href="#">Flux Density</a>
-                                                    <a class="dropdown-item" href="#">Pulse Width</a>
-                                                    <a class="dropdown-item" href="#">Fluence</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">SEFD</a>
-                                                    <a class="dropdown-item" href="#">S:N</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
+       [ 'FRB 20200323', 'FRB 20200323A', 1 ],
+       [ 'FRB 20200323', 'FRB 20200323B', 1 ],
 
-                        </div>
-                        
+       [ 'FRB 20200220', 'FRB 20200220A', 1 ],
+       [ 'FRB 20200220', 'FRB 20200220B', 1 ],
+       [ 'FRB 20200220', 'FRB 20200220C', 1 ],
+       [ 'FRB 20200220', 'FRB 20200220D', 1 ]
+        ].map(function(d) {
+        	d.push(' ');
+        	return d; 
+    	}));;
 
-                    </div><br><center><a href="plot" style="margin-bottom:2px;" class="d-none d-sm-inline-block btn btn-lg btn-primary shadow-sm"><i class="far fa-chart-line fa-lg text-white-50" aria-hidden="true"></i> Plot Parameters</a></center>
+    // Set chart options
+    var options = {
+        width: 900,
+        height: 400,
+        tooltip: {isHtml: true},
+        sankey: {
+            iterations: 32,
+            node: {
+                nodePadding: 10,
+                interactivity: true,
+                label: {
+                    fontSize: 18,
+                    color: '#000000',
+                    bold: false,
+                    italic: false
+                }
+            },
+            link: {
+            },
+            allowHtml: 'true',
+            tooltip: {
+                isHtml: 'true'
+            }
+        }
 
-                </div><br><br><br><br><br><br><br><br><br><br>
+    };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple', 'HTML_tooltip'));
+    chart.draw(data, options);
+}
+</script>
+
+                    </div><br>
+
+                </div><br>
                 <!-- /.container-fluid -->
 
             </div>
