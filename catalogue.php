@@ -273,10 +273,12 @@
     <script type="text/javascript" class="init">
     $('#dataTable').dataTable( {
       "columnDefs": [
-        // Descending order
-        { "orderSequence": [ "desc" ], "targets": [0] }
-        // Hide columns
-        { "visible": false, "targets": [2,6,7,8,13] }
+        {
+            // Descending order
+            "orderSequence": [ "desc" ], "targets": [0],
+            // Hide columns
+            "visible": false, "targets": [2,6,7,8,13]
+        }
       ]
     } );
     $(document).ready(function() {
