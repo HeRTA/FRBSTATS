@@ -122,7 +122,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">About</h1>
                     <p class="mb-4">This catalogue contains Fast Radio Burst (FRB) events published up to date. Event data have been obtained from the <a target="_blank" href="https://www.wis-tns.org">Transient Name Server (TNS)</a>, <a target="_blank"
-                            href="http://frbcat.org">FRBCAT</a> (<a target="_blank" href="http://adsabs.harvard.edu/abs/2016PASA...33...45P">Petroff et al., 2016</a>) and the cited publications (see <b>Status</b> for event reference).</p>
+                            href="http://frbcat.org">FRBCAT</a> (<a target="_blank" href="http://adsabs.harvard.edu/abs/2016PASA...33...45P">Petroff et al., 2016</a>) and the cited publications (see <b>Reference</b> column).</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -154,7 +154,7 @@
                           <a style="font-weight: bold" id="width" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="11">Pulse Width (FWHM)</a> -
                           <a style="font-weight: bold" id="fluence" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="12">Fluence</a> -
                           <a style="font-weight: normal" id="snr" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="13">S:N</a> -
-                          <a style="font-weight: bold" id="verified" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="14">Status</a>
+                          <a style="font-weight: bold" id="verified" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="14">Reference</a>
                         </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -174,7 +174,7 @@
                                             <th>Width (ms)</th>
                                             <th>Fluence (Jy ms)</th>
                                             <th>S:N</th>
-                                            <th>Status</th>
+                                            <th>Reference</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -207,7 +207,7 @@
                                         echo "<td>".$cursor['width']."</td>";
                                         echo "<td>".$cursor['fluence']."</td>";
                                         echo "<td>".$cursor['snr']."</td>";
-                                        echo "<td>".$cursor['status']."</td>";
+                                        echo "<td>".$cursor['ref']."</td>";
                                         echo "</tr>";
                                         $itr->next();
                                     }
