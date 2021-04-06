@@ -275,7 +275,9 @@
       "columnDefs": [
         {
             // Descending order
-            "orderSequence": [ "asc" ], "targets": [0],
+            "orderSequence": [ "desc" ], "targets": [0]
+        },
+        {
             // Hide columns
             "visible": false, "targets": [2,6,7,8,13]
         }
