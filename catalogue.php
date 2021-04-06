@@ -160,7 +160,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>FRB_webhooktest</th>
+                                            <th>FRB</th>
                                             <th>UTC</th>
                                             <th>MJD</th>
                                             <th>Telescope</th>
