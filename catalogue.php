@@ -164,7 +164,6 @@
                                             <th>UTC</th>
                                             <th>MJD</th>
                                             <th>Telescope</th>
-                                            <th>SEFD (Jy)</th>
                                             <th>RA (<i>α</i>)</th>
                                             <th>Dec. (<i>δ</i>)</th>
                                             <th>Gal. Long. (<i>l</i>)</th>
@@ -198,7 +197,6 @@
                                         echo "<td>".$cursor['utc']."</td>";
                                         echo "<td>".$cursor['mjd']."</td>";
                                         echo "<td>".$cursor['telescope']."</td>";
-                                        echo "<td>".$cursor['sefd']."</td>";
                                         echo "<td>".$cursor['ra']."</td>";
                                         echo "<td>".$cursor['dec']."</td>";
                                         echo "<td>".$cursor['l']."</td>";
@@ -208,7 +206,7 @@
                                         echo "<td>".$cursor['flux']."</td>";
                                         echo "<td>".$cursor['width']."</td>";
                                         echo "<td>".$cursor['fluence']."</td>";
-                                        echo "<td>".$cursor['sefd']."</td>";
+                                        echo "<td>".$cursor['snr']."</td>";
                                         echo "<td>".$cursor['status']."</td>";
                                         echo "</tr>";
                                         $itr->next();
