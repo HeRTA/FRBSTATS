@@ -276,6 +276,9 @@
         {
             // Hide columns
             "visible": false, "targets": [2,6,7,8,13]
+        },
+        {
+            "order": []
         }
       ]
     } );
