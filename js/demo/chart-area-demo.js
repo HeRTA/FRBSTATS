@@ -371,7 +371,7 @@ var myLineChart = new Chart(ctx, {
       xAxes: [{
         scaleLabel: {
           display: true,
-          labelString: 'MJD'
+          labelString: 'Modified Julian Date'
         },
         gridLines: {
           display: false,
