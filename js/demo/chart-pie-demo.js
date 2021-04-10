@@ -7,8 +7,11 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    fontsize: 16,
+    fontSize: 16,
     labels: ["One-off events", "Repeaters"],
+    labels: {
+              **fontSize: 16**,
+    },
     datasets: [{
       data: [126, 13],
       backgroundColor: ['#4e73df', '#1cc88a'],
