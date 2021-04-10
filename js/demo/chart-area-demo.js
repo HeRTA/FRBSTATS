@@ -380,8 +380,8 @@ var myLineChart = new Chart(ctx, {
         ticks: {
           min: 51900,
           max: 59315,
-          steps: 10,
-          maxTicksLimit: 10
+          steps: 10
+          //maxTicksLimit: 10
         }
       }],
       yAxes: [{
