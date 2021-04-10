@@ -207,7 +207,7 @@
                                         echo "<td>".$cursor['width']."</td>";
                                         echo "<td>".$cursor['fluence']."</td>";
                                         echo "<td>".$cursor['snr']."</td>";
-                                        echo "<td>".$cursor['ref']."</td>";
+                                        echo "<td style='vertical-align: middle;'><center><a href='.$cursor['ref'].' target='_blank' title='Verified' class='btn btn-secondary btn-circle btn-sm'><i class='fas fa-scroll'></i></a></center></td>";
                                         echo "</tr>";
                                         $itr->next();
                                     }
