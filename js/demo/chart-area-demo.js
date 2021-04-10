@@ -32,7 +32,7 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'scatter',
   data: {
-    labels: ["52000", "53000", "54000", "55000", "56000", "57000", "58000", "59000"],
+    //labels: ["52000", "53000", "54000", "55000", "56000", "57000", "58000", "59000"],
     datasets: [{
       label: "Count",
       showLine: true,
@@ -378,6 +378,7 @@ var myLineChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
+          fontSize: 16
           //min: 51000,
           //max: 60000,
           //steps: 15
