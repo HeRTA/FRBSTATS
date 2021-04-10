@@ -378,7 +378,7 @@ var myLineChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          min: 51934,
+          min: 51900,
           max: 59315,
           maxTicksLimit: 7
         }
