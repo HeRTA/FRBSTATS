@@ -10,7 +10,7 @@ var myPieChart = new Chart(ctx, {
     fontSize: 16,
     labels: ["One-off events", "Repeaters"],
     labels: {
-              **fontSize: 16**,
+              fontSize: 16,
     },
     datasets: [{
       data: [126, 13],
