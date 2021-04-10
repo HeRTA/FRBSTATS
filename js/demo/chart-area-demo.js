@@ -370,7 +370,7 @@ var myLineChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         scaleLabel: {
-          fontSize: 16,
+          fontSize: 18,
           display: true,
           labelString: 'Modified Julian Date'
         },
@@ -388,6 +388,7 @@ var myLineChart = new Chart(ctx, {
       }],
       yAxes: [{
         scaleLabel: {
+          fontSize: 18,
           display: true,
           labelString: 'FRB Count'
         },
