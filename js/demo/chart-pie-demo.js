@@ -7,7 +7,6 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    fontSize: 16,
     labels: ["One-off events", "Repeaters"],
     datasets: [{
       data: [126, 13],
