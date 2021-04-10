@@ -34,7 +34,7 @@ var myLineChart = new Chart(ctx, {
   data: {
     //labels: ["53371", "53528", "53929", "54741", "59167"],
     datasets: [{
-      label: "FRB Count",
+      label: "Count",
       showLine: true,
       lineTension: 0,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
@@ -384,7 +384,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         scaleLabel: {
           display: true,
-          labelString: 'Count'
+          labelString: 'FRB Count'
         },
         ticks: {
           maxTicksLimit: 5,
