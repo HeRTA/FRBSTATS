@@ -370,6 +370,7 @@ var myLineChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         scaleLabel: {
+          fontSize: 16,
           display: true,
           labelString: 'Modified Julian Date'
         },
@@ -378,7 +379,7 @@ var myLineChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          fontSize: 16
+          fontSize: 14
           //min: 51000,
           //max: 60000,
           //steps: 15
@@ -391,9 +392,9 @@ var myLineChart = new Chart(ctx, {
           labelString: 'FRB Count'
         },
         ticks: {
+          fontSize: 14,
           maxTicksLimit: 5,
           padding: 10,
-          // Include a dollar sign in the ticks
           callback: function(value, index, values) {
             return number_format(value);
           }
