@@ -134,6 +134,8 @@
                                         class="fas fa-download fa-sm text-white-50"></i> Export as <b>CSV</b></a>
                                     <a href="catalogue.json" download class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                         class="fas fa-download fa-sm text-white-50"></i> Export as <b>JSON</b></a>
+                                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY/edit?usp=sharing" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                                        class="fas fa-file-excel text-white-50"></i> View <b>Spreadsheet</b></a>
                                 </div>
                             </div>
                         </div>
