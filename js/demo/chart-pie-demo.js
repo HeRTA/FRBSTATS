@@ -8,7 +8,7 @@ var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
     fontSize: 16,
-    labels: {["One-off events", "Repeaters"], fontSize:16},
+    labels: ["One-off events", "Repeaters"],
     datasets: [{
       data: [126, 13],
       backgroundColor: ['#4e73df', '#1cc88a'],
