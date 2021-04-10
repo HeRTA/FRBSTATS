@@ -378,8 +378,8 @@ var myLineChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          min: 51900,
-          max: 59315,
+          min: 51000,
+          max: 60000,
           steps: 10
           //maxTicksLimit: 10
         }
