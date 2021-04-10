@@ -83,7 +83,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         scaleLabel: {
           display: true,
-          labelString: 'Count'
+          labelString: 'FRB Count'
         },
         ticks: {
           maxTicksLimit: 5,
