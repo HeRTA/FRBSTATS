@@ -147,7 +147,7 @@
                         Following the <a target="_blank" href="https://www.wis-tns.org/astronotes/astronote/2020-70">TNS designation</a>, the trailing <code>A</code> corresponds to the initial burst.
                     </p>
                     <!-- Content Row -->
-                    <div>
+                    <div id="tree">
                         <script>
 
 var treeData = [
@@ -967,7 +967,7 @@ var tree = d3.layout.tree()
 var diagonal = d3.svg.diagonal()
 	.projection(function(d) { return [d.y, d.x]; });
 
-var svg = d3.select("#wrapper").append("svg")
+var svg = d3.select("#tree").append("svg")
 	.attr("width", width + margin.right + margin.left)
 	.attr("height", height + margin.top + margin.bottom)
 	.append("g")
