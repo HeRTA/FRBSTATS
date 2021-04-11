@@ -70,9 +70,9 @@
 
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="plot">
+                <a class="nav-link" href="plots">
                     <i style="font-size:15px" class="fas fa-fw fa-chart-line"></i>
-                    <span style="font-size:15px">Plot</span></a>
+                    <span style="font-size:15px">Plots</span></a>
             </li>
 
             <!-- Divider -->
