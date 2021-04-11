@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Catalogue - FRBSTATS</title>
+    <title>Catalogue | FRBSTATS</title>
 
     <!-- Fonts -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
