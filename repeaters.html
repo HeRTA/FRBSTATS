@@ -30,17 +30,17 @@
 	.node circle {
 	  fill: #fff;
 	  stroke: steelblue;
-	  stroke-width: 3px;
+	  stroke-width: 2px;
 	}
 
 	.node text {
-	  font: 12px sans-serif;
+	  font: 10px sans-serif;
 	}
 
 	.link {
 	  fill: none;
 	  stroke: #ccc;
-	  stroke-width: 2px;
+	  stroke-width: 1px;
 	}
 	
     </style>
@@ -1017,7 +1017,7 @@ function update(source) {
 	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
-	  .attr("r", 10)
+	  .attr("r", 4)
 	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
   nodeUpdate.select("text")
