@@ -96,8 +96,8 @@ plt.xscale('log')
 plt.yscale('log')
 
 # Set ylim
-plt.xlim(10**-1,10**4)
-plt.ylim(10**-2,10**3)
+plt.xlim(10**-2,10**3)
+plt.ylim(10**-1,10**4)
 
 # Set tick size
 plt.xticks(fontsize=42, y=-0.005)
