@@ -74,7 +74,7 @@ plt.ylabel(r'$\mathrm{Burst \ Fluence \ [Jy \ ms]}$', fontsize=52)
 plt.title(r'$\mathrm{FRB \ Fluence-DM \ Distribution}$', fontsize=72, y=1.01)
 
 # Set log-log scaling
-plt.xscale('log')
+#plt.xscale('log')
 plt.yscale('log')
 
 # Set axis limits
