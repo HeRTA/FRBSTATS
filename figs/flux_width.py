@@ -113,5 +113,5 @@ plt.gca().yaxis.set_tick_params(right='off',which='both')
 plt.tight_layout()
 
 # Save data to a scalable format
-plt.savefig('plot.svg', format='svg')
-#plt.savefig('plot.png')
+plt.savefig('flux_width.svg', format='svg')
+plt.savefig('flux_width.png')
