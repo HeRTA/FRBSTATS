@@ -89,7 +89,7 @@ cbar.draw_all()
 # Set axis labels & figure title
 plt.xlabel(r'$\mathrm{Burst \ Width \ [ms]}$', fontsize=52)
 plt.ylabel(r'$\mathrm{Peak \ Flux \ Density \ [Jy]}$', fontsize=52)
-plt.title(r'$\mathrm{FRB \ Fluence \ Distribution}$', fontsize=72, y=1.01)
+plt.title(r'$\mathrm{FRB \ Flux-Width \ Distribution}$', fontsize=72, y=1.01)
 
 # Set log-log scaling
 plt.xscale('log')
