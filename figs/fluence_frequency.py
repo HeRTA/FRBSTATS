@@ -78,7 +78,7 @@ plt.title(r'$\mathrm{FRB \ Fluence-Frequency \ Distribution}$', fontsize=72, y=1
 plt.yscale('log')
 
 # Set axis limits
-#plt.xlim(0,7000)
+plt.xlim(0,7000)
 #plt.ylim(10**-2,10**3)
 
 # Set tick size
