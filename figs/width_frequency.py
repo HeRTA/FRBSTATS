@@ -39,7 +39,7 @@ with open('../catalogue.csv', 'r') as read_obj:
 	if header != None:
 		for row in csv_reader:
 			frequency.append(row[8])
-			width.append(row[10])
+			width.append(row[11])
 
 ### Pre-process data
 # Pick out incompatible rows
