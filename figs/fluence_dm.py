@@ -11,7 +11,7 @@ plt.rcParams['svg.fonttype'] = 'none'
 plt.rcParams['text.usetex'] = True
 
 # Set figsize
-plt.rcParams["figure.figsize"] = (26,20)
+plt.rcParams["figure.figsize"] = (24,20)
 plt.rcParams["figure.dpi"] = 300
 
 # Set xtick size
@@ -66,7 +66,7 @@ for idx in sorted(idx_mask, reverse=True):
 plt.grid(color='grey', linestyle='-', linewidth=0.25, alpha=1)
 
 # Scatter plot
-plt.scatter(dm, fluence, c='royalblue', s=500, alpha=0.7, edgecolor='black', linewidth=2, zorder=10)
+plt.scatter(dm, fluence, c='royalblue', s=500, alpha=0.7, edgecolor='blue', linewidth=2, zorder=10)
 
 # Set axis labels & figure title
 plt.xlabel(r'$\mathrm{Dispersion \ Measure \ }\Bigg[\mathrm{pc \ cm}^{-3}\Bigg]$', fontsize=52)
