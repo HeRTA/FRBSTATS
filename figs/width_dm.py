@@ -71,7 +71,7 @@ plt.scatter(dm, width, c='cornflowerblue', s=500, alpha=0.8, edgecolor='royalblu
 # Set axis labels & figure title
 plt.xlabel(r'$\mathrm{Dispersion \ Measure \ }\Bigg[\mathrm{pc \ cm}^{-3}\Bigg]$', fontsize=52)
 plt.ylabel(r'$\mathrm{Burst \ Width \ [ms]}$', fontsize=52)
-plt.title(r'$\mathrm{FRB \ DM-Width \ Distribution}$', fontsize=72, y=1.01)
+plt.title(r'$\mathrm{FRB \ Width-DM \ Distribution}$', fontsize=72, y=1.01)
 
 # Set log-log scaling
 #plt.xscale('log')
