@@ -74,12 +74,12 @@ plt.ylabel(r'$\mathrm{Peak \ Flux \ Density \ [Jy]}$', fontsize=52)
 plt.title(r'$\mathrm{FRB \ Flux-DM \ Distribution}$', fontsize=72, y=1.01)
 
 # Set log-log scaling
-plt.xscale('log')
-#plt.yscale('log')
+#plt.xscale('log')
+plt.yscale('log')
 
 # Set axis limits
-#plt.xlim(10**-2,10**3)
-plt.ylim(0,3000)
+plt.xlim(0,3000)
+#plt.ylim(10**-2,10**3)
 
 # Set tick size
 plt.xticks(fontsize=42, y=-0.005)
