@@ -176,17 +176,17 @@
                                                     Select
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown"> 
-                                                    <a class="dropdown-item" id="ra" onclick="set_y(this.id, 'RA')">RA</a>
-                                                    <a class="dropdown-item" id="dec" onclick="set_y(this.id, 'Dec.')">Dec.</a>
+                                                    <button class="dropdown-item" id="ra" onclick="set_y(this.id, 'RA')">RA</button>
+                                                    <button class="dropdown-item" id="dec" onclick="set_y(this.id, 'Dec.')">Dec.</button>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" id="long" onclick="set_y(this.id, 'Gal. Long.')">Gal. Long.</a>
-                                                    <a class="dropdown-item" id="lat" onclick="set_y(this.id, 'Gal. Lat.')">Gal. Lat.</a>
+                                                    <button class="dropdown-item" id="long" onclick="set_y(this.id, 'Gal. Long.')">Gal. Long.</button>
+                                                    <button class="dropdown-item" id="lat" onclick="set_y(this.id, 'Gal. Lat.')">Gal. Lat.</button>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" id="frequency" onclick="set_y(this.id, 'Frequency')">Frequency</a>
-                                                    <a class="dropdown-item" id="dm" onclick="set_y(this.id, 'DM')">DM</a>
-                                                    <a class="dropdown-item" id="flux" onclick="set_y(this.id, 'Flux Density')">Flux Density</a>
-                                                    <a class="dropdown-item" id="width" onclick="set_y(this.id, 'Burst Width')">Burst Width</a>
-                                                    <a class="dropdown-item" id="fluence" onclick="set_y(this.id, 'Fluence')">Fluence</a>
+                                                    <button class="dropdown-item" id="frequency" onclick="set_y(this.id, 'Frequency')">Frequency</button>
+                                                    <button class="dropdown-item" id="dm" onclick="set_y(this.id, 'DM')">DM</button>
+                                                    <button class="dropdown-item" id="flux" onclick="set_y(this.id, 'Flux Density')">Flux Density</button>
+                                                    <button class="dropdown-item" id="width" onclick="set_y(this.id, 'Burst Width')">Burst Width</button>
+                                                    <button class="dropdown-item" id="fluence" onclick="set_y(this.id, 'Fluence')">Fluence</button>
                                                 </div>
                                             </li>
                                         </ul>
@@ -200,7 +200,7 @@
                     </div><br><center><a style="margin-top: -1%; width: 100%" class="d-none d-sm-inline-block btn btn-lg btn-primary shadow-sm" onclick="updateFig()"><i class="far fa-chart-line fa-lg text-white-50" aria-hidden="true"></i> Plot Parameters</a></center>
 
 <br>
-                    <center><a id="errorMsg" style="color: orangered; visibility: hidden"></a></center>
+                    <center><a id="errorMsg" style="font-size: 130%; color: orangered; visibility: hidden"></a></center>
 
 <div class="card shadow mb-4" id="results" style="visibility: hidden">
                                 <div class="card-header py-3">
@@ -259,38 +259,41 @@
             shown_y = name_y;
             document.getElementById("navbarDropdown_y").innerHTML = shown_y;
         }
-        /*if (typeof selected_x !== "undefined" && typeof selected_y !== "undefined") {
-            //
-        }*/
         function updateFig()
         {
             if (x_axis == "none" && y_axis != "none")
             {
+                document.getElementById("results").style.visibility = "hidden";
                 document.getElementById("errorMsg").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>X</b>-axis.";
             }
             else if (x_axis != "none" && y_axis == "none")
             {
+                document.getElementById("results").style.visibility = "hidden";
                 document.getElementById("errorMsg").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>Y</b>-axis.";
             }
             else if (x_axis == "none" && y_axis == "none")
             {
+                document.getElementById("results").style.visibility = "hidden";
                 document.getElementById("errorMsg").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please select a parameter for both the <b>X</b> and the <b>Y-axis</b>.";
             }
             else if (x_axis == y_axis)
             {
+                document.getElementById("results").style.visibility = "hidden";
                 document.getElementById("errorMsg").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please ensure the parameters you have selected for the <b>X</b> and the <b>Y-axis</b> differ.";
             }
             else if (x_axis == y_axis)
             {
+                document.getElementById("results").style.visibility = "hidden";
                 document.getElementById("errorMsg").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please ensure the parameters you have selected for the <b>X</b> and the <b>Y-axis</b> differ.";
             }
             else
             {
+                document.getElementById("errorMsg").style.visibility = "hidden";
                 document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/"+y_axis+"_"+x_axis+".py";
                 document.getElementById("saveSvg").href = "figs/"+y_axis+"_"+x_axis+".svg";
                 document.getElementById("savePng").href = "figs/"+y_axis+"_"+x_axis+".png";
