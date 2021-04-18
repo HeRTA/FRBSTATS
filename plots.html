@@ -136,7 +136,7 @@
                                         <a class="navbar-brand">Parameter</a>
                                         <ul class="navbar-nav ml-auto">
                                             <li class="nav-item dropdown">
-                                                <a onclick="updatePlaceholder()" class="nav-link dropdown-toggle" id="navbarDropdown_x" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a class="nav-link dropdown-toggle" id="navbarDropdown_x" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Select
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
@@ -252,15 +252,12 @@
         {
             x_axis = selected_x;
             shown_x = name_x;
+            document.getElementById("navbarDropdown_x").innerHTML = shown_x;
         }
         function set_y(selected_y, name_y)
         {
             y_axis = selected_y;
             shown_y = name_y;
-        }
-        function updatePlaceholder()
-        {
-            document.getElementById("navbarDropdown_x").innerHTML = shown_x;
             document.getElementById("navbarDropdown_y").innerHTML = shown_y;
         }
         /*if (typeof selected_x !== 'undefined' && typeof selected_y !== 'undefined') {
