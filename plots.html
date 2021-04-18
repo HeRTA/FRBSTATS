@@ -244,24 +244,24 @@
     </a>
 
     <script type="text/javascript">
-        var selected_x = 'none';
-        var selected_y = 'none';
+        var x_axis = 'none';
+        var y_axis = 'none';
         function set_x(selected_x)
         {
-            //alert(selected_x);
+            x_axis = selected_x;
         }
         function set_y(selected_y)
         {
-            //alert(selected_y);
+            y_axis = selected_y;
         }
         /*if (typeof selected_x !== 'undefined' && typeof selected_y !== 'undefined') {
             //
         }*/
         function updateFig()
         {
-            alert(selected_x);
-            alert(selected_y);
-            document.myImage.src = 'figs/'+selected_y+'_'+selected_x+'.svg';
+            alert(x_axis);
+            alert(y_axis);
+            document.myImage.src = 'figs/'+y_axis+'_'+x_axis+'.svg';
         }
     </script>
 
