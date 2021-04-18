@@ -197,7 +197,7 @@
                         </div>
                         
 
-                    </div><br><center><a href="plot" style="margin-bottom:2px;" class="d-none d-sm-inline-block btn btn-lg btn-primary shadow-sm"><i class="far fa-chart-line fa-lg text-white-50" aria-hidden="true"></i> Plot Parameters</a></center>
+                    </div><br><center><a style="margin-bottom:2px;" class="d-none d-sm-inline-block btn btn-lg btn-primary shadow-sm" onclick="updateFig()"><i class="far fa-chart-line fa-lg text-white-50" aria-hidden="true"></i> Plot Parameters</a></center>
 
 <br>
 
@@ -257,9 +257,12 @@
         /*if (typeof selected_x !== 'undefined' && typeof selected_y !== 'undefined') {
             //
         }*/
-        alert(selected_x);
-        alert(selected_y);
-        document.myImage.src = 'figs/'+selected_y+'_'+selected_x+'.svg';
+        function updateFig()
+        {
+            alert(selected_x);
+            alert(selected_y);
+            document.myImage.src = 'figs/'+selected_y+'_'+selected_x+'.svg';
+        }
     </script>
 
     <!-- Bootstrap core JavaScript-->
