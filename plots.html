@@ -206,7 +206,7 @@
                         <a id="errorMsg"></a>
                     </center>
 
-<div class="card shadow mb-4" id="results" style="margin-top: -1%; visibility: hidden">
+<div class="card shadow mb-4" id="results" style="margin-top: 3%; visibility: hidden">
                                 <div class="card-header py-3">
                                     <h6 style="font-size:19px" class="font-weight-bold text-primary">Results</h6>
                                 </div>
@@ -303,6 +303,7 @@
                 document.getElementById("saveSvg").href = "figs/"+y_axis+"_"+x_axis+".svg";
                 document.getElementById("savePng").href = "figs/"+y_axis+"_"+x_axis+".png";
                 document.fig.src = "figs/"+y_axis+"_"+x_axis+".svg";
+                document.getElementById("results").style.marginTop = "3%";
                 document.getElementById("results").style.visibility = "visible";
             }
         }
