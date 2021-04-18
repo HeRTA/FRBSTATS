@@ -266,22 +266,27 @@
         {
             if (x_axis == "none" && y_axis != "none")
             {
+                document.getElementById("errorMsg").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>X</b>-axis.";
             }
             else if (x_axis != "none" && y_axis == "none")
             {
+                document.getElementById("errorMsg").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>Y</b>-axis.";
             }
             else if (x_axis == "none" && y_axis == "none")
             {
+                document.getElementById("errorMsg").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please select a parameter for both the <b>X</b> and the <b>Y-axis</b>.";
             }
             else if (x_axis == y_axis)
             {
+                document.getElementById("errorMsg").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please ensure the parameters you have selected for the <b>X</b> and the <b>Y-axis</b> differ.";
             }
             else if (x_axis == y_axis)
             {
+                document.getElementById("errorMsg").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please ensure the parameters you have selected for the <b>X</b> and the <b>Y-axis</b> differ.";
             }
             else
