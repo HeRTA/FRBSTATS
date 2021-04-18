@@ -262,11 +262,11 @@
         }*/
         function updateFig()
         {
+            document.getElementById('results').style.visibility = 'visible';
             document.sourceCode.href = 'https://github.com/HeRTA/FRBSTATS/blob/main/figs/'+y_axis+'_'+x_axis+'.py';
             document.saveSvg.href = 'figs/'+y_axis+'_'+x_axis+'.svg';
             document.savePng.href = 'figs/'+y_axis+'_'+x_axis+'.png';
             document.fig.src = 'figs/'+y_axis+'_'+x_axis+'.svg';
-            document.getElementById('results').style.visibility = 'visible';
         }
     </script>
 
