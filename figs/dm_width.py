@@ -96,4 +96,5 @@ plt.tight_layout()
 
 # Save data to a scalable format
 plt.savefig('dm_width.svg', format='svg')
+plt.savefig('dm_width.pdf')
 plt.savefig('dm_width.png')
