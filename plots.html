@@ -193,14 +193,16 @@
                                     </nav>
                                 </div>
                             </div>
-
                         </div>
-                        
 
-                    </div><br><center><a style="margin-top: -1%; width: 100%" class="d-none d-sm-inline-block btn btn-lg btn-primary shadow-sm" onclick="updateFig()"><i class="far fa-chart-line fa-lg text-white-50" aria-hidden="true"></i> Plot Parameters</a></center>
+                    </div>
+                    <br>
+                    <center>
+                        <a style="margin-top: -1%; width: 100%" class="d-none d-sm-inline-block btn btn-lg btn-primary shadow-sm" onclick="updateFig()">
+                            <i class="far fa-chart-line fa-lg text-white-50" aria-hidden="true"></i> Plot Parameters</a>
+                    </center>
 
-<br>
-                    <center><a id="errorMsg" style="font-size: 130%; color: orangered; visibility: hidden"></a></center>
+                    <center style="margin-top: 1%"><a id="errorMsg" style="font-size: 130%; color: orangered; visibility: hidden"></a></center>
 
 <div class="card shadow mb-4" id="results" style="visibility: hidden">
                                 <div class="card-header py-3">
@@ -261,17 +263,18 @@
         }
         function updateFig()
         {
+            document.fig.src = "figs/none_none.svg";
             if (x_axis == "none" && y_axis != "none")
             {
                 document.getElementById("results").style.visibility = "hidden";
                 document.getElementById("errorMsg").style.visibility = "visible";
-                document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>X</b>-axis.";
+                document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>X-axis</b>.";
             }
             else if (x_axis != "none" && y_axis == "none")
             {
                 document.getElementById("results").style.visibility = "hidden";
                 document.getElementById("errorMsg").style.visibility = "visible";
-                document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>Y</b>-axis.";
+                document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>Y-axis</b>.";
             }
             else if (x_axis == "none" && y_axis == "none")
             {
