@@ -140,21 +140,17 @@
                                                     Select
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
-                                                    <form method="" action="" name="myForm">
-                                                    <select name="switch" onchange="switchImage();">
-                                                    <option class="dropdown-item" value="1">RA</option>
-                                                    <option class="dropdown-item" value="2">Dec.</option>
+                                                    <a class="dropdown-item" id="ra" onclick="set_x()">RA</a>
+                                                    <a class="dropdown-item" id="dec" onclick="set_x()">Dec.</a>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Gal. Long.</a>
-                                                    <a class="dropdown-item" href="#">Gal. Lat.</a>
+                                                    <a class="dropdown-item" id="long" onclick="set_x()">Gal. Long.</a>
+                                                    <a class="dropdown-item" id="lat" onclick="set_x()">Gal. Lat.</a>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Frequency</a>
-                                                    <a class="dropdown-item" href="#">DM</a>
-                                                    <a class="dropdown-item" href="#">Flux Density</a>
-                                                    <a class="dropdown-item" href="#">Burst Width</a>
-                                                    <a class="dropdown-item" href="#">Fluence</a>
-                                                    </select>
-                                                    </form>
+                                                    <a class="dropdown-item" id="frequency" onclick="set_x()">Frequency</a>
+                                                    <a class="dropdown-item" id="dm" onclick="set_x()">DM</a>
+                                                    <a class="dropdown-item" id="flux" onclick="set_x()">Flux Density</a>
+                                                    <a class="dropdown-item" id="width" onclick="set_x()">Burst Width</a>
+                                                    <a class="dropdown-item" id="fluence" onclick="set_x()">Fluence</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -179,18 +175,18 @@
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Select
                                                 </a>
-                                                <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="#">RA</a>
-                                                    <a class="dropdown-item" href="#">Dec.</a>
+                                                <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown"> 
+                                                    <a class="dropdown-item" id="ra" onclick="set_y()">RA</a>
+                                                    <a class="dropdown-item" id="dec" onclick="set_y()">Dec.</a>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Gal. Long.</a>
-                                                    <a class="dropdown-item" href="#">Gal. Lat.</a>
+                                                    <a class="dropdown-item" id="long" onclick="set_y()">Gal. Long.</a>
+                                                    <a class="dropdown-item" id="lat" onclick="set_y()">Gal. Lat.</a>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Frequency</a>
-                                                    <a class="dropdown-item" href="#">DM</a>
-                                                    <a class="dropdown-item" href="#">Flux Density</a>
-                                                    <a class="dropdown-item" href="#">Burst Width</a>
-                                                    <a class="dropdown-item" href="#">Fluence</a>
+                                                    <a class="dropdown-item" id="frequency" onclick="set_y()">Frequency</a>
+                                                    <a class="dropdown-item" id="dm" onclick="set_y()">DM</a>
+                                                    <a class="dropdown-item" id="flux" onclick="set_y()">Flux Density</a>
+                                                    <a class="dropdown-item" id="width" onclick="set_y()">Burst Width</a>
+                                                    <a class="dropdown-item" id="fluence" onclick="set_y()">Fluence</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -247,18 +243,23 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <script>
-var imageList = Array();
-for (var i = 1; i <= 7; i++) {
-    imageList[i] = new Image(70, 70);
-    imageList[i].src = "abc" + i + ".jpg";
-}
-
-function switchImage() {
-    var selectedImage = document.myForm.switch.options[document.myForm.switch.selectedIndex].value;
-    document.myImage.src = imageList[selectedImage].src;
-}
+    <script type="text/javascript">
+        var selected_x == 'none';
+        var selected_y == 'none';
+        function set_x(selected_x)
+        {
+            //alert(selected_x);
+        }
+        function set_y(selected_y)
+        {
+            //alert(selected_y);
+        }
+        /*if (typeof selected_x !== 'undefined' && typeof selected_y !== 'undefined') {
+            /
+        }*/
+        document.myImage.src = selected_y+'_'+selected_x+'.svg';
     </script>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
