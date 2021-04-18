@@ -208,9 +208,9 @@
                                 <div class="card-body">
                                     <center><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="figs/none_none.svg" name="fig"></center>
 <i class="fas fa-code fa-sm" aria-hidden="true" style="font-size: 110%; color:#4e73df; margin-left:12px;"></i> 
-<a target="_blank" href="https://github.com/HeRTA/FRBSTATS/blob/main/figs/flux_width.py" style="font-size: 110%">View Source</a>
-<a style="margin-right: 6px; margin-left:6px; font-size: 100%; float:right" href="figs/flux_width.svg" download="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50" aria-hidden="true"></i> Save as <b>SVG</b></a>
-<a style="font-size: 100%; float:right" href="figs/flux_width.png" download="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-file-image fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PNG</b></a></div>
+<a name="sourceCode" target="_blank" href="https://github.com/HeRTA/FRBSTATS/blob/main/figs" style="font-size: 110%">View Source</a>
+<a name="saveSvg" style="margin-right: 6px; margin-left:6px; font-size: 100%; float:right" href="figs/none_none.svg" download="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50" aria-hidden="true"></i> Save as <b>SVG</b></a>
+<a name="savePng" style="font-size: 100%; float:right" href="figs/none_none.png" download="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-file-image fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PNG</b></a></div>
                             </div>
 
                 </div>
@@ -262,8 +262,11 @@
         }*/
         function updateFig()
         {
-            document.getElementById('results').style.visibility = 'visible';
+            document.sourceCode.href = 'https://github.com/HeRTA/FRBSTATS/blob/main/figs/'+y_axis+'_'+x_axis+'.py';
+            document.saveSvg.href = 'figs/'+y_axis+'_'+x_axis+'.svg';
+            document.savePng.href = 'figs/'+y_axis+'_'+x_axis+'.png';
             document.fig.src = 'figs/'+y_axis+'_'+x_axis+'.svg';
+            document.getElementById('results').style.visibility = 'visible';
         }
     </script>
 
