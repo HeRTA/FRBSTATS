@@ -201,7 +201,7 @@
 
 <br>
 
-<div class="card shadow mb-4">
+<div class="card shadow mb-4" id="results" style="visibility:hidden">
                                 <div class="card-header py-3">
                                     <h6 style="font-size:19px" class="font-weight-bold text-primary">Results</h6>
                                 </div>
@@ -265,6 +265,7 @@
         }*/
         function updateFig()
         {
+            document.getElementById('results').style.visibility = 'visible';
             document.fig.src = 'figs/'+y_axis+'_'+x_axis+'.svg';
         }
     </script>
