@@ -114,4 +114,5 @@ plt.tight_layout()
 
 # Save data to a scalable format
 plt.savefig('width_fluence.svg', format='svg')
+plt.savefig('width_fluence.pdf')
 plt.savefig('width_fluence.png')
