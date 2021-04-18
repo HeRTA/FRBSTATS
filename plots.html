@@ -202,8 +202,8 @@
                             <i class="far fa-chart-line fa-lg text-white-50" aria-hidden="true"></i> Plot Parameters</a>
                     </center>
 
-                    <center id="errorMsg" style="margin-top: 1%; font-size: 130%; color: orangered; visibility: visible;">
-                        <a>Please ensure the parameters you have selected for the <b>X</b> and the <b>Y-axis</b> differ.</a>
+                    <center id="errorWrapper" style="margin-top: 1%; font-size: 130%; color: orangered; visibility: visible;">
+                        <a id="errorMsg"></a>
                     </center>
 
 <div class="card shadow mb-4" id="results" style="visibility: hidden">
@@ -269,36 +269,36 @@
             if (x_axis == "none" && y_axis != "none")
             {
                 document.getElementById("results").style.visibility = "hidden";
-                document.getElementById("errorMsg").style.visibility = "visible";
+                document.getElementById("errorWrapper").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>X-axis</b>.";
             }
             else if (x_axis != "none" && y_axis == "none")
             {
                 document.getElementById("results").style.visibility = "hidden";
-                document.getElementById("errorMsg").style.visibility = "visible";
+                document.getElementById("errorWrapper").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>Y-axis</b>.";
             }
             else if (x_axis == "none" && y_axis == "none")
             {
                 document.getElementById("results").style.visibility = "hidden";
-                document.getElementById("errorMsg").style.visibility = "visible";
+                document.getElementById("errorWrapper").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please select a parameter for both the <b>X</b> and the <b>Y-axis</b>.";
             }
             else if (x_axis == y_axis)
             {
                 document.getElementById("results").style.visibility = "hidden";
-                document.getElementById("errorMsg").style.visibility = "visible";
+                document.getElementById("errorWrapper").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please ensure the parameters you have selected for the <b>X</b> and the <b>Y-axis</b> differ.";
             }
             else if (x_axis == y_axis)
             {
                 document.getElementById("results").style.visibility = "hidden";
-                document.getElementById("errorMsg").style.visibility = "visible";
+                document.getElementById("errorWrapper").style.visibility = "visible";
                 document.getElementById("errorMsg").innerHTML = "Please ensure the parameters you have selected for the <b>X</b> and the <b>Y-axis</b> differ.";
             }
             else
             {
-                document.getElementById("errorMsg").style.visibility = "hidden";
+                document.getElementById("errorWrapper").style.visibility = "hidden";
                 document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/"+y_axis+"_"+x_axis+".py";
                 document.getElementById("saveSvg").href = "figs/"+y_axis+"_"+x_axis+".svg";
                 document.getElementById("savePng").href = "figs/"+y_axis+"_"+x_axis+".png";
