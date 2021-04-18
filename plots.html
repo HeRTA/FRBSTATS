@@ -200,8 +200,9 @@
                     </div><br><center><a style="margin-top: -1%; width: 100%" class="d-none d-sm-inline-block btn btn-lg btn-primary shadow-sm" onclick="updateFig()"><i class="far fa-chart-line fa-lg text-white-50" aria-hidden="true"></i> Plot Parameters</a></center>
 
 <br>
+                    <center><a id="errorMsg" style="color: orangered; visibility: hidden"></a></center>
 
-<div class="card shadow mb-4" id="results" style="visibility:hidden">
+<div class="card shadow mb-4" id="results" style="visibility: hidden">
                                 <div class="card-header py-3">
                                     <h6 style="font-size:19px" class="font-weight-bold text-primary">Results</h6>
                                 </div>
@@ -263,11 +264,34 @@
         }*/
         function updateFig()
         {
-            document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/"+y_axis+"_"+x_axis+".py";
-            document.getElementById("saveSvg").href = "figs/"+y_axis+"_"+x_axis+".svg";
-            document.getElementById("savePng").href = "figs/"+y_axis+"_"+x_axis+".png";
-            document.fig.src = "figs/"+y_axis+"_"+x_axis+".svg";
-            document.getElementById("results").style.visibility = "visible";
+            if (x_axis == "none" && y_axis != "none")
+            {
+                document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>X</b>-axis.";
+            }
+            else if (x_axis != "none" && y_axis == "none")
+            {
+                document.getElementById("errorMsg").innerHTML = "Please select a parameter for the <b>Y</b>-axis.";
+            }
+            else if (x_axis == "none" && y_axis == "none")
+            {
+                document.getElementById("errorMsg").innerHTML = "Please select a parameter for both the <b>X</b> and the <b>Y-axis</b>.";
+            }
+            else if (x_axis == y_axis)
+            {
+                document.getElementById("errorMsg").innerHTML = "Please ensure the parameters you have selected for the <b>X</b> and the <b>Y-axis</b> differ.";
+            }
+            else if (x_axis == y_axis)
+            {
+                document.getElementById("errorMsg").innerHTML = "Please ensure the parameters you have selected for the <b>X</b> and the <b>Y-axis</b> differ.";
+            }
+            else
+            {
+                document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/"+y_axis+"_"+x_axis+".py";
+                document.getElementById("saveSvg").href = "figs/"+y_axis+"_"+x_axis+".svg";
+                document.getElementById("savePng").href = "figs/"+y_axis+"_"+x_axis+".png";
+                document.fig.src = "figs/"+y_axis+"_"+x_axis+".svg";
+                document.getElementById("results").style.visibility = "visible";
+            }
         }
     </script>
 
