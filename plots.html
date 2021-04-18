@@ -136,7 +136,7 @@
                                         <a class="navbar-brand">Parameter</a>
                                         <ul class="navbar-nav ml-auto">
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a onclick="updatePlaceholder()" class="nav-link dropdown-toggle" name="navbarDropdown_x" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Select
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
@@ -172,7 +172,7 @@
                                         <a class="navbar-brand">Parameter</a>
                                         <ul class="navbar-nav ml-auto">
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a onclick="updatePlaceholder()" class="nav-link dropdown-toggle" name="navbarDropdown_x" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Select
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown"> 
@@ -206,7 +206,7 @@
                                     <h6 style="font-size:19px" class="font-weight-bold text-primary">Results</h6>
                                 </div>
                                 <div class="card-body">
-                                    <center><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="figs/none_none.svg" name="myImage"></center>
+                                    <center><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="figs/none_none.svg" name="fig"></center>
                                     
                                         
                                         
@@ -246,20 +246,29 @@
     <script type="text/javascript">
         var x_axis = 'none';
         var y_axis = 'none';
-        function set_x(selected_x)
+        var shown_x = 'none';
+        var shown_y = 'none';
+        function set_x(selected_x, name_x)
         {
             x_axis = selected_x;
+            shown_x = name_x;
         }
-        function set_y(selected_y)
+        function set_y(selected_y, name_y)
         {
             y_axis = selected_y;
+            shown_y = name_y;
+        }
+        function updatePlaceholder()
+        {
+            document.navbarDropdown_x("content").innerHTML = shown_x;
+            document.navbarDropdown_y("content").innerHTML = shown_y;
         }
         /*if (typeof selected_x !== 'undefined' && typeof selected_y !== 'undefined') {
             //
         }*/
         function updateFig()
         {
-            document.myImage.src = 'figs/'+y_axis+'_'+x_axis+'.svg';
+            document.fig.src = 'figs/'+y_axis+'_'+x_axis+'.svg';
         }
     </script>
 
