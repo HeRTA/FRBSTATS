@@ -18,10 +18,10 @@ $regexPattern = "/^.*$pattern.*\$/m";
 // Search and store matching occurence in $match
 if (preg_match_all($regexPattern, $content, $match)) {
   $entry = implode('\n', $match[0]);
-  $entry = str_replace(PHP_EOL, '', $entry);
 
   // Delete trailing comma
   $entry = substr($entry, 0, -1);
+  $entry = str_replace(PHP_EOL, '', $entry);
   
   // Output search result
   echo $entry;
