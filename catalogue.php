@@ -13,6 +13,7 @@
 
     <!-- Fonts -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <script src="script.js"></script>
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -131,9 +132,9 @@
                               <abbr style="font-size:22px" class="m-0 font-weight-bold text-primary">FRB Catalogue</abbr>
                                 <div class="d-sm-inline-flex align-items-center justify-content-between mb-4">
                                     <a href="catalogue.csv" download class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                        class="fas fa-download fa-sm text-white-50"></i> Export as <b>CSV</b></a>
-                                    <a href="catalogue.json" download class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                        class="fas fa-download fa-sm text-white-50"></i> Export as <b>JSON</b></a>
+                                        class="fas fa-file-csv text-white-50"></i> Export as <b>CSV</b></a>
+                                    <a href="catalogue.json" download class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i
+                                        class="fas fa-download text-white-50"></i> Export as <b>JSON</b></a>
                                     <a target="_blank" href="https://docs.google.com/spreadsheets/d/1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY/edit?usp=sharing" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
                                         class="fas fa-file-excel text-white-50"></i> View <b>Spreadsheet</b></a>
                                 </div>
