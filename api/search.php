@@ -31,7 +31,7 @@ if (preg_match_all($regexPattern, $content, $match)) {
   $entry = substr($entry, 0, -1);
 
   // Append } if trailed
-  if (str_replace(substr($entry, -1)) == '"') {
+  if (substr($entry, -1) == '"') {
     $entry = $entry . "}";
   }
 
