@@ -29,7 +29,12 @@ if (preg_match_all($regexPattern, $content, $match)) {
 
   // Delete trailing comma
   $entry = substr($entry, 0, -1);
-  
+
+  // Append } if trailed
+  if (str_replace(substr($entry, -1)) == '"') {
+    $entry = $entry . "}";
+  }
+
   // Output search result
   echo $entry;
 }
