@@ -4,7 +4,7 @@ $catalogue = '../catalogue.json';
 $searchfor = $_GET['frb'];
 
 // Delete 'FRB' prefix, underscores and spaces
-$searchfor = str_replace(["FRB", " ", "_"], "", $searchfor);
+$searchfor = str_replace(["frb", " ", "_"], "", $searchfor);
 
 // Prevent HTML parsing
 header('Content-Type: text/plain');
