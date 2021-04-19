@@ -1,6 +1,6 @@
 <?php
 
-$file = '../frbstats/catalogue.json';
+$file = '../catalogue.json';
 $searchfor = '20210401A';
 
 // the following line prevents the browser from parsing this as HTML.
