@@ -25,6 +25,7 @@ if (preg_match_all($regexPattern, $content, $match)) {
   // Remove newlines
   $entry = str_replace(["\n","\r"], "", $entry);
   $entry = str_replace(["\\n","\\r"], "", $entry);
+  $entry = str_replace(["[","]"], "", $entry);
 
   // Delete trailing comma
   $entry = substr($entry, 0, -1);
