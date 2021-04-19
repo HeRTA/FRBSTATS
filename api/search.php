@@ -17,7 +17,7 @@ $pattern = "/^.*$pattern.*\$/m";
 
 // search, and store all matching occurences in $matches
 if(preg_match_all($pattern, $contents, $matches)){
-  $myObj = str_replace("\\", "", implode("\n", $matches[0]));
+  $myObj = str_replace("\", "", implode("\n", $matches[0]));
 }
 
 $myJSON = json_encode($myObj);
