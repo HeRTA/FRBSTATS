@@ -1,13 +1,13 @@
 <?php
 
-$file = '../catalogue.json';
+$catalogue = '../catalogue.json';
 $searchfor = $_GET['frb'];
 
 // Prevent HTML parsing
 header('Content-Type: text/plain');
 
 // Grab file conents
-$content = file_get_contents($file);
+$content = file_get_contents($catalogue);
 
 // Escape special chars
 $pattern = preg_quote($searchfor, '/');
@@ -18,6 +18,8 @@ $regexPattern = "/^.*$pattern.*\$/m";
 // Search and store matching occurence in $match
 if (preg_match_all($regexPattern, $content, $match)) {
   $entry = implode('\n', $match[0]);
+  $entry = str_replace("\n", "", $entry);
+  $entry = str_replace("\r", "", $entry);
 
   // Delete trailing comma
   $entry = substr($entry, 0, -1);
