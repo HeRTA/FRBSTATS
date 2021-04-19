@@ -1,7 +1,7 @@
 <?php
 
 $file = '../catalogue.json';
-$searchfor = '20210401A';
+$searchfor = $_GET['frb'];
 
 // Prevent HTML parsing
 header('Content-Type: text/plain');
@@ -27,4 +27,5 @@ if (preg_match_all($regexPattern, $content, $match)) {
 }
 
 //$myJSON = json_encode($myObj);
+
 ?>
