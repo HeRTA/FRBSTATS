@@ -18,6 +18,7 @@ $pattern = "/^.*$pattern.*\$/m";
 // search, and store all matching occurences in $matches
 if (preg_match_all($pattern, $contents, $matches)) {
   $entry = implode('\n', $matches[0]);
+  echo $entry
   $myObj = str_replace('\\', '', $entry);
 }
 
