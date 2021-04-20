@@ -336,12 +336,17 @@
     </a>
 
     <script type="text/javascript">
-        var reader = new FileReader();
-        var textFile = $("catalogue.csv").get(0).files[0];
-        reader.readAsText(textFile);
-        $(reader).on('load', processFile);
-        nbLines = (file.split("\n")).length;
-        document.getElementById("events").innerHTML = lines;
+        fetch("catalogue.csv")
+            .then(response => response.text()) 
+            .then(csvString => {
+            //Split the csv into rows
+            const rows = csvString.split("\n");
+            lines = -1 // Skip CSV catalogue header
+            for (row of rows) {
+                lines = lines + 1
+            }
+            document.getElementById("events").innerHTML = lines;
+        });
     </script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
