@@ -13,7 +13,11 @@
 	<script src="../script.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	<!-- Styles-->
-	<link href="../css/style_overview.min.css" rel="stylesheet"> </head>
+	<link href="../css/style_overview.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
 
 <body id="page-top">
 	<!-- Page Wrapper -->
@@ -79,87 +83,7 @@
 					<p class="mb-4">The FRBSTATS API enables scientists and developers to access FRB parameters in a rapid, lightweight and easy manner. All data available in the <a href="../catalogue">catalogue</a> can be directly obtained with the help of the API documentation listed on this page.</p>
 					<!-- Content Row -->
 					<div class="row">
-						<!-- Grow In -->
-						<div class="col-lg-6">
-							<div class="card position-relative" style="margin-bottom:10px;">
-								<div class="card-header py-3">
-									<h6 class="font-weight-bold text-primary">X-axis</h6> </div>
-								<div class="card-body">
-									<nav class="navbar navbar-expand navbar-light bg-light"> <a class="navbar-brand">Parameter</a>
-										<ul class="navbar-nav ml-auto">
-											<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" id="navbarDropdown_x" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Select
-                                                </a>
-												<div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
-													<button class="dropdown-item" id="ra" onclick="set_x(this.id, 'RA')">RA</button>
-													<button class="dropdown-item" id="dec" onclick="set_x(this.id, 'Dec.')">Dec.</button>
-													<div class="dropdown-divider"></div>
-													<button class="dropdown-item" id="long" onclick="set_x(this.id, 'Gal. Long.')">Gal. Long.</button>
-													<button class="dropdown-item" id="lat" onclick="set_x(this.id, 'Gal. Lat.')">Gal. Lat.</button>
-													<div class="dropdown-divider"></div>
-													<button class="dropdown-item" id="frequency" onclick="set_x(this.id, 'Frequency')">Frequency</button>
-													<button class="dropdown-item" id="dm" onclick="set_x(this.id, 'DM')">DM</button>
-													<button class="dropdown-item" id="flux" onclick="set_x(this.id, 'Flux Density')">Flux Density</button>
-													<button class="dropdown-item" id="width" onclick="set_x(this.id, 'Burst Width')">Burst Width</button>
-													<button class="dropdown-item" id="fluence" onclick="set_x(this.id, 'Fluence')">Fluence</button>
-												</div>
-											</li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-						</div>
-						<!-- Fade In Utility -->
-						<div class="col-lg-6">
-							<div class="card position-relative">
-								<div class="card-header py-3">
-									<h6 class="font-weight-bold text-primary">Y-axis</h6> </div>
-								<div class="card-body">
-									<nav class="navbar navbar-expand navbar-light bg-light"> <a class="navbar-brand">Parameter</a>
-										<ul class="navbar-nav ml-auto">
-											<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" id="navbarDropdown_y" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Select
-                                                </a>
-												<div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
-													<button class="dropdown-item" id="ra" onclick="set_y(this.id, 'RA')">RA</button>
-													<button class="dropdown-item" id="dec" onclick="set_y(this.id, 'Dec.')">Dec.</button>
-													<div class="dropdown-divider"></div>
-													<button class="dropdown-item" id="long" onclick="set_y(this.id, 'Gal. Long.')">Gal. Long.</button>
-													<button class="dropdown-item" id="lat" onclick="set_y(this.id, 'Gal. Lat.')">Gal. Lat.</button>
-													<div class="dropdown-divider"></div>
-													<button class="dropdown-item" id="frequency" onclick="set_y(this.id, 'Frequency')">Frequency</button>
-													<button class="dropdown-item" id="dm" onclick="set_y(this.id, 'DM')">DM</button>
-													<button class="dropdown-item" id="flux" onclick="set_y(this.id, 'Flux Density')">Flux Density</button>
-													<button class="dropdown-item" id="width" onclick="set_y(this.id, 'Burst Width')">Burst Width</button>
-													<button class="dropdown-item" id="fluence" onclick="set_y(this.id, 'Fluence')">Fluence</button>
-												</div>
-											</li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<center>
-						<a style="margin-top: -1%; width: 100%" class="d-none d-sm-inline-block btn btn-lg btn-primary shadow-sm" onclick="updateFig()"> <i class="far fa-chart-line fa-lg text-white-50" aria-hidden="true"></i> Plot Parameters</a>
-					</center>
-					<center id="errorWrapper" style="margin-top: 1%; font-size: 130%; color: orangered; visibility: visible;">
-						<a id="errorMsg"></a>
-					</center>
-					<div class="card shadow mb-4" id="results" style="margin-top: 3%; visibility: hidden">
-						<div class="card-header py-3">
-							<h6 style="font-size:19px" class="font-weight-bold text-primary">Results</h6> </div>
-						<div class="card-body">
-							<center>
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="figs/none_none.svg" name="fig">
-                            </center>
-                            <i class="fas fa-code fa-sm" aria-hidden="true" style="font-size: 110%; color:#4e73df; margin-left:12px;"></i>
-                            <a id="sourceCode" target="_blank" href="https://github.com/HeRTA/FRBSTATS/blob/main/figs" style="font-size: 110%">View Source</a>
-                            <a id="savePdf" style="margin-right: 4px; margin-left: 4px; font-size: 100%; float:right" href="figs/none_none.pdf" download="" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-file-pdf fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PDF</b></a>
-                            <a id="saveSvg" style="margin-left: 4px; font-size: 100%; float:right" href="figs/none_none.svg" download="" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-download fa-sm text-white-50" aria-hidden="true"></i> Save as <b>SVG</b></a>
-                            <a id="savePng" style="font-size: 100%; float:right" href="figs/none_none.png" download="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-file-image fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PNG</b></a>
-                        </div>
+						abc
 					</div>
 				</div>
 				<!-- /.container-fluid -->
