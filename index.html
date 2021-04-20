@@ -336,13 +336,13 @@
     </a>
 
     <script type="text/javascript">
-        function alertCsvCount("catalogue.csv"){
-            $.get(myFile, function(data) {
-                var lineCount = data.split('\n').length;
-                //alert(lineCount);
+        function csvCount(filename){
+            $.get(filename, function(data) {
+                var lines = data.split('\n').length;
+                document.getElementById("events").innerHTML = lines;
             })
         }
-        document.getElementById("events").innerHTML = lineCount;
+        csvCount("catalogue.csv");
     </script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
