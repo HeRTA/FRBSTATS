@@ -336,17 +336,13 @@
     </a>
 
     <script type="text/javascript">
-        const countLines = function("catalogue.csv", callback) {
-            let i;
-            let count = 0;
-            fs.createReadStream(filePath)
-                .on('error', e => callback(e))
-                .on('data', chunk => {
-                for (i=0; i < chunk.length; ++i) if (chunk[i] == 10) count++;
+        function alertCsvCount(myFile){
+            $.get(myFile, function(data) {
+                var lineCount = data.split('\n').length;
+                //alert(lineCount);
             })
-                .on('end', () => callback(null, count));
-        };
-        document.getElementById("events").innerHTML = countLines;
+        }
+        document.getElementById("events").innerHTML = lineCount;
     </script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
