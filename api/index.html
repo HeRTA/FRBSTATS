@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Plots | FRBSTATS</title>
+	<!-- Fonts-->
+	<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<script src="../script.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<!-- Styles-->
+	<link href="../css/style_overview.min.css" rel="stylesheet"> </head>
+
+<body id="page-top">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+			<!-- Sidebar - Brand -->
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href=".">
+				<div class="sidebar-brand-icon rotate-n-0"> <i class="fas fa-database"></i> </div>
+				<div style="font-size: 18px;" class="sidebar-brand-text mx-2">FRBSTATS</div>
+			</a>
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
+			<!-- Nav Item -->
+			<li class="nav-item">
+				<a class="nav-link" href="."> <i style="font-size:15px" class="fas fa-fw fa-info-circle"></i> <span style="font-size:15px">Overview</span></a>
+			</li>
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+			<!-- Nav Item -->
+			<li class="nav-item">
+				<a class="nav-link" href="catalogue"> <i style="font-size:15px" class="fas fa-fw fa-clipboard-list"></i> <span style="font-size:15px">Catalogue</span></a>
+			</li>
+			<!-- Nav Item -->
+			<li class="nav-item">
+				<a class="nav-link" href="repeaters"> <i style="font-size:15px" class="fas fa-fw fa-sync-alt"></i> <span style="font-size:15px">Repeaters</span></a>
+			</li>
+			<!-- Nav Item -->
+			<li class="nav-item active">
+				<a class="nav-link" href="plots"> <i style="font-size:15px" class="fas fa-fw fa-chart-line"></i> <span style="font-size:15px">Plots</span></a>
+			</li>
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
+			<!-- Nav Item -->
+			<li class="nav-item">
+				<a class="nav-link" href="api"><i style="font-size:15px" class="fas fa-fw fa-cog"></i>
+			<span style="font-size:15px">API</span></a>
+			</li>
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+			<!-- Sidebar Toggler (Sidebar) -->
+			<div class="text-center d-none d-md-inline">
+				<button class="rounded-circle border-0" id="sidebarToggle"></button>
+			</div>
+		</ul>
+		<!-- End of Sidebar -->
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Main Content -->
+			<div id="content">
+				<!-- Topbar -->
+				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+					<!-- Sidebar Toggle (Topbar) -->
+					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3"> <i class="fa fa-bars" aria-hidden="true"></i> </button>
+					<!-- Topbar Navbar -->
+					<ul class="navbar-nav"> <a style="font-size:28px;color:#4e73df">FRBSTATS:</a> <a style="font-size:28px;color:#5a5c69;white-space: pre"> Plots</a> </ul>
+				</nav>
+				<!-- End of Topbar -->
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+					<!-- Page Heading -->
+					<h1 class="h3 mb-2 text-gray-800">Parametric Plots</h1>
+					<p class="mb-4">The FRBSTATS platform enables astronomers and researchers to rapidly plot parameter distributions for a variety of visualizations, concerning FRB population studies and more. Select <b>two parameters</b> to map on an interactive scatter plot.</p>
+					<!-- Content Row -->
+					<div class="row">
+						<!-- Grow In -->
+						<div class="col-lg-6">
+							<div class="card position-relative" style="margin-bottom:10px;">
+								<div class="card-header py-3">
+									<h6 class="font-weight-bold text-primary">X-axis</h6> </div>
+								<div class="card-body">
+									<nav class="navbar navbar-expand navbar-light bg-light"> <a class="navbar-brand">Parameter</a>
+										<ul class="navbar-nav ml-auto">
+											<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" id="navbarDropdown_x" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Select
+                                                </a>
+												<div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
+													<button class="dropdown-item" id="ra" onclick="set_x(this.id, 'RA')">RA</button>
+													<button class="dropdown-item" id="dec" onclick="set_x(this.id, 'Dec.')">Dec.</button>
+													<div class="dropdown-divider"></div>
+													<button class="dropdown-item" id="long" onclick="set_x(this.id, 'Gal. Long.')">Gal. Long.</button>
+													<button class="dropdown-item" id="lat" onclick="set_x(this.id, 'Gal. Lat.')">Gal. Lat.</button>
+													<div class="dropdown-divider"></div>
+													<button class="dropdown-item" id="frequency" onclick="set_x(this.id, 'Frequency')">Frequency</button>
+													<button class="dropdown-item" id="dm" onclick="set_x(this.id, 'DM')">DM</button>
+													<button class="dropdown-item" id="flux" onclick="set_x(this.id, 'Flux Density')">Flux Density</button>
+													<button class="dropdown-item" id="width" onclick="set_x(this.id, 'Burst Width')">Burst Width</button>
+													<button class="dropdown-item" id="fluence" onclick="set_x(this.id, 'Fluence')">Fluence</button>
+												</div>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+						<!-- Fade In Utility -->
+						<div class="col-lg-6">
+							<div class="card position-relative">
+								<div class="card-header py-3">
+									<h6 class="font-weight-bold text-primary">Y-axis</h6> </div>
+								<div class="card-body">
+									<nav class="navbar navbar-expand navbar-light bg-light"> <a class="navbar-brand">Parameter</a>
+										<ul class="navbar-nav ml-auto">
+											<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" id="navbarDropdown_y" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Select
+                                                </a>
+												<div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
+													<button class="dropdown-item" id="ra" onclick="set_y(this.id, 'RA')">RA</button>
+													<button class="dropdown-item" id="dec" onclick="set_y(this.id, 'Dec.')">Dec.</button>
+													<div class="dropdown-divider"></div>
+													<button class="dropdown-item" id="long" onclick="set_y(this.id, 'Gal. Long.')">Gal. Long.</button>
+													<button class="dropdown-item" id="lat" onclick="set_y(this.id, 'Gal. Lat.')">Gal. Lat.</button>
+													<div class="dropdown-divider"></div>
+													<button class="dropdown-item" id="frequency" onclick="set_y(this.id, 'Frequency')">Frequency</button>
+													<button class="dropdown-item" id="dm" onclick="set_y(this.id, 'DM')">DM</button>
+													<button class="dropdown-item" id="flux" onclick="set_y(this.id, 'Flux Density')">Flux Density</button>
+													<button class="dropdown-item" id="width" onclick="set_y(this.id, 'Burst Width')">Burst Width</button>
+													<button class="dropdown-item" id="fluence" onclick="set_y(this.id, 'Fluence')">Fluence</button>
+												</div>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<center>
+						<a style="margin-top: -1%; width: 100%" class="d-none d-sm-inline-block btn btn-lg btn-primary shadow-sm" onclick="updateFig()"> <i class="far fa-chart-line fa-lg text-white-50" aria-hidden="true"></i> Plot Parameters</a>
+					</center>
+					<center id="errorWrapper" style="margin-top: 1%; font-size: 130%; color: orangered; visibility: visible;">
+						<a id="errorMsg"></a>
+					</center>
+					<div class="card shadow mb-4" id="results" style="margin-top: 3%; visibility: hidden">
+						<div class="card-header py-3">
+							<h6 style="font-size:19px" class="font-weight-bold text-primary">Results</h6> </div>
+						<div class="card-body">
+							<center>
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="figs/none_none.svg" name="fig">
+                            </center>
+                            <i class="fas fa-code fa-sm" aria-hidden="true" style="font-size: 110%; color:#4e73df; margin-left:12px;"></i>
+                            <a id="sourceCode" target="_blank" href="https://github.com/HeRTA/FRBSTATS/blob/main/figs" style="font-size: 110%">View Source</a>
+                            <a id="savePdf" style="margin-right: 4px; margin-left: 4px; font-size: 100%; float:right" href="figs/none_none.pdf" download="" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-file-pdf fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PDF</b></a>
+                            <a id="saveSvg" style="margin-left: 4px; font-size: 100%; float:right" href="figs/none_none.svg" download="" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-download fa-sm text-white-50" aria-hidden="true"></i> Save as <b>SVG</b></a>
+                            <a id="savePng" style="font-size: 100%; float:right" href="figs/none_none.png" download="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-file-image fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PNG</b></a>
+                        </div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<br>
+			<!-- End of Main Content -->
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto"><span>© Hellenic Radio Transient Array 2021</span></div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+		</div>
+		<!-- End of Content Wrapper -->
+	</div>
+	<!-- End of Page Wrapper -->
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i> </a>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="../js/style.min.js"></script>
+</body>
+
+</html>
