@@ -336,7 +336,7 @@
     </a>
 
     <script type="text/javascript">
-        function alertCsvCount(myFile){
+        function alertCsvCount("catalogue.csv"){
             $.get(myFile, function(data) {
                 var lineCount = data.split('\n').length;
                 //alert(lineCount);
