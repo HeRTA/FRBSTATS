@@ -1,16 +1,17 @@
 <?php
 
 $catalogue = '../catalogue.json';
+
 $searchfor = $_GET['frb'];
 
-// Delete 'FRB' prefix, underscores and spaces
+// Neglect 'FRB' prefix, underscores and spaces
 $searchfor = str_ireplace(["frb", " ", "_"], "", $searchfor);
 
 // Prevent HTML parsing
-header('Content-Type: text/plain');
+header('Content-type: application/json');
 
 // Grab file conents
-$content = file_get_contents($catalogue);
+$content = json_decode(file_get_contents($catalogue), true);
 
 // Escape special chars
 $pattern = preg_quote($searchfor, '/');
@@ -18,31 +19,15 @@ $pattern = preg_quote($searchfor, '/');
 // Finalize refex, matching line
 $regexPattern = "/^.*$pattern.*\$/m";
 
+$return_array = [];
+
 // Search and store matching occurence in $match
-if (preg_match_all($regexPattern, $content, $match)) {
-  $entry = implode('\n', $match[0]);
-
-  // Remove newlines
-  $entry = str_replace(["\n","\r"], "", $entry);
-  $entry = str_replace(["\\n","\\r"], "", $entry);
-  $entry = str_replace(["[","]"], "", $entry);
-
-  // Delete trailing comma
-  $entry = substr($entry, 0, -1);
-
-  // Append } if trailed
-  if (substr($entry, -1) == '"') {
-    $entry = $entry . "}";
+foreach($content as $key){
+  if(str_contains($key['frb'],$pattern)){
+    $return_array[] = $key;
   }
-
-  // Encapsulate in array
-  //$entry = "[" . $entry
-  //$entry = $entry . "]"
-
-  // Output search result
-  echo $entry;
 }
 
-//$myJSON = json_encode($myObj);
+echo json_encode($return_array);
 
 ?>
