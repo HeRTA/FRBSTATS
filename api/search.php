@@ -36,8 +36,8 @@ if (preg_match_all($regexPattern, $content, $match)) {
   }
 
   // Encapsulate in array
-  $entry = "[" . $entry
-  $entry = $entry . "]"
+  //$entry = "[" . $entry
+  //$entry = $entry . "]"
 
   // Output search result
   echo $entry;
