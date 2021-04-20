@@ -17,6 +17,96 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/atom-one-dark.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
+	<style>
+		#wrapper{
+  margin: 20px auto;
+}
+#codes{
+  border-bottom: 1px solid #5F5F5F;
+  background-color: #34312c;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+#codes>li {
+  padding: 8px 0px 8px 8px;
+}
+#codes>li>a {
+  position: relative;
+  display: block;
+  padding: 3px 15px;
+  border-radius: 4px;
+  color: #fefdf9;
+  cursor: pointer !important;
+}
+#codes>li>a:active,
+#codes>li>a:focus,
+#codes>li>a:hover,
+#codes>li.active>a,
+#codes>li.active>a:focus,
+#codes>li.active>a:hover{
+  position: relative;
+  display: block;
+  padding: 3px 15px;
+  border-radius: 4px;
+  color: #fdb839;
+  cursor: default;
+  background-color: #655F56;
+  border: 1px solid #3e3a33;
+  border-bottom-color: transparent;
+}
+/*Override prettify design*/
+pre, code{
+  white-space: pre;
+  border: 0 !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+/* UXCam scheme for google prettify*/
+pre.prettyprint { display: block; background-color: #3e3a33;}
+pre .nocode { background-color: none; color: #000; }
+pre .str { color: #fdb839; } /* string */
+pre .kwd { color: #fdb839; }
+pre .com { color: #B3B3B3; } /* commen */
+pre .typ { color: #fdb839; } /* type */
+pre .lit { color: #cd5c5c; } /* literal */
+pre .pun { color: #fff; }    /* punctuation */
+pre .pln { color: #fdb839; }    /* plaintext */
+pre .tag { color: #fdb839; } /* html/xml tag */
+pre .atn { color: #bdb76b; } /* attribute name */
+pre .atv { color: #fdb839; } /* attribute value */
+pre .dec { color: #fdb839; } /* decimal */
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { 
+  margin-top: 0; 
+  margin-bottom: 0; 
+  color: #AEAEAE; 
+} 
+/* IE indents via margin-left */
+li.L0,li.L1,li.L2,li.L3,li.L4,li.L5,li.L6,li.L7,li.L8 { 
+  list-style-type: decimal !important; 
+}
+/* Alternate shading for lines */
+li.L1,li.L3,li.L5,li.L7,li.L9 { 
+  background-color: transparent !important;
+}
+.linenums li{
+  border-left: 1px solid #656565;
+}
+
+@media print {
+  pre .str, code .str { color: #060; }
+  pre .kwd, code .kwd { color: #006; }
+  pre .com, code .com { color: #600; }
+  pre .typ, code .typ { color: #404; }
+  pre .lit, code .lit { color: #044; }
+  pre .pun, code .pun { color: #440; }
+  pre .pln, code .pln { color: #000; }
+  pre .tag, code .tag { color: #006; }
+  pre .atn, code .atn { color: #404; }
+  pre .atv, code .atv { color: #060; }
+}
+	</style>
 </head>
 
 <body id="page-top">
