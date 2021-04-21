@@ -85,16 +85,13 @@
 					<div class="row">
 						<!-- Grow In -->
 						<div class="col-lg-6">
-					def
-					  <pre><code class="python">def fib(n):
-    a, b = 0, 1
-    while a < n:
-        print(a, end=' ')
-        a, b = b, a+b
-        print()
-fib(1000)</code></pre>
+					  <pre><code class="python">import requests
+
+frb = "FRB20180515"
+
+response = requests.get("https://www.herta-experiment.org/frbstats/api/search?frb=" + frb)
+</code></pre>
 </div>
-efg
 						</div>hij
 				</div>
 				<!-- /.container-fluid -->
