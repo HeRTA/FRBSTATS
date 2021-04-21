@@ -23,7 +23,7 @@ $return_array = [];
 
 // Search and store matching occurence in $match
 foreach($content as $key){
-  if(str_contains($key['frb'],$pattern)){
+  if (strpos($key['frb'],$pattern) !== false) {
     $return_array[] = $key;
   }
 }
