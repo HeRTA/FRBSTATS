@@ -16,7 +16,7 @@
 	<link href="../css/style_overview.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/atom-one-dark.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+	<script>hljs.highlightAll();</script>
 </head>
 
 <body id="page-top">
@@ -81,7 +81,9 @@
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">API Documentation</h1>
 					<p class="mb-4">The FRBSTATS API enables scientists and developers to access FRB parameters in a rapid, lightweight and easy manner. All data available in the <a href="../catalogue">catalogue</a> can be directly obtained with the help of the API documentation listed on this page.</p>
-					<p>The endpoint URL to search for a fast radio burst is <code>https://www.herta-experiment.org/frbstats/api/search</code>, and the HTTP request method is <b><code>GET</code></b>. The parameter that is currently provided for quering the FRBSTATS database for event details is <code>frb</code>, which shall be set to the FRB of interest.</p>
+					<hr>
+					<h1 class="h4 mb-2 text-gray-800">Endpoint, Method &amp; Parameter</h1>
+					<p>The endpoint URL to search for a fast radio burst is <code>https://www.herta-experiment.org/frbstats/api/search</code>, and the HTTP request method is <b><code>GET</code></b>. The parameter that is currently provided for quering the FRBSTATS database for event details is <code>frb</code>, which shall be set to the FRB name of interest.</p>
 					
 					Finally, the response format is <b>JSON</b>-parsed, consisting of the following reported FRB parameters:
 
@@ -102,11 +104,12 @@
 						<li>S:N</li>
 						<li>Reference</li>
 					</ul>
-					The following code snippet demonstrates an example search query to the FRBSTATS database in Python:
+					<hr>
+					<h1 class="h4 mb-2 text-gray-800">Example</h1>
+					The following code snippet demonstrates an example search query to the FRBSTATS database in <i class="fab fa-python"></i> <bPython</b>:
 					<div class="row">
-						<!-- Grow In -->
-						<div style="padding-left:2%">
-					  <pre><code class="python" style="border-radius: 6px">import requests
+						<div style="padding-left: 2%; padding-top: 1%">
+					  <pre><code class="python" style="padding-left: 10px; padding-right: 10px padding-top: 10px; padding-bottom: 10px; border-radius: 10px">import requests
 
 frb = "FRB20180515"
 
