@@ -70,21 +70,22 @@ for idx in range(len(l)):
 survey = np.loadtxt('map.txt')
 
 # Flip array to match RA and Dec axes
-survey_corrected = np.flip(survey, 1)
+#survey_corrected = survey
+survey_corrected = np.flip(survey, 0)
 
 # Plot map
-plt.imshow(survey_corrected, extent=[24,0,-90,90], aspect=0.07, interpolation='gaussian')
+plt.imshow(survey_corrected.T, extent=[-90,90,24,0], aspect=4, interpolation='gaussian')
 
 # Plot properties
-plt.title(r'$\mathrm{FRB \ } \alpha \mathrm{-} \delta \mathrm{ \ Distribution}$', fontsize=70, y=1.01)
-plt.xticks(np.arange(0, 24.01, 2))
-plt.xlabel(r'$\mathrm{Right \ Ascension \ [h]}$', fontsize=50)
-plt.ylabel(r'$\mathrm{Declination \ [deg]}$', fontsize=50)
+plt.title(r'$\mathrm{FRB \ } \delta \mathrm{-} \alpha \mathrm{ \ Distribution}$', fontsize=70, y=1.01)
+plt.xlabel(r'$\mathrm{Declination \ [deg]}$', fontsize=50)
+plt.ylabel(r'$\mathrm{Right \ Ascension \ [h]}$', fontsize=50)
+plt.yticks(np.arange(0, 24.01, 2))
 plt.xticks(fontsize=36)
 plt.yticks(fontsize=36)
 
 # Plot given source position
-plt.scatter(ras, decs, c=dm, s=400, alpha=0.6, edgecolor='white', linewidth=2, cmap='plasma')
+plt.scatter(decs, ras, c=dm, s=400, alpha=0.6, edgecolor='white', linewidth=2, cmap='plasma')
 
 # Set colorbar
 cbar = plt.colorbar(ticks=[300, 600, 900, 1200, 1500, 1800, 2100, 2400], orientation="horizontal", aspect=30, pad=0.08)
@@ -96,9 +97,9 @@ cbar.set_alpha(1)
 cbar.draw_all()
 
 # Add survey citation
-plt.text(6.605, 92.4, r'$\mathrm{LAB \ HI \ Survey \ (Kalberla \ et \ al., \ 2005)}$', fontsize=34, bbox={'facecolor': 'white', 'pad': 5})
+plt.text(40.5, -0.31, r'$\mathrm{LAB \ HI \ Survey \ (Kalberla \ et \ al., \ 2005)}$', fontsize=34, bbox={'facecolor': 'white', 'pad': 5})
 
 # Save plot to file
-plt.savefig('ra_dec.svg', bbox_inches='tight')
-plt.savefig('ra_dec.pdf', bbox_inches='tight')
-plt.savefig('ra_dec.png', bbox_inches='tight')
+plt.savefig('dec_ra.svg', bbox_inches='tight')
+plt.savefig('dec_ra.pdf', bbox_inches='tight')
+plt.savefig('dec_ra.png', bbox_inches='tight')
