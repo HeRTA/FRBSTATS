@@ -85,7 +85,7 @@
 					<h1 class="h4 mb-2 text-gray-800">Endpoint, Method &amp; Parameter</h1>
 					<p>The endpoint URL to search for a fast radio burst is <code>https://www.herta-experiment.org/frbstats/api/search</code>, and the HTTP request method is <b><code>GET</code></b>. The parameter that is currently provided for quering the FRBSTATS database for event details is <code>frb</code>, which shall be set to the FRB name of interest.</p>
 					
-					Finally, the response format is <b>JSON</b>-parsed, consisting of the following reported FRB parameters:
+					Finally, the response format is <b>JSON</b>, consisting of the following reported FRB parameters:
 
 					<ul>
 						<li>FRB</li>
@@ -106,18 +106,27 @@
 					</ul>
 					<hr>
 					<h1 class="h4 mb-2 text-gray-800">Example</h1>
-					The following code snippet demonstrates an example search query to the FRBSTATS database in <i class="fab fa-python"></i> <b>Python</b>:
+					The following code snippet demonstrates an example search query to the FRBSTATS database in <i class="fab fa-python fa-lg" style="color: #4B8BBE"></i> <b>Python</b>:
 					<div class="row">
 						<div style="padding-left: 2%; padding-top: 1%">
 					  <pre><code class="python" style="padding-left: 10px; padding-right: 10px padding-top: 10px; padding-bottom: 10px; border-radius: 10px">import requests
 
+# Set FRB name
 frb = "FRB20180515"
 
+# Make GET request to FRBSTATS
 response = requests.get('https://www.herta-experiment.org/frbstats/api/search?frb=' + frb)
 
+# Check status code and print JSON-parsed response
 if response.status_code == 200:
     print(response.json())
 </code></pre>
+</div>
+					<h1 class="h4 mb-2 text-gray-800">Response</h1>
+					Running the above code results in the submission of a search query to the FRBSTATS server for <b>FRB 20180515</b>. The server's response is <b>200</b> (<code>OK</code>) and the results are JSON-parsed (header: <code>Content-type: application/json</code>):
+					<div class="row">
+						<div style="padding-left: 2%; padding-top: 1%">
+					  <pre><code class="json" style="padding-left: 10px; padding-right: 10px padding-top: 10px; padding-bottom: 10px; border-radius: 10px">[{'frb': 'FRB 20180515A', 'fluence': '46', 'ra': '23:13:12', 'snr': '12.1', 'dec': '-42:14:46', 'mjd': '58253.91488', 'dm': '355.2', 'b': '-64.93', 'utc': '2018-05-15 21:57:26', 'frequency': '1320', 'flux': '24.2', 'telescope': 'ASKAP', 'l': '349.49', 'ref': 'https://www.wis-tns.org/object/20180515a', 'width': '1.9'}]</code></pre>
 </div>
 						</div>hij
 				</div>
