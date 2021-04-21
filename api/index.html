@@ -81,14 +81,26 @@
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">API Documentation</h1>
 					<p class="mb-4">The FRBSTATS API enables scientists and developers to access FRB parameters in a rapid, lightweight and easy manner. All data available in the <a href="../catalogue">catalogue</a> can be directly obtained with the help of the API documentation listed on this page.</p>
-					The endpoint URL to search for a fast radio burst is <code>https://www.herta-experiment.org/frbstats/api/search</code>, and the HTTP request method is <b><code>GET</code></b>. The parameter that is currently provided for quering the FRBSTATS database for event details is <code>frb</code>, which shall be set to the FRB of interest.
-
-					Finally, the response format is <b>JSON</b>-parsed, consisting of the following reported parameters:
+					<p>The endpoint URL to search for a fast radio burst is <code>https://www.herta-experiment.org/frbstats/api/search</code>, and the HTTP request method is <b><code>GET</code></b>. The parameter that is currently provided for quering the FRBSTATS database for event details is <code>frb</code>, which shall be set to the FRB of interest.</p>
+					
+					Finally, the response format is <b>JSON</b>-parsed, consisting of the following reported FRB parameters:
 
 					<ul>
-					  <li>Abc</li>
-					  <li>Def</li>
-					  <li>Ghi</li>
+						<li>FRB</li>
+						<li>UTC</li>
+						<li>MJD</li>
+						<li>Telescope</li>
+						<li>RA</li>
+						<li>Dec.</li>
+						<li>Gal. Long.</li>
+						<li>Gal. Lat.</li>
+						<li>Center Frequency</li>
+						<li>DM</li>
+						<li>Peak Flux Density</li>
+						<li>Burst Width (FWHM)</li>
+						<li>Fluence</li>
+						<li>S:N</li>
+						<li>Reference</li>
 					</ul>
 					The following code snippet demonstrates an example search query to the FRBSTATS database in Python:
 					<div class="row">
