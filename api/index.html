@@ -106,7 +106,7 @@
 					</ul>
 					<hr>
 					<h1 class="h4 mb-2 text-gray-800">Example</h1>
-					The following code snippet demonstrates an example search query to the FRBSTATS database in <i class="fab fa-python fa-lg" style="color: #4B8BBE"></i> <b>Python</b>:
+					The following code snippet demonstrates an example search query to the FRBSTATS database using <i class="fab fa-python fa-lg" style="color: #4B8BBE"></i> <b>Python</b>:
 					<div class="row" style="padding-bottom: 0.5%">
 						<div style="padding-left: 2%; padding-top: 1%">
 					  <pre><code class="python" style="padding-left: 15px; padding-right: 15px; padding-top: 15px; padding-bottom: 15px; border-radius: 10px">import requests
@@ -124,10 +124,11 @@ if response.status_code == 200:
 </div>
 					</div>
 					<h1 class="h4 mb-2 text-gray-800">Response</h1>
-					Running the above code results in the submission of a search query to the FRBSTATS server for <b>FRB 20180515</b>. The server's response is <b>200</b> (<code>OK</code>) and the results are JSON-parsed (header: <code>Content-type: application/json</code>):
+					<p>Running the above code results in the submission of a search query to the FRBSTATS server for <b>FRB 20180515</b>.</p>
+					<p>The server's response is <b>200</b> (<code>OK</code>) and the results are JSON-parsed (header: <code>Content-type: application/json</code>):</p>
 					<div class="row">
 						<div style="padding-left: 2%; padding-top: 1%">
-					  <pre><code class="json" style="padding-left: 15px; padding-right: 15px; padding-top: 15px; padding-bottom: 15px; border-radius: 10px">[
+					  <pre><code class="json" style="padding-left: 15px; padding-right: 301px; padding-top: 15px; padding-bottom: 15px; border-radius: 10px">[
    {
       "frb": "FRB 20180515A",
       "fluence": "46",
