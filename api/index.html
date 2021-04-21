@@ -92,15 +92,15 @@
 						<li>UTC</li>
 						<li>MJD</li>
 						<li>Telescope</li>
-						<li>RA [hh:mm:ss]</li>
-						<li>Dec. [dd:mm:ss]</li>
-						<li>Gal. Long. [deg]</li>
-						<li>Gal. Lat. [deg]</li>
-						<li>Center Frequency [MHz]</li>
-						<li>DM [pc cm⁻³]</li>
-						<li>Peak Flux Density [Jy]</li>
-						<li>Burst Width (FWHM) [ms]</li>
-						<li>Fluence [Jy ms]</li>
+						<li>RA <b>[hh:mm:ss]</b></li>
+						<li>Dec. <b>[dd:mm:ss]</b></li>
+						<li>Gal. Long. <b>[deg]</b></li>
+						<li>Gal. Lat. <b>[deg]</b></li>
+						<li>Center Frequency <b>[MHz]</b></li>
+						<li>DM <b>[pc cm⁻³]</b></li>
+						<li>Peak Flux Density <b>[Jy]</b></li>
+						<li>Burst Width (FWHM) <b>[ms]</b></li>
+						<li>Fluence <b>[Jy ms]</b></li>
 						<li>S:N</li>
 						<li>Reference</li>
 					</ul>
@@ -123,7 +123,7 @@ if response.status_code == 200:
 </code></pre>
 </div>
 					</div>
-					For rapid data retrieval, the Unix shell allows you to quickly obtain FRB parameters with the help of <a target="_blank" href="https://curl.se/"><code>cURL</code></a>:
+					For rapid data retrieval, the Unix shell allows you to quickly acquire FRB parameters with the help of <a target="_blank" href="https://curl.se/"><code>cURL</code></a>:
 					<div class="row" style="padding-bottom: 0.5%">
 						<div style="padding-left: 2%; padding-top: 1%">
 					  <pre><code class="bash" style="padding-left: 15px; padding-right: 124px; padding-top: 15px; padding-bottom: 15px; border-radius: 10px">curl -H "Accept: application/json" -H "Content-Type: application/json" \
@@ -133,7 +133,7 @@ if response.status_code == 200:
 					<p style="margin-top: -0.5%"><b><i>Tip:</i></b> <i>The FRBSTATS API server interprets (case-insensitive) FRB name formats</i> <code>FRBYYYYMMDD</code><i>,</i> <code>FRB_YYYYMMDD</code> <i>and</i> <code>YYYYMMDD</code> <i>all as</i> <code>FRB YYYYMMDD</code><i>, so little attention has to be paid to input designations.</i></p>
 					<h1 class="h4 mb-2 text-gray-800">Response</h1>
 					<p style="margin-bottom: 5px">Running the above code results in the submission of a search query to the FRBSTATS server for <b>FRB 20190804</b>.</p>
-					The server's response code is <b>200</b> (<code>OK</code>) and the results are JSON-parsed (<b><i>header:</i></b> <code>Content-type: application/json</code>):
+					The server's response code is <b>200 (<code>OK</code>)</b> and the results are JSON-parsed (<b><i>header:</i></b> <code>Content-type: application/json</code>):
 					<div class="row">
 						<div style="padding-left: 2%; padding-top: 1%">
 					  <pre><code class="json" style="padding-left: 15px; padding-right: 301px; padding-top: 15px; padding-bottom: 15px; border-radius: 10px">[
@@ -157,6 +157,64 @@ if response.status_code == 200:
 ]</code></pre>
 </div>
 						</div>
+				<p style="margin-top: -0.5%">In cases of query requests with no FRB matches, an empty array is returned: <code>[]</code></p>
+				Lastly, the FRBSTATS API can be used to fetch FRBs with specific substring matches. For example, <code>/api/search?frb=FRB202006</code> returns all events detected in June 2020:
+				<div class="row">
+						<div style="padding-left: 2%; padding-top: 1%">
+					  <pre><code class="json" style="padding-left: 15px; padding-right: 301px; padding-top: 15px; padding-bottom: 15px; border-radius: 10px">[
+   {
+      "fluence": "51",
+      "snr": "41",
+      "ra": "13:41:31",
+      "b": "55.54",
+      "frb": "FRB 20200607A",
+      "mjd": "59007.44262",
+      "ref": "https://www.wis-tns.org/object/20200607a",
+      "l": "325.36",
+      "width": "1.3",
+      "dm": "466.9",
+      "frequency": "835",
+      "utc": "2020-06-07 10:37:22",
+      "telescope": "UTMOST",
+      "flux": "-",
+      "dec": "-5:08:24"
+   },
+   {
+      "fluence": "0.76",
+      "snr": "41.04",
+      "ra": "19:42:08",
+      "b": "-3.45",
+      "frb": "FRB 20200616A",
+      "mjd": "59016.27168",
+      "ref": "https://www.wis-tns.org/object/20200616a",
+      "l": "53.12",
+      "width": "3.9",
+      "dm": "976.85",
+      "frequency": "1375",
+      "utc": "2020-06-16 6:31:13",
+      "telescope": "Arecibo",
+      "flux": "0.166",
+      "dec": "+16:12:32.53"
+   },
+   {
+      "fluence": "28",
+      "snr": "11",
+      "ra": "21:47:00",
+      "b": "-50.01",
+      "frb": "FRB 20200627A",
+      "mjd": "59027.80812",
+      "ref": "https://www.wis-tns.org/object/20200627a",
+      "l": "2.87",
+      "width": "-",
+      "dm": "294",
+      "frequency": "920.5",
+      "utc": "2020-06-27 19:23:42",
+      "telescope": "ASKAP",
+      "flux": "-",
+      "dec": "-39:29:00"
+   }
+]</code></pre>
+</div>
 				</div>
 				<!-- /.container-fluid -->
 			</div>
