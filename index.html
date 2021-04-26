@@ -341,7 +341,7 @@
             .then(csvString => {
             //Split the csv into rows
             const rows = csvString.split("\n");
-            lines = -2 // Skip CSV catalogue header
+            lines = -1 // Skip CSV catalogue header
             for (row of rows) {
                 lines = lines + 1
             }
