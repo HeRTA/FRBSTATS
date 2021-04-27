@@ -27,7 +27,7 @@ issues that limit FRB population studies:
 
 3. **Reliability:** There is little to no data traceability that permits the verification of event parameters, and Discovery Reports pages are broken.
 
-4. **Accessibility:** TNS is great for optical transients like supernovae, but navigating through the data of the FRB catalogue is not very convenient, as the user is exposed to columns that are not as relevant to FRBs as they are to optical transients (e.g. `Class`, `Discovery Data Source/s` (identical to `Reporting Group/s`), `Disc. Internal Name` (no clear meaning, possible deprecated designation), `Public` (all events are set to `Y`), `Discovery Filter`, `Sender` (too similar to `Reporting Group/s` to matter to most users)), and not exposed to columns that are more meaningful (e.g. `Width`, `Fluence`, `Center frequency`, `S:N`)
+4. **Accessibility:** TNS is great for optical transients like supernovae, but navigating through the data of the FRB catalogue is not very convenient, as the user is exposed to columns that are not as relevant to FRBs as they are to optical transients (e.g. `Class`, `Discovery Data Source/s` (identical to `Reporting Group/s`), `Disc. Internal Name` (no clear meaning, possible deprecated designation), `Public` (all events are set to `Y`), `Discovery Filter`, `Sender` (too similar to `Reporting Group/s` to matter to most users)), and not exposed to columns that are more meaningful (e.g. `Width`, `Fluence`, `Center frequency`, `S:N`).
 
 5. **Maintenance:** The TNS group has been notified of some of these problems through their [contact page](https://www.wis-tns.org/content/contact-us), but no response has been received. It is therefore inaccessible for one to make corrections of the catalogue.
 
