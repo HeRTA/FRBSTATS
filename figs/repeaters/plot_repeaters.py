@@ -1,3 +1,5 @@
+import sys
+import json
 from csv import reader
 import matplotlib
 matplotlib.use('Agg')
@@ -26,9 +28,24 @@ plt.rcParams['ytick.major.width'] = 2
 plt.rcParams['ytick.minor.size'] = 10
 plt.rcParams['ytick.minor.width'] = 2
 
+repeater = str(sys.argv[1])
+
 ### Load data
 # Initiate empty parameter lists
-frb = ['FRB 20190907A', 'FRB 20190915A', 'FRB 20190925A', 'FRB 20200307A']
+with open('../../repeaters.json') as f:
+    channels = json.loads(f.read())
+
+parents = []
+for parent in range(len(channels[0]['children'])):
+        parents.append(channels[0]['children'][parent]['name'])
+
+frb_index = parents.index(repeater)
+children = []
+for child in range(len(channels[0]['children'][frb_index]['children'])):
+	children.append(channels[0]['children'][frb_index]['children'][child]['name'])
+
+frb = [parents[frb_index]] + children
+
 telescope = []
 snr = []
 mjd = []
@@ -92,11 +109,13 @@ telescope_clr = {
 	'Parkes': 'royalblue',
 	'Pushchino LPA': 'lightcoral',
 	'Stockert': 'brown',
-	'UTMOST': 'chocolate'
+	'UTMOST': 'chocolate',
+        'VLA': 'deeppink',
+        'WSRT/Apertif': 'steelblue'
 }
 
 # Scatter plot
-plt.scatter(mjd, snr, c=[telescope_clr[i] for i in telescope], s=600, linewidth=2, zorder=10)
+plt.scatter(mjd, snr, c=[telescope_clr[i] for i in telescope], s=600, alpha=0.8, linewidth=2, zorder=10)
 plt.plot(mjd, snr, c='black', linestyle='--', linewidth=2, zorder=5)
 
 for tel, clr in telescope_clr.items():
@@ -109,15 +128,7 @@ plt.ylabel(r'$\mathrm{Detection \ S/N}$', fontsize=52, labelpad=12)
 plt.title(r'$\mathrm{'+frb[0].replace(' ', r' \ ')+' \ }-\mathrm{ \ Repeater \ Time \ Series}$', fontsize=72, y=1.03)
 
 # Enable legend
-plt.legend(numpoints=1, fontsize=34)
-
-# Set log-log scaling
-#plt.xscale('log')
-#plt.yscale('log')
-
-# Set axis limits
-#plt.xlim(0,7000)
-#plt.ylim(0,3000)
+plt.legend(bbox_to_anchor=(0.25, 1.0), loc='best', numpoints=1, fontsize=34, framealpha=0.5) #, bbox_to_anchor=(0.215, 1.0, 0., 0.0),
 
 # Set tick size
 plt.xticks(fontsize=42, y=-0.005)
@@ -133,6 +144,6 @@ plt.gca().yaxis.set_tick_params(right='off',which='both')
 plt.tight_layout()
 
 # Save data to a scalable format
-plt.savefig('snr_mjd.svg', format='svg')
-plt.savefig('snr_mjd.pdf')
-plt.savefig('snr_mjd.png')
+plt.savefig(frb[0].lower().replace(' ', '_')+'.svg', format='svg')
+plt.savefig(frb[0].lower().replace(' ', '_')+'.pdf')
+plt.savefig(frb[0].lower().replace(' ', '_')+'.png')
