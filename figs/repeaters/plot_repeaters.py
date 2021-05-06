@@ -115,7 +115,7 @@ telescope_clr = {
 }
 
 # Scatter plot
-plt.scatter(mjd, snr, c=[telescope_clr[i] for i in telescope], s=600, alpha=0.8, linewidth=2, zorder=10)
+plt.scatter(mjd, snr, c=[telescope_clr[i] for i in telescope], s=500, alpha=0.8, linewidth=2, zorder=10)
 plt.plot(mjd, snr, c='black', linestyle='--', linewidth=2, zorder=5)
 
 for tel, clr in telescope_clr.items():
