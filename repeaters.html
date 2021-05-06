@@ -335,8 +335,9 @@ function click(d) {
     <!-- Repeater plots-->
     <script type="text/javascript">
         function updateFig() {
+		frb = "frb_20121102a";
 		document.fig.src = "figs/none_none.svg";
-		document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters" + y_axis + "_" + x_axis + ".py";
+		document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py";
             	document.getElementById("savePng").href = "figs/repeaters/" + frb + ".png";
 		document.getElementById("saveSvg").href = "figs/repeaters/" + frb + ".svg";
             	document.getElementById("savePdf").href = "figs/repeaters/" + frb + ".pdf";
