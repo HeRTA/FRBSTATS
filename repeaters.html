@@ -42,10 +42,6 @@
 	  stroke: #ccc;
 	  stroke-width: 1px;
 	}
-
-	.txt:hover {
-		text-decoration: underline;
-	}
 	
     </style>
 
@@ -218,7 +214,6 @@ function update(source) {
 	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
   nodeEnter.append("text")
-	  .attr("class", "txt")
 	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
 	  .attr("dy", ".35em")
 	  .attr("onclick", "set_frb(this.textContent); updateFig()")
