@@ -216,6 +216,7 @@ function update(source) {
   nodeEnter.append("text")
 	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
 	  .attr("dy", ".35em")
+	  .attr("onclick", "set_frb(this.textContent); updateFig()")
 	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
 	  .text(function(d) { return d.name; })
 	  .style("fill-opacity", 1e-6);
@@ -291,21 +292,24 @@ function click(d) {
 
 </script>
 
-                    </div><br>
-<div class="card shadow mb-4" id="results" style="margin-top: 3%; visibility: hidden">
-						<div class="card-header py-3">
-							<h6 style="font-size:19px" class="font-weight-bold text-primary">Results</h6> </div>
-						<div class="card-body">
-							<center>
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="figs/none_none.svg" name="fig">
-                            </center>
-                            <i class="fas fa-code fa-sm" aria-hidden="true" style="font-size: 110%; color:#4e73df; margin-left:12px;"></i>
-                            <a id="sourceCode" target="_blank" href="https://github.com/HeRTA/FRBSTATS/blob/main/figs" style="font-size: 110%">View Source</a>
-                            <a id="savePdf" style="margin-right: 4px; margin-left: 4px; font-size: 100%; float:right" href="figs/none_none.pdf" download="" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-file-pdf fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PDF</b></a>
-                            <a id="saveSvg" style="margin-left: 4px; font-size: 100%; float:right" href="figs/none_none.svg" download="" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-download fa-sm text-white-50" aria-hidden="true"></i> Save as <b>SVG</b></a>
-                            <a id="savePng" style="font-size: 100%; float:right" href="figs/none_none.png" download="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-file-image fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PNG</b></a>
+                    </div>
+			<br>
+			<hr>
+			<div class="card shadow mb-4" id="results" style="margin-top: 3%; visibility: hidden">
+				<div class="card-header py-3">
+					<h6 style="font-size:19px" class="font-weight-bold text-primary">Results</h6> </div>
+				<div class="card-body">
+					<center>
+						<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="figs/none_none.svg" name="fig">
+					</center>
+					<i class="fas fa-code fa-sm" aria-hidden="true" style="font-size: 110%; color:#4e73df; margin-left:12px;"></i>
+					<a id="sourceCode" target="_blank" href="https://github.com/HeRTA/FRBSTATS/blob/main/figs" style="font-size: 110%">View Source</a>
+					<a id="savePdf" style="margin-right: 4px; margin-left: 4px; font-size: 100%; float:right" href="figs/none_none.pdf" download="" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-file-pdf fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PDF</b></a>
+					<a id="saveSvg" style="margin-left: 4px; font-size: 100%; float:right" href="figs/none_none.svg" download="" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-download fa-sm text-white-50" aria-hidden="true"></i> Save as <b>SVG</b></a>
+					<a id="savePng" style="font-size: 100%; float:right" href="figs/none_none.png" download="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-file-image fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PNG</b></a>
                         </div>
-                </div><br>
+			</div>
+			<br>
                 <!-- /.container-fluid -->
 
             </div>
@@ -334,8 +338,13 @@ function click(d) {
 
     <!-- Repeater plots-->
     <script type="text/javascript">
+	frb = "none";
+	function set_frb(selected_frb) {
+		frb = selected_frb;
+	}
         function updateFig() {
-		frb = "frb_20121102a";
+		// Convert to lowercase and parse space character to underscore
+		frb = frb.toLowerCase().replace(' ', '_');;
 		document.fig.src = "figs/none_none.svg";
 		document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py";
             	document.getElementById("savePng").href = "figs/repeaters/" + frb + ".png";
