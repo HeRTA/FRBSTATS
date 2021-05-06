@@ -43,7 +43,7 @@
 	  stroke-width: 1px;
 	}
 
-	.underline:hover {
+	.txt:hover {
 		text-decoration: underline;
 	}
 	
@@ -218,9 +218,9 @@ function update(source) {
 	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
   nodeEnter.append("text")
+	  .attr("class", "txt")
 	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
 	  .attr("dy", ".35em")
-	  .attr("class", "underline")
 	  .attr("onclick", "set_frb(this.textContent); updateFig()")
 	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
 	  .text(function(d) { return d.name; })
