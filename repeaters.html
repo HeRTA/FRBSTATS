@@ -165,6 +165,8 @@ fetch('repeaters.json')
     treeData = data
   })
 
+treeData = JSON.parse(treeData);
+
 // Generate FRB repeater tree
 var margin = {top: 0, right: 0, bottom: 0, left: 80},
 	width = 600 - margin.right - margin.left,
