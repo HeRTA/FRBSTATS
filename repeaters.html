@@ -293,9 +293,8 @@ function click(d) {
 </script>
 
                     </div>
-			<br>
-			<hr>
 			<div class="card shadow mb-4" id="results" style="margin-top: 3%; visibility: hidden">
+				<hr>
 				<div class="card-header py-3">
 					<h6 style="font-size:19px" class="font-weight-bold text-primary">Results</h6> </div>
 				<div class="card-body">
@@ -343,6 +342,9 @@ function click(d) {
 		frb = selected_frb;
 	}
         function updateFig() {
+		// Scroll to the bottom of the page
+		$('html,body').animate({
+			scrollTop: $(".card").offset().top}, 'slow');
 		// Convert to lowercase and parse space character to underscore
 		frb = frb.toLowerCase().replace(' ', '_');;
 		document.fig.src = "figs/none_none.svg";
