@@ -158,14 +158,8 @@
                     <!-- Content Row -->
                     <div id="tree">
                         <script>
-var treeData;
-fetch('repeaters.json')
-  .then(response => response.text())
-  .then((data) => {
-    treeData = data
-  })
 
-treeData = JSON.stringify(treeData);
+var treeData = [];
 
 // Generate FRB repeater tree
 var margin = {top: 0, right: 0, bottom: 0, left: 80},
