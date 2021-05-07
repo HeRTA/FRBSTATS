@@ -346,11 +346,20 @@ function click(d) {
 		frb = selected_frb;
 	}
         function updateFig() {
+		// Convert to lowercase and parse space character to underscore
+		frb = frb.toLowerCase().replace(' ', '_');
+		// Prevent children plotting
+		try {
+			var http = new XMLHttpRequest();
+			http.open('HEAD', "figs/repeaters/" + frb + ".svg", false);
+			http.send();
+		}
+		catch(e) {
+			return 0;
+		}
 		// Scroll to the bottom of the page
 		$('html,body').animate({
 			scrollTop: $(".card").offset().top}, 'slow');
-		// Convert to lowercase and parse space character to underscore
-		frb = frb.toLowerCase().replace(' ', '_');
 		document.fig.src = "figs/none_none.svg";
 		document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py";
             	document.getElementById("savePng").href = "figs/repeaters/" + frb + ".png";
