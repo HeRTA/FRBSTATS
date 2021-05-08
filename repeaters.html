@@ -296,7 +296,7 @@ function click(d) {
                     </div>
 			<div id="results" style="margin-top: -25%; visibility: hidden">
 				<hr>
-				<div class="card shadow mb-4">
+				<div class="card mb-4">
 					<div class="card-header py-3">
 						<h6 style="font-size:19px" class="font-weight-bold text-primary">Results</h6>
 					</div>
@@ -342,7 +342,6 @@ function click(d) {
     <!-- Repeater plots-->
     <script type="text/javascript">
 	// Get status code
-	response = 0;
 	function status(filename) {
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = function() {
@@ -363,24 +362,26 @@ function click(d) {
 	// Update Figure
         function updateFig() {
 		// Convert to lowercase and parse space character to underscore
-		frb = frb.toLowerCase().replace(' ', '_');
+		frb = frb.toLowerCase().replace(" ", "_");
 
 		// Prevent children plotting
-		if (status("figs/repeaters/" + frb + ".svg") != 200) {
-			return 0;
-		}
-
-		// Scroll to the bottom of the page
-		$('html,body').animate({
-			scrollTop: $(".card").offset().top}, 'slow');
-		document.fig.src = "figs/none_none.svg";
-		document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py";
-            	document.getElementById("savePng").href = "figs/repeaters/" + frb + ".png";
-		document.getElementById("saveSvg").href = "figs/repeaters/" + frb + ".svg";
-            	document.getElementById("savePdf").href = "figs/repeaters/" + frb + ".pdf";
-		document.fig.src = "figs/repeaters/" + frb + ".svg";
-		document.getElementById("results").style.marginTop = "3%";
-		document.getElementById("results").style.visibility = "visible";
+		status("figs/repeaters/" + frb + ".svg");
+		setTimeout(function() {
+			if (response == 200) {
+				document.fig.src = "figs/none_none.svg";
+				document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py";
+            			document.getElementById("savePng").href = "figs/repeaters/" + frb + ".png";
+				document.getElementById("saveSvg").href = "figs/repeaters/" + frb + ".svg";
+            			document.getElementById("savePdf").href = "figs/repeaters/" + frb + ".pdf";
+				document.fig.src = "figs/repeaters/" + frb + ".svg";
+				document.getElementById("results").style.marginTop = "3%";
+				document.getElementById("results").style.visibility = "visible";
+                                // Scroll to the bottom of the page
+                                $('html,body').animate({
+                                        //var scrollBottom = $(window).scrollTop() + $(window).height();
+                                        scrollTop: $(".card").offset().top*0.998}, 'slow');
+			}
+		}, 300); // Await 300 ms
 	}
     </script>
 
