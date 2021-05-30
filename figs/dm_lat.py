@@ -71,7 +71,7 @@ plt.scatter(lat, dm, c='cornflowerblue', s=500, alpha=0.8, edgecolor='royalblue'
 # Set axis labels & figure title
 plt.xlabel(r'$\mathrm{Galactic \ Latitude \ [deg]}$', fontsize=52)
 plt.ylabel(r'$\mathrm{Dispersion \ Measure \ }\Bigg[\mathrm{pc \ cm}^{-3}\Bigg]$', fontsize=52)
-plt.title(r'$\mathrm{FRB \ DM-Gal. Latitude \ Distribution}$', fontsize=72, y=1.01)
+plt.title(r'$\mathrm{FRB \ DM-Gal. \ Latitude \ Distribution}$', fontsize=72, y=1.01)
 
 # Set log-log scaling
 #plt.xscale('log')
