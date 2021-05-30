@@ -219,12 +219,12 @@
 			document.getElementById("results").style.visibility = "hidden";
 			document.getElementById("errorWrapper").style.visibility = "visible";
 			document.getElementById("errorMsg").innerHTML = "Please ensure the parameters you have selected for the <b>X</b> and the <b>Y-axis</b> differ.";
-		} else if((x_axis == "long" && y_axis != "lat") || (x_axis == "lat" && y_axis != "long") || (x_axis != "long" && y_axis == "lat") || (x_axis != "lat" && y_axis == "long")) {
+		}/* else if((x_axis == "long" && y_axis != "lat") || (x_axis == "lat" && y_axis != "long") || (x_axis != "long" && y_axis == "lat") || (x_axis != "lat" && y_axis == "long")) {
 			document.getElementById("results").style.marginTop = "-1%";
 			document.getElementById("results").style.visibility = "hidden";
 			document.getElementById("errorWrapper").style.visibility = "visible";
 			document.getElementById("errorMsg").innerHTML = "Please ensure the parameters you have selected belong in the same category (i.e. <b>Gal. Long. &#8596; Gal. Lat.</b>).";
-		} else if((x_axis == "ra" && y_axis != "dec") || (x_axis == "dec" && y_axis != "ra") || (x_axis != "ra" && y_axis == "dec") || (x_axis != "dec" && y_axis == "ra")) {
+		}*/ else if((x_axis == "ra" && y_axis != "dec") || (x_axis == "dec" && y_axis != "ra") || (x_axis != "ra" && y_axis == "dec") || (x_axis != "dec" && y_axis == "ra")) {
 			document.getElementById("results").style.marginTop = "-1%";
 			document.getElementById("results").style.visibility = "hidden";
 			document.getElementById("errorWrapper").style.visibility = "visible";
