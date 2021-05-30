@@ -71,7 +71,7 @@ plt.scatter(width, lat, c='cornflowerblue', s=500, alpha=0.8, edgecolor='royalbl
 # Set axis labels & figure title
 plt.xlabel(r'$\mathrm{Burst \ Width \ [ms]}$', fontsize=52)
 plt.ylabel(r'$\mathrm{Gal. \ Latitude \ [deg]}$', fontsize=52)
-plt.title(r'$\mathrm{FRB \ Width-Gal. \ Latitude \ Distribution}$', fontsize=72, y=1.01)
+plt.title(r'$\mathrm{FRB \ Gal. \ Latitude-Width \ Distribution}$', fontsize=72, y=1.01)
 
 # Set log-log scaling
 plt.xscale('log')
