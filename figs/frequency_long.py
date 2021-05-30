@@ -71,7 +71,7 @@ plt.scatter(long, frequency, c='cornflowerblue', s=500, alpha=0.8, edgecolor='ro
 # Set axis labels & figure title
 plt.xlabel(r'$\mathrm{Gal. \ Longitude \ [deg]}$', fontsize=52)
 plt.ylabel(r'$\mathrm{Center \ Frequency \ [MHz]}$', fontsize=52)
-plt.title(r'$\mathrm{FRB \ Frequency-Gal. \ Longitude}$', fontsize=72, y=1.01)
+plt.title(r'$\mathrm{FRB \ Frequency-Gal. \ Longitude \ Distribution}$', fontsize=72, y=1.01)
 
 # Set log-log scaling
 #plt.xscale('log')
