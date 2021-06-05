@@ -29,7 +29,7 @@ issues that limit FRB population studies:
 
 4. **Accessibility:** TNS is great for optical transients like supernovae, but navigating through the data of the FRB catalogue is not very convenient, as the user is exposed to columns that are not as relevant to FRBs as they are to optical transients (e.g. `Class`, `Discovery Data Source/s` (identical to `Reporting Group/s`), `Disc. Internal Name` (no clear meaning, possible deprecated designation), `Public` (all events are set to `Y`), `Discovery Filter`, `Sender` (too similar to `Reporting Group/s` to matter to most users)), and not exposed to columns that are more meaningful (e.g. `Width`, `Fluence`, `Center frequency`, `S:N`).
 
-5. **Maintenance:** The TNS group has been notified of some of these problems through their [contact page](https://www.wis-tns.org/content/contact-us), but no response has been received. It is therefore inaccessible for one to make corrections of the catalogue.
+5. **Maintenance:** The TNS group has been notified of some of these problems through their [contact page](https://www.wis-tns.org/content/contact-us), but unfortunately no response has been received. This creates various accessibility issues regarding corrections, modifications and additions to the catalogue by the community (whereas, FRBSTATS enables direct modifications by the community with a simple pull request or issue).
 
 In contrast, FRBSTATS aims to tackle all of these barriers, by researching and manually verifying the parameters of
 (hopefully all) FRB events, and providing a decentralized platform for anyone to access, modify and make corrections
