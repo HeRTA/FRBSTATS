@@ -98,6 +98,7 @@ plt.grid(color='grey', linestyle='-', linewidth=0.25, alpha=1)
 # Define telescope colors
 telescope_clr = {
 	'Arecibo': 'orange',
+	'ATA': 'darkcyan',
 	'ASKAP': 'green',
 	'CHIME': 'red',
 	'DSA-10': 'violet',
