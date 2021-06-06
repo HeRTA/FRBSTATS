@@ -1,3 +1,6 @@
+<head>
+<link rel="shortcut icon" href="../favicon.ico" />
+</head>
 <?php
 
 $catalogue = '../catalogue.json';
