@@ -11,6 +11,8 @@
 
     <title>Catalogue | FRBSTATS</title>
 
+    <link rel="shortcut icon" href="favicon.ico" />
+
     <!-- Fonts -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <script src="script.js"></script>
