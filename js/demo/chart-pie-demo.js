@@ -4,7 +4,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 // Pie Chart Example
 var events_obseved;
-fetch("../../catalogue.csv")
+fetch("catalogue.csv")
   .then(response => response.text()) 
   .then(csvString => {
   // Split the csv into rows
@@ -16,7 +16,7 @@ fetch("../../catalogue.csv")
 });
 var repeater_parents;
 var repeater_children;
-fetch("../../repeaters.json")
+fetch("repeaters.json")
   .then(response => response.text()) 
   .then(jsonString => {
   var temp = jsonString;
