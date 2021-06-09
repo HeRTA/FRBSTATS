@@ -1,3 +1,7 @@
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
+
 // Pie Chart Example
 var events_obseved_pie;
 fetch("catalogue.csv")
@@ -16,8 +20,8 @@ fetch("repeaters.json")
   .then(response_rp_pie => response_rp_pie.text()) 
   .then(jsonString_pie => {
   var temp_pie = jsonString_pie;
-  var repeater_parents_pie = (temp_pie.match(/children/g) || []).length - 1;
-  var repeater_children_pie = (temp_pie.match(/parent":"FRB/g) || []).length;
+  repeater_parents_pie = (temp_pie.match(/children/g) || []).length - 1;
+  repeater_children_pie = (temp_pie.match(/parent":"FRB/g) || []).length;
 });
 //console.log('repeater_parents_pie: ');
 //console.log(repeater_parents_pie);
@@ -31,7 +35,7 @@ var myPieChart = new Chart(ctx, {
   data: {
     labels: ["One-off events", "Repeaters"],
     datasets: [{
-      data: [events_obseved_pie-(repeater_parents_pie+repeater_children_pie+2), repeater_parents_pie],
+      data: [events_obseved_pie-(repeater_parents_pie+repeater_children_pie), repeater_parents_pie],
       backgroundColor: ['#4e73df', '#1cc88a'],
       hoverBackgroundColor: ['#2e59d9', '#17a673'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
