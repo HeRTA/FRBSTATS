@@ -395,7 +395,7 @@ var myLineChart = new Chart(ctx, {
         scaleLabel: {
           fontSize: 18,
           display: true,
-          labelString: 'FRB Count'
+          labelString: 'FRB Detection Count'
         },
         ticks: {
           fontSize: 14,
