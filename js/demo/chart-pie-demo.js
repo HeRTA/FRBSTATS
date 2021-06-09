@@ -3,22 +3,25 @@ Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,Bli
 Chart.defaults.global.defaultFontColor = '#858796';
 
 // Pie Chart Example
+var events_obseved;
 fetch("../../catalogue.csv")
   .then(response => response.text()) 
   .then(csvString => {
   // Split the csv into rows
   const rows = csvString.split("\n");
-  var events_obseved = -1 // Skip CSV catalogue header
+  events_obseved = -1 // Skip CSV catalogue header
   for (row of rows) {
     events_obseved = events_obseved + 1
   }
 });
+var repeater_parents;
+var repeater_children;
 fetch("../../repeaters.json")
   .then(response => response.text()) 
   .then(jsonString => {
   var temp = jsonString;
-  var repeater_parents = (temp.match(/children/g) || []).length - 1;
-  var repeater_children = (temp.match(/parent":"FRB/g) || []).length - 1;
+  repeater_parents = (temp.match(/children/g) || []).length - 1;
+  repeater_children = (temp.match(/parent":"FRB/g) || []).length - 1;
 });
 
 var ctx = document.getElementById("myPieChart");
