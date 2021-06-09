@@ -3,13 +3,31 @@ Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,Bli
 Chart.defaults.global.defaultFontColor = '#858796';
 
 // Pie Chart Example
+fetch("../../catalogue.csv")
+  .then(response => response.text()) 
+  .then(csvString => {
+  // Split the csv into rows
+  const rows = csvString.split("\n");
+  var events_obseved = -1 // Skip CSV catalogue header
+  for (row of rows) {
+    events_obseved = events_obseved + 1
+  }
+});
+fetch("../../repeaters.json")
+  .then(response => response.text()) 
+  .then(jsonString => {
+  var temp = jsonString;
+  var repeater_parents = (temp.match(/children/g) || []).length - 1;
+  var repeater_children = (temp.match(/parent":"FRB/g) || []).length - 1;
+});
+
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
     labels: ["One-off events", "Repeaters"],
     datasets: [{
-      data: [121, 24],
+      data: [events_obseved-(repeater_parents+repeater_children), repeater_parents],
       backgroundColor: ['#4e73df', '#1cc88a'],
       hoverBackgroundColor: ['#2e59d9', '#17a673'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
