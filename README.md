@@ -53,13 +53,9 @@ by the server automatically.
 #### Data contribution guidelines (checklist)
 
 1. Append row with new FRB to the [FRBSTATS spreadsheet](https://docs.google.com/spreadsheets/d/1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY/edit?usp=sharing). Useful time converter for UTC/MJD: https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/xTime/xTime.pl
-3. Export to CSV and submit PR/modify the [`catalogue.csv`](https://github.com/HeRTA/FRBSTATS/blob/main/catalogue.csv) file (ensure there is no newline at the end of file).
-4. Append to [`chart-area-demo.js`](https://github.com/HeRTA/FRBSTATS/blob/main/js/demo/chart-area-demo.js#L50).
-5. If new telescope (its first FRB): Append to dictionary [`plot_repeaters.py`](https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py#L99).
-6. Update FRB repeaters ([`index.html`](https://github.com/HeRTA/FRBSTATS/blob/main/index.html#L164)).
-7. Update event coverage ([`index.html`](https://github.com/HeRTA/FRBSTATS/blob/main/index.html#L203)).
-8. If galactic source: Add +1 to galactic sources ([`index.html`](https://github.com/HeRTA/FRBSTATS/blob/main/index.html#L182)).
-9. If not repeater child: Add +1 to one-off or repeater (i.e. parent): [`index.html`](https://github.com/HeRTA/FRBSTATS/blob/main/index.html#L182).
-10. If repeater child: Add to [`repeaters.json`](https://github.com/HeRTA/FRBSTATS/blob/main/repeaters.json).
-11. Rerun `gitpull.php` with plot batch.
-12. Check changes/basic overall functional test.
+2. Export to CSV and commit/submit PR/modify the [`catalogue.csv`](https://github.com/HeRTA/FRBSTATS/blob/main/catalogue.csv) file **(ensure there is no newline at the end of file)**.
+3. If new telescope (its first FRB): Append to dictionary [`plot_repeaters.py`](https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py#L99).
+4. If galactic source: Add +1 to galactic sources ([`index.html`](https://github.com/HeRTA/FRBSTATS/blob/main/index.html#L182)).
+5. If repeater child: Add to [`repeaters.json`](https://github.com/HeRTA/FRBSTATS/blob/main/repeaters.json).
+6. Rerun `gitpull.php` with plot batch.
+7. Check changes/basic overall functional test.
