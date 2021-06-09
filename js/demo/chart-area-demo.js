@@ -34,7 +34,7 @@ fetch("catalogue.csv")
             time_series = "";
             for (row of rows) { // Skip CSV catalogue header
                 if (index != 0) {
-                    time_series = time_series+"                  { x: "+row.split(",")[2]+", y: "+index+" },\n";
+                    time_series = time_series+"                  { x: "+row.split(",")[2]+", y: "+index+" },";
                 }
                 index += 1;
             }
