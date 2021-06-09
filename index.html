@@ -206,8 +206,8 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 85%" aria-valuenow="85" aria-valuemin="0"
+                                                        <div id="coverage_progressbar" class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 0%" aria-valuenow="0" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
@@ -432,6 +432,7 @@
             var coverage = round(100*(percentage_frb+percentage_utc+percentage_mjd+percentage_telescope+percentage_ra+percentage_dec+percentage_l+percentage_b+percentage_frequency+percentage_dm+percentage_flux+percentage_width+percentage_fluence+percentage_snr+percentage_ref)/(15*100), 1);
 
             document.getElementById("coverage").innerHTML = coverage + "%";
+            $('#coverage_progressbar').attr('aria-valuenow', coverage).css('width', coverage+'%');
         })
     </script>
     <!-- Bootstrap core JavaScript-->
