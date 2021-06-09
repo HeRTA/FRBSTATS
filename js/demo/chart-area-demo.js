@@ -31,13 +31,16 @@ fetch("catalogue.csv")
             .then(csvString => {
             const rows = csvString.split("\n");
             index = 0;
-            time_series = "";
+            time_series = "[";
             for (row of rows) { // Skip CSV catalogue header
                 if (index != 0) {
-                    time_series = time_series+"                  { x: "+row.split(",")[2]+", y: "+index+" },";
+                    time_series = time_series+'{"x":'+row.split(',')[2]+',"y":'+index+'},';
                 }
                 index += 1;
             }
+            time_series = time_series.replace(/,\s*$/, "");
+            time_series = time_series + "]";
+            time_series = JSON.parse(time_series);
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
@@ -59,9 +62,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [
-time_series
-                ],
+      data: time_series,
     }],
   },
   options: {
