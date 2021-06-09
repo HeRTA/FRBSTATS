@@ -202,7 +202,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">85.5%</div>
+                                                    <div id="coverage" class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
@@ -338,10 +338,11 @@
     </a>
 
     <script type="text/javascript">
+        // Events observed
         fetch("catalogue.csv")
             .then(response => response.text()) 
             .then(csvString => {
-            //Split the csv into rows
+            // Split the csv into rows
             const rows = csvString.split("\n");
             lines = -1 // Skip CSV catalogue header
             for (row of rows) {
@@ -349,6 +350,7 @@
             }
             document.getElementById("events").innerHTML = lines;
         });
+        // FRB repeaters
         fetch("repeaters.json")
             .then(response => response.text()) 
             .then(jsonString => {
@@ -356,6 +358,81 @@
             var count = (temp.match(/children/g) || []).length - 1;
             document.getElementById("repeaters").innerHTML = count;
         });
+        // Event coverage
+        fetch("catalogue.json")
+            .then(response => response.text()) 
+            .then(jsonString => {
+            var temp = jsonString;
+
+            function round(value, precision) {
+                var multiplier = Math.pow(10, precision || 0);
+                return Math.round(value * multiplier) / multiplier;
+            }
+
+            var missing_frb = (temp.match(/"frb": "-"/g) || []).length;
+            var total_frb = (temp.match(/"frb":/g) || []).length;
+            var percentage_frb = round(100*(1-(missing_frb/total_frb)),1);
+
+            var missing_utc = (temp.match(/"utc": "-"/g) || []).length;
+            var total_utc = (temp.match(/"utc":/g) || []).length;
+            var percentage_utc = round(100*(1-(missing_utc/total_utc)),1);
+
+            var missing_mjd = (temp.match(/"mjd": "-"/g) || []).length;
+            var total_mjd = (temp.match(/"mjd":/g) || []).length;
+            var percentage_mjd = round(100*(1-(missing_mjd/total_mjd)),1);
+
+            var missing_telescope = (temp.match(/"telescope": "-"/g) || []).length;
+            var total_telescope = (temp.match(/"telescope":/g) || []).length;
+            var percentage_telescope = round(100*(1-(missing_telescope/total_telescope)),1);
+
+            var missing_ra = (temp.match(/"ra": "-"/g) || []).length;
+            var total_ra = (temp.match(/"ra":/g) || []).length;
+            var percentage_ra = round(100*(1-(missing_ra/total_ra)),1);
+
+            var missing_dec = (temp.match(/"dec": "-"/g) || []).length;
+            var total_dec = (temp.match(/"dec":/g) || []).length;
+            var percentage_dec = round(100*(1-(missing_dec/total_dec)),1);
+
+            var missing_l = (temp.match(/"l": "-"/g) || []).length;
+            var total_l = (temp.match(/"l":/g) || []).length;
+            var percentage_l = round(100*(1-(missing_l/total_l)),1);
+
+            var missing_b = (temp.match(/"b": "-"/g) || []).length;
+            var total_b = (temp.match(/"b":/g) || []).length;
+            var percentage_b = round(100*(1-(missing_b/total_b)),1);
+
+            var missing_frequency = (temp.match(/"frequency": "-"/g) || []).length;
+            var total_frequency = (temp.match(/"frequency":/g) || []).length;
+            var percentage_frequency = round(100*(1-(missing_frequency/total_frequency)),1);
+
+            var missing_dm = (temp.match(/"dm": "-"/g) || []).length;
+            var total_dm = (temp.match(/"dm":/g) || []).length;
+            var percentage_dm = round(100*(1-(missing_dm/total_dm)),1);
+
+            var missing_flux = (temp.match(/"flux": "-"/g) || []).length;
+            var total_flux = (temp.match(/"flux":/g) || []).length;
+            var percentage_flux = round(100*(1-(missing_flux/total_flux)),1);
+
+            var missing_width = (temp.match(/"width": "-"/g) || []).length;
+            var total_width = (temp.match(/"width":/g) || []).length;
+            var percentage_width = round(100*(1-(missing_width/total_width)),1);
+
+            var missing_fluence = (temp.match(/"fluence": "-"/g) || []).length;
+            var total_fluence = (temp.match(/"fluence":/g) || []).length;
+            var percentage_fluence = round(100*(1-(missing_fluence/total_fluence)),1);
+
+            var missing_snr = (temp.match(/"snr": "-"/g) || []).length;
+            var total_snr = (temp.match(/"snr":/g) || []).length;
+            var percentage_snr = round(100*(1-(missing_snr/total_snr)),1);
+
+            var missing_ref = (temp.match(/"ref": "-"/g) || []).length;
+            var total_ref = (temp.match(/"ref":/g) || []).length;
+            var percentage_ref = round(100*(1-(missing_ref/total_ref)),1);
+
+            var coverage = round(100*(percentage_frb+percentage_utc+percentage_mjd+percentage_telescope+percentage_ra+percentage_dec+percentage_l+percentage_b+percentage_frequency+percentage_dm+percentage_flux+percentage_width+percentage_fluence+percentage_snr+percentage_ref)/(15*100), 1);
+
+            document.getElementById("coverage").innerHTML = coverage + "%";
+        })
     </script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
