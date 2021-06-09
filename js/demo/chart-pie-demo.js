@@ -13,7 +13,7 @@ fetch("catalogue.csv")
   for (row_pie of rows_pie) {
     events_obseved_pie = events_obseved_pie + 1
   }
-});
+
 var repeater_parents_pie;
 var repeater_children_pie;
 fetch("repeaters.json")
@@ -22,7 +22,7 @@ fetch("repeaters.json")
   var temp_pie = jsonString_pie;
   repeater_parents_pie = (temp_pie.match(/children/g) || []).length - 1;
   repeater_children_pie = (temp_pie.match(/parent":"FRB/g) || []).length;
-});
+
 //console.log('repeater_parents_pie: ');
 //console.log(repeater_parents_pie);
 //console.log('repeater_children_pie: ');
@@ -59,3 +59,7 @@ var myPieChart = new Chart(ctx, {
     cutoutPercentage: 80,
   },
 });
+
+})
+
+})
