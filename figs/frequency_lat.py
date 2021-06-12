@@ -78,8 +78,7 @@ plt.title(r'$\mathrm{FRB \ Frequency-Gal. \ Latitude \ Distribution}$', fontsize
 #plt.yscale('log')
 
 # Set axis limits
-#plt.xlim(0,3000)
-plt.ylim(0,7000)
+plt.gca().set_ylim(bottom=0)
 
 # Set tick size
 plt.xticks(fontsize=42, y=-0.005)
