@@ -78,8 +78,8 @@ plt.title(r'$\mathrm{FRB \ DM-Frequency \ Distribution}$', fontsize=72, y=1.01)
 #plt.yscale('log')
 
 # Set axis limits
-plt.xlim(0,7000)
-plt.ylim(0,3000)
+plt.gca().set_xlim(left=0)
+plt.gca().set_ylim(bottom=0)
 
 # Set tick size
 plt.xticks(fontsize=42, y=-0.005)
