@@ -79,7 +79,7 @@ plt.xscale('log')
 
 # Set axis limits
 #plt.xlim(10**-2,10**3)
-plt.ylim(0,3000)
+plt.gca().set_xlim(left=0)
 
 # Set tick size
 plt.xticks(fontsize=42, y=-0.005)
