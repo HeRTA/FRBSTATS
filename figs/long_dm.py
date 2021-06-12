@@ -78,7 +78,7 @@ plt.title(r'$\mathrm{FRB \ Gal. \ Longitude-DM \ Distribution}$', fontsize=72, y
 #plt.yscale('log')
 
 # Set axis limits
-plt.xlim(0,3000)
+plt.xlim(0,max(dm))
 #plt.ylim(0,7000)
 
 # Set tick size
