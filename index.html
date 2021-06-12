@@ -338,9 +338,20 @@
     </a>
 
     <script type="text/javascript">
+        // Last update
+        fetch("https://api.github.com/repos/HeRTA/FRBSTATS/commits?path=catalogue.csv&page=1&per_page=1")
+            .then(response => response.text())
+            .then(jsonString => {
+            const obj = JSON.parse(jsonString);
+            let arr = obj[0];
+            parsed = JSON.stringify(arr, null, 1);
+            var commit_date = parsed.split("\n");
+            commit_date = commit_date[12].substring(12, 22);
+            //console.log(commit_date);
+        });
         // Events observed
         fetch("catalogue.csv")
-            .then(response => response.text()) 
+            .then(response => response.text())
             .then(csvString => {
             // Split the csv into rows
             const rows = csvString.split("\n");
@@ -352,7 +363,7 @@
         });
         // FRB repeaters
         fetch("repeaters.json")
-            .then(response => response.text()) 
+            .then(response => response.text())
             .then(jsonString => {
             var temp = jsonString;
             var count = (temp.match(/children/g) || []).length - 1;
@@ -360,7 +371,7 @@
         });
         // Event coverage
         fetch("catalogue.json")
-            .then(response => response.text()) 
+            .then(response => response.text())
             .then(jsonString => {
             var temp = jsonString;
 
