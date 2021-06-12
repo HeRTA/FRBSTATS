@@ -78,7 +78,7 @@ plt.title(r'$\mathrm{FRB \ Width-DM \ Distribution}$', fontsize=72, y=1.01)
 plt.yscale('log')
 
 # Set axis limits
-plt.xlim(0,3000)
+plt.xlim(0,max(dm))
 #plt.ylim(10**-2,10**3)
 
 # Set tick size
