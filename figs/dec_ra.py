@@ -87,7 +87,7 @@ plt.yticks(fontsize=36)
 plt.scatter(ras, decs, c=dm, s=400, alpha=0.6, edgecolor='white', linewidth=2, cmap='plasma')
 
 # Set colorbar
-cbar = plt.colorbar(ticks=[300, 600, 900, 1200, 1500, 1800, 2100, 2400], orientation="horizontal", aspect=30, pad=0.08)
+cbar = plt.colorbar(ticks=list(np.arange(0, max(dm), 300)), orientation="horizontal", aspect=30, pad=0.08)
 cbar.set_label(r'$\mathrm{Dispersion \ Measure \ }\Bigg[\mathrm{pc \ cm}^{-3}\Bigg]$', fontsize=52)
 cbar.ax.tick_params(labelsize=42)
 
