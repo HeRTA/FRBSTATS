@@ -86,30 +86,28 @@ for idx in range(len(l)):
 	decs.append(c.dec.deg)
 ras = ras * u.degree
 decs = decs * u.degree
-#print(ras, decs)
 
 plot_instance.scatter(ras, decs, c=dm, s=150, alpha=0.6, edgecolor='white', linewidth=0.85, cmap='plasma')
-#plt.scatter(ras, decs, c=dm, s=150, alpha=0.5, edgecolor='white', linewidth=0.85, cmap='plasma')
 
 # Add colorbar
 img = plt.imshow(np.array([[min(dm), max(dm)]]), cmap='plasma', aspect = 0.5)
 img.set_visible(False)
 
-cbar = plt.colorbar(ticks=[300, 600, 900, 1200, 1500, 1800, 2100, 2400], orientation="horizontal", fraction=0.06, pad=0.08)
+cbar = plt.colorbar(ticks=list(np.arange(0, max(dm), 300)), orientation="horizontal", fraction=0.06, pad=0.08)
 cbar.set_label(r'$\mathrm{Dispersion \ Measure \ }\Bigg[\mathrm{pc \ cm}^{-3}\Bigg]$')#, fontsize=38)
 cbar.ax.tick_params(labelsize=32)
 
 # Save image to file
 #plt.tight_layout()
 
-plot_instance.savefig(file='l_b.svg')
-plot_instance.savefig(file='l_b.pdf')
-plot_instance.savefig(file='l_b.png')
+plot_instance.savefig(file='long_lat.svg')
+plot_instance.savefig(file='long_lat.pdf')
+plot_instance.savefig(file='long_lat.png')
 
 # Clone files for flipped axes
-copyfile('l_b.svg', 'b_l.svg')
-copyfile('l_b.pdf', 'b_l.pdf')
-copyfile('l_b.png', 'b_l.png')
+copyfile('long_lat.svg', 'lat_long.svg')
+copyfile('long_lat.pdf', 'lat_long.pdf')
+copyfile('long_lat.png', 'lat_long.png')
 
 # Show the figure
 #plot_instance.show()
