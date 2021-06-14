@@ -133,7 +133,8 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">About</h1>
                     <p class="mb-4">This catalogue contains Fast Radio Burst (FRB) events published up to date. Event data have been obtained from the <a target="_blank" href="https://www.wis-tns.org">Transient Name Server (TNS)</a>, <a target="_blank"
-                            href="https://www.frbcat.org">FRBCAT</a> (<a target="_blank" href="http://adsabs.harvard.edu/abs/2016PASA...33...45P">Petroff et al., 2016</a>) and the cited publications (see <b>Reference</b> column).</p>
+                            href="https://www.frbcat.org">FRBCAT</a> (<a target="_blank" href="https://ui.adsabs.harvard.edu/abs/2016PASA...33...45P">Petroff et al., 2016</a>), the <a target="_blank"
+                            href="https://www.chime-frb.ca/catalog">CHIME/FRB Catalogue</a> (<a target="_blank" href="https://arxiv.org/abs/2106.04352">CHIME/FRB Collaboration et al., 2021</a>), and the cited publications (see <b><i>Reference</i></b> column).</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
