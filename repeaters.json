@@ -82,6 +82,10 @@
                {
                   "name":"FRB 20170826A",
                   "parent":"FRB 20121102A"
+               },
+               {
+                  "name":"FRB 20181119D",
+                  "parent":"FRB 20121102A"
                }
             ]
          },
@@ -164,16 +168,16 @@
             ]
          },
          {
-            "name":"FRB 20180908A",
+            "name":"FRB 20180908B",
             "parent":"Repeaters",
             "children":[
                {
                   "name":"FRB 20190621A",
-                  "parent":"FRB 20180908A"
+                  "parent":"FRB 20180908B"
                },
                {
                   "name":"FRB 20190702A",
-                  "parent":"FRB 20180908A"
+                  "parent":"FRB 20180908B"
                }
             ]
          },
@@ -221,6 +225,10 @@
                   "name":"FRB 20190518A",
                   "parent":"FRB 20180916B"
                },
+               {
+                  "name":"FRB 20190518E",
+                  "parent":"FRB 20180916B"
+               }
                {
                   "name":"FRB 20190519A",
                   "parent":"FRB 20180916B"
