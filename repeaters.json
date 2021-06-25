@@ -168,16 +168,20 @@
             ]
          },
          {
-            "name":"FRB 20180908B",
+            "name":"FRB 20180908A",
             "parent":"Repeaters",
             "children":[
                {
+                  "name":"FRB 20180908B",
+                  "parent":"FRB 20180908A"
+               },
+               {
                   "name":"FRB 20190621A",
-                  "parent":"FRB 20180908B"
+                  "parent":"FRB 20180908A"
                },
                {
                   "name":"FRB 20190702A",
-                  "parent":"FRB 20180908B"
+                  "parent":"FRB 20180908A"
                }
             ]
          },
@@ -814,9 +818,14 @@
                   "parent":"FRB 20201124A"
                },
                {
+                  "name":"FRB 20210404B",
+                  "parent":"FRB 20201124A"
+               },
+               {
                   "name":"FRB 20210518A",
                   "parent":"FRB 20201124A"
                }
+
             ]
          }
       ]
