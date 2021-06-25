@@ -52,10 +52,13 @@ by the server automatically.
 
 #### Data contribution guidelines (checklist)
 
-1. Append row with new FRB to the [FRBSTATS spreadsheet](https://docs.google.com/spreadsheets/d/1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY/edit?usp=sharing). Useful time converter for UTC/MJD: https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/xTime/xTime.pl
-2. Export to CSV and commit/submit PR/modify the [`catalogue.csv`](https://github.com/HeRTA/FRBSTATS/blob/main/catalogue.csv) file **(ensure there is no newline at the end of file)**.
-3. If new telescope (its first FRB): Append to dictionary [`plot_repeaters.py`](https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py#L99).
-4. If galactic source: Add +1 to galactic sources ([`index.html`](https://github.com/HeRTA/FRBSTATS/blob/main/index.html#L182)).
-5. If repeater child: Add to [`repeaters.json`](https://github.com/HeRTA/FRBSTATS/blob/main/repeaters.json).
-6. Rerun `gitpull.php` with plot batch.
-7. Check changes/basic overall functional test.
+1. Append row with new FRB to the [FRBSTATS spreadsheet](https://docs.google.com/spreadsheets/d/1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY/edit?usp=sharing).
+- Useful conversion tools:
+- - UTC ⇄ MJD: https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/xTime/xTime.pl
+- - RA/Dec. ⇄ l, b: http://www.astrouw.edu.pl/~jskowron/ra-dec/
+3. Export to CSV and commit/submit PR/modify the [`catalogue.csv`](https://github.com/HeRTA/FRBSTATS/blob/main/catalogue.csv) file **(ensure there is no newline at the end of file)**.
+4. If new telescope (its first FRB): Append to dictionary [`plot_repeaters.py`](https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py#L99).
+5. If galactic source: Add +1 to galactic sources ([`index.html`](https://github.com/HeRTA/FRBSTATS/blob/main/index.html#L182)).
+6. If repeater child: Add to [`repeaters.json`](https://github.com/HeRTA/FRBSTATS/blob/main/repeaters.json).
+7. Rerun `gitpull.php` with plot batch.
+8. Check changes/basic overall functional test.
