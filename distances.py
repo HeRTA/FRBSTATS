@@ -56,13 +56,17 @@ for dm_value in dm:
 with open('catalogue.csv', 'r') as read_obj, open('catalogue_out.csv', 'w', newline='') as write_obj:
 	# Create a csv.reader object from the input file object
 	csv_reader = reader(read_obj)
-	# Create a csv.writer object from the output file object
-	csv_writer = writer(write_obj)
-	# Read each row of the input csv file as list
-	idx = 0
-	for row in csv_reader:
-		# Append the default text in the row / list
-		row.append(distances[idx])
-		# Add the updated row / list to the output file
-		csv_writer.writerow(row)
-		idx += 1
+	header = next(csv_reader)
+	# Skip header
+	if header != None:
+		# Create a csv.writer object from the output file object
+		csv_writer = writer(write_obj)
+		# Read each row of the input csv file as list
+		idx = 0
+		for row in csv_reader:
+			print(row, idx)
+			# Append the default text in the row / list
+			row.append(distances[idx])
+			# Add the updated row / list to the output file
+			csv_writer.writerow(row)
+			idx += 1
