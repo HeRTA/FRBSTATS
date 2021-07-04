@@ -1,5 +1,5 @@
 import pygedm
-import csv
+from csv import reader, writer
 
 # Load data
 # Initiate empty parameter lists
