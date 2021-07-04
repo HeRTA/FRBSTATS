@@ -27,4 +27,4 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}";sudo apt-get install f2c;sudo pip3 install astropy;sudo pip3 install numpy;sudo pip3 install scipy;sudo pip3 install pygedm;git clone https://github.com/HeRTA/FRBSTATS.git;cd FRBSTATS;ls;python3 distances.py;ls;echo $(<catalogue.csv)
+      run: echo "Hello ${{ github.event.inputs.name }}";sudo apt-get install f2c;sudo pip3 install astropy;sudo pip3 install numpy;sudo pip3 install scipy;sudo pip3 install pygedm;git clone https://github.com/HeRTA/FRBSTATS.git;cd FRBSTATS;ls;python3 distances.py;ls;echo $(<catalogue_out.csv)
