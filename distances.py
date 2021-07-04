@@ -48,7 +48,7 @@ distances = []
 
 idx = 0
 for dm_value in dm:
-	distance, tau_sc = pygedm.dm_to_dist(l[idx], b[idx], dm_value)
+	distance, tau_sc = pygedm.dm_to_dist(float(l[idx]), float(b[idx]), float(dm_value))
 	distances.append(str(distance))
 	idx += 1
 
