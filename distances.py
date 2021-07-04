@@ -53,7 +53,7 @@ for dm_value in dm:
 	idx += 1
 
 # Open the input_file in read mode and output_file in write mode
-with open('catalogue.csv', 'r') as read_obj, open('catalogue.csv', 'w', newline='') as write_obj:
+with open('catalogue.csv', 'r') as read_obj, open('catalogue_out.csv', 'w', newline='') as write_obj:
 	# Create a csv.reader object from the input file object
 	csv_reader = reader(read_obj)
 	# Create a csv.writer object from the output file object
