@@ -53,6 +53,8 @@ for dm_value in dm:
 	idx += 1
 
 print(l[0], b[0], dm[0], distances[0])
+print(l[1], b[1], dm[1], distances[1])
+print(l[2], b[2], dm[2], distances[2])
 
 # Open the input_file in read mode and output_file in write mode
 with open('catalogue.csv', 'r') as read_obj, open('catalogue_out.csv', 'w', newline='') as write_obj:
