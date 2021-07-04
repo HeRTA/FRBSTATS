@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Derive distances
+name: Manual workflow
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -10,11 +10,11 @@ on:
     inputs:
       name:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Derive distance for every DM'
+        description: 'Person to greet'
         # Default value if no value is explicitly provided
-        default: '0'
+        default: 'World'
         # Input has to be provided for the workflow to run
-        required: false
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -26,6 +26,5 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Derive distance for every DM
-      run: echo sudo apt-get install f2c;sudo pip3 install astropy;sudo pip3 install numpy;sudo pip3 install scipy;sudo pip3 install pygedm
-      
+    - name: Send greeting
+      run: echo "Hello ${{ github.event.inputs.name }}";sudo apt-get install f2c;sudo pip3 install astropy;sudo pip3 install numpy;sudo pip3 install scipy;sudo pip3 install pygedm;pwd;ls
