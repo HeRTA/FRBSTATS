@@ -52,6 +52,8 @@ for dm_value in dm:
 	distances.append(str(distance))
 	idx += 1
 
+print(l[0], b[0], dm[0], distances[0])
+
 # Open the input_file in read mode and output_file in write mode
 with open('catalogue.csv', 'r') as read_obj, open('catalogue_out.csv', 'w', newline='') as write_obj:
 	# Create a csv.reader object from the input file object
