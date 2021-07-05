@@ -57,10 +57,6 @@ for dm_value in dm:
 	redshifts.append(str(redshift))
 	idx += 1
 
-print(l[0], b[0], dm[0], redshifts[0])
-print(l[1], b[1], dm[1], redshifts[1])
-print(l[2], b[2], dm[2], redshifts[2])
-
 # Open the input_file in read mode and output_file in write mode
 with open('catalogue.csv', 'r') as read_obj, open('catalogue_out.csv', 'w', newline='') as write_obj:
 	# Create a csv.reader object from the input file object
@@ -71,9 +67,8 @@ with open('catalogue.csv', 'r') as read_obj, open('catalogue_out.csv', 'w', newl
 		# Create a csv.writer object from the output file object
 		csv_writer = writer(write_obj)
 		# Read each row of the input csv file as list
-		idx = 0
+		idx = 1
 		for row in csv_reader:
-			print(row, idx)
 			# Append the default text in the row / list
 			row.append(redshifts[idx])
 			# Add the updated row / list to the output file
