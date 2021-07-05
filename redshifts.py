@@ -75,11 +75,12 @@ with open('catalogue.csv', 'r') as read_obj, open('catalogue_tmp.csv', 'w', newl
 	# Create a reader object from the input file object
 	csv_reader = reader(read_obj)
 	header = next(csv_reader)
+	header.append("redshifts")
 	print(header,type(header))
 	# Create a writer object from the output file object
 	csv_writer = writer(write_obj)
 	for row in csv_reader:
-		row.append(header+',redshift')
+		row.append(header)
 		csv_writer.writerow(row)
 		break
 	# Skip header
