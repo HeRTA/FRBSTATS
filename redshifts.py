@@ -77,7 +77,8 @@ with open('catalogue.csv', 'r') as read_obj, open('catalogue_tmp.csv', 'w', newl
 	header = next(csv_reader)
 	# Create a writer object from the output file object
 	csv_writer = writer(write_obj)
-	csv_writer.writerow(header.append('redshift'))
+	csv_writer.writerow(header)
+	csv_reader[0].append('redshift')
 	# Skip header
 	if header != None:
 		# Read each row of the input csv file as list
