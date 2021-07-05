@@ -64,12 +64,13 @@ with open('catalogue.csv', 'r') as read_obj, open('catalogue_out.csv', 'w', newl
 	# Create a csv.reader object from the input file object
 	csv_reader = reader(read_obj)
 	header = next(csv_reader)
+	# Create a csv.writer object from the output file object
+	csv_writer = writer(write_obj)
+	csv_writer.writerow(header)
 	# Skip header
 	if header != None:
-		# Create a csv.writer object from the output file object
-		csv_writer = writer(write_obj)
 		# Read each row of the input csv file as list
-		idx = 1
+		idx = 0
 		for row in csv_reader:
 			# Append the default text in the row / list
 			row.append(redshifts[idx])
