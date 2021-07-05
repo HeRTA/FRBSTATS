@@ -54,6 +54,8 @@ for dm_value in dm:
 	frb.calc_dm_galaxy()
 	# Calculate the Redshift of the FRB using the relation from Zhang (2018)
 	redshift = float(frb.calc_redshift(method="Zhang2018", cosmology="Planck18"))
+	# Round to 4 decimal places
+	redshift = round(redshift, 4)
 	redshifts.append(str(redshift))
 	idx += 1
 
