@@ -74,12 +74,14 @@ for dm_value in dm:
 with open('catalogue.csv', 'r') as read_obj, open('catalogue_tmp.csv', 'w', newline='') as write_obj:
 	# Create a reader object from the input file object
 	csv_reader = reader(read_obj)
-	first_line = csv_reader[0]
 	header = next(csv_reader)
 	print(header,type(header))
 	# Create a writer object from the output file object
 	csv_writer = writer(write_obj)
-	csv_writer.writerow(first_line)
+	for row in csv_reader:
+		row.append(header+',redshift')
+		csv_writer.writerow(row)
+		break
 	# Skip header
 	if header != None:
 		# Read each row of the input csv file as list
