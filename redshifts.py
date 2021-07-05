@@ -1,4 +1,4 @@
-import pygedm
+import fruitbat
 from csv import reader, writer
 
 # Load data
@@ -44,17 +44,22 @@ for idx in sorted(idx_mask, reverse=True):
 	del b[idx]
 	del dm[idx]
 
-distances = []
+redshifts = []
 
 idx = 0
 for dm_value in dm:
-	distance, tau_sc = pygedm.dm_to_dist(l[idx], b[idx], dm_value)
-	distances.append(str(distance))
+	# Create a Frb Object with DM and Galactic Coordinates
+	frb = fruitbat.Frb(dm_value, gl=str(l[idx]), gb=str(b[idx]))
+	# Calculate the DM contribution from the Milky Way
+	frb.calc_dm_galaxy()
+	# Calculate the Redshift of the FRB using the relation from Zhang (2018)
+	redshift = float(frb.calc_redshift(method="Zhang2018", cosmology="Planck18"))
+	redshifts.append(str(redshift))
 	idx += 1
 
-print(l[0], b[0], dm[0], distances[0])
-print(l[1], b[1], dm[1], distances[1])
-print(l[2], b[2], dm[2], distances[2])
+print(l[0], b[0], dm[0], redshifts[0])
+print(l[1], b[1], dm[1], redshifts[1])
+print(l[2], b[2], dm[2], redshifts[2])
 
 # Open the input_file in read mode and output_file in write mode
 with open('catalogue.csv', 'r') as read_obj, open('catalogue_out.csv', 'w', newline='') as write_obj:
@@ -70,7 +75,7 @@ with open('catalogue.csv', 'r') as read_obj, open('catalogue_out.csv', 'w', newl
 		for row in csv_reader:
 			print(row, idx)
 			# Append the default text in the row / list
-			row.append(distances[idx])
+			row.append(redshifts[idx])
 			# Add the updated row / list to the output file
 			csv_writer.writerow(row)
 			idx += 1
