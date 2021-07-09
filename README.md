@@ -4,6 +4,13 @@
 
 ## FRBSTATS: A web-based platform for visualization of fast radio burst properties
 
+<p align="center">
+  <a href="https://ascl.net/2106.028"><img src="https://img.shields.io/badge/ascl-2106.028-blue.svg?colorB=262255" alt="ascl:2106.028" /></a>
+  <img src="https://img.shields.io/badge/python-3.x-green"/>
+  <img src="http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat"/>
+  <img src="https://img.shields.io/github/license/HeRTA/FRBSTATS?color=yellow"/>
+</p>
+
 **[FRBSTATS](https://www.herta-experiment.org/frbstats)** is a user-friendly web interface that includes an open-access catalogue of FRBs published up to date, along with a highly accurate statistical overview of the observed events.
 
 The platform supports the retrieval of fundamental FRB data either directly through the [FRBSTATS API](https://www.herta-experiment.org/frbstats/api), or in the form of a CSV/JSON-parsed database, while enabling the plotting of parameter distributions for a variety of visualizations. These features allow researchers to conduct more thorough population studies, while narrowing down the list of astrophysical models describing the origins and emission mechanisms behind these sources ([Platts et al., 2019](https://arxiv.org/abs/1810.05836)).
@@ -11,6 +18,14 @@ The platform supports the retrieval of fundamental FRB data either directly thro
 Lastly, the platform provides a visualization tool that illustrates associations between primary bursts and repeaters, complementing basic repeater information provided by the [Transient Name Server (TNS)](https://www.wis-tns.org).
 
 FRBSTATS is a fully **open-source** platform. Anyone is welcome to [contribute](https://github.com/HeRTA/FRBSTATS/issues) with code, data and ideas for improvement.
+
+---
+### Citing FRBSTATS
+
+If the FRBSTATS platform contributes to work that leads to publication, please acknowledge the project by **[citing it](http://ascl.net/code/v/2932)**.
+
+---
+
 
 ### Statement of need
 
