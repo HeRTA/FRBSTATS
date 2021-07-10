@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Reload catalogue:
+  reload_catalogue:
     runs-on: ubuntu-latest
 
     steps:
