@@ -1,0 +1,17 @@
+# Reload and update catalogue.csv directly from the sheet
+name: Reload catalogue
+
+on:
+  workflow_dispatch:
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Send GET request to gitpull.php
+    - name: Reload catalogue
+      uses: fjogeleit/http-request-action@master
+      with:
+        url: 'https://www.herta-experiment.org/gitpull.php?plot=0'
+        method: 'GET'
