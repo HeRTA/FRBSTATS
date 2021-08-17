@@ -26,6 +26,10 @@ plt.rcParams['ytick.major.width'] = 2
 plt.rcParams['ytick.minor.size'] = 10
 plt.rcParams['ytick.minor.width'] = 2
 
+# Hide secondary spines
+plt.rcParams['axes.spines.top'] = False
+plt.rcParams['axes.spines.right'] = False
+
 ### Load data
 # Initiate empty parameter lists
 dm = []
@@ -83,13 +87,6 @@ plt.gca().set_ylim(bottom=0)
 # Set tick size
 plt.xticks(fontsize=42, y=-0.005)
 plt.yticks(fontsize=42)
-
-# Remove top and right border
-plt.gca().spines['top'].set_visible(False)
-plt.gca().spines['right'].set_visible(False)
-
-plt.gca().xaxis.set_tick_params(top='off',which='both')
-plt.gca().yaxis.set_tick_params(right='off',which='both')
 
 plt.tight_layout()
 
