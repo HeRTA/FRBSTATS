@@ -22,7 +22,7 @@ FRBSTATS is a fully **open-source** platform. Anyone is welcome to [contribute](
 ---
 ### Citing FRBSTATS
 
-If the FRBSTATS platform contributes to work that leads to publication, please acknowledge the project by **[citing it](http://ascl.net/code/v/2932)**.
+If the FRBSTATS platform contributes to work that leads to publication, please acknowledge the project by **[citing it](https://ascl.net/2106.028)**.
 
 ---
 
