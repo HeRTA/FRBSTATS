@@ -1,4 +1,4 @@
-# This is a workflow for checking whether the FRBSTATS catalog is up-to-date with the TNS database.
+# This is a manually-triggered workflow for computing the redshift of every FRB and storing it in the catalogue.
 
 name: Compare with TNS
 
