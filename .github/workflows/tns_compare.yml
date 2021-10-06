@@ -1,9 +1,11 @@
-# This is a workflow for checking whether the FRBSTATS catalog is up-to-date with the TNS database.
+# This is a workflow for automatically checking whether the FRBSTATS catalog is up-to-date with the TNS database on a daily basis.
 
 name: Compare with TNS
 
 on:
-  workflow_dispatch:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 0 * * *'
 
 jobs:
   tns_compare:
