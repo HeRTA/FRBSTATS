@@ -6,17 +6,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  compute_redshifts:
+  tns_compare:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-    - name: Compute redshifts
-      run: echo "-------------------------";echo "Comparing TNS event count with FRBSTATS...";echo "-------------------------";sudo pip3 install requests;echo "-------------------------";git clone https://github.com/HeRTA/FRBSTATS.git;cd FRBSTATS;python3 tns_compare.py;echo "Job complete!";echo "-------------------------"
     - name: Compare with TNS
-      uses: actions-js/push@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      run: echo "-------------------------";echo "Comparing TNS event count with FRBSTATS...";echo "-------------------------";sudo pip3 install requests;echo "-------------------------";git clone https://github.com/HeRTA/FRBSTATS.git;cd FRBSTATS;python3 tns_compare.py;echo "Job complete!";echo "-------------------------"
