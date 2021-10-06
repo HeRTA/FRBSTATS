@@ -1,6 +1,6 @@
 # This is a manually-triggered workflow for computing the redshift of every FRB and storing it in the catalogue.
 
-name: Compare FRBSTATS DB with TNS (check for updates)
+name: Compare with TNS
 
 on:
   workflow_dispatch:
