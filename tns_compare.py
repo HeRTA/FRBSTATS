@@ -18,7 +18,7 @@ csv_file = open('catalogue_count.csv', 'wb')
 csv_file.write(url_content)
 csv_file.close()
 
-frbstats_count = -1
+frbstats_count = -3
 with open('catalogue_count.csv', 'rt') as fin:
 	for line in fin:
 		frbstats_count += 1
