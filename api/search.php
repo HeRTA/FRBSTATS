@@ -28,6 +28,10 @@ foreach($content as $key){
   }
 }
 
-echo json_encode($return_array);
+if (json_encode($return_array) == ) { //<sec>
+  echo json_encode($return_array);
+} else {
+  echo "Entry '" . $searchfor . "' not found in database.";
+} //</sec>
 
 ?>
