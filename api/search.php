@@ -5,10 +5,10 @@ $catalogue = '../catalogue.json';
 $searchfor = $_GET['frb'];
 
 // Neglect 'FRB' prefix, underscores and spaces
-$searchfor = str_ireplace(["frb", " ", "_"], "", $searchfor);
+$searchfor = str_ireplace(["frb", "_"], "", $searchfor);
 
 // Prevent HTML parsing
-header('Content-type: application/json');
+//header('Content-type: application/json');
 
 // Grab file conents
 $content = json_decode(file_get_contents($catalogue), true);
@@ -28,10 +28,10 @@ foreach($content as $key){
   }
 }
 
-if (json_encode($return_array) == ) { //<sec>
+if (json_encode($return_array) !== "[]") {
   echo json_encode($return_array);
 } else {
   echo "Entry '" . $searchfor . "' not found in database.";
-} //</sec>
+}
 
 ?>
