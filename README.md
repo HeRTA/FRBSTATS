@@ -4,7 +4,6 @@
 
 ## FRBSTATS: A web-based platform for visualization of fast radio burst properties
 
-![status](https://github.com/HeRTA/FRBSTATS/actions/workflows/tns_compare.yml/badge.svg)
 <p align="center">
   <a href="https://ascl.net/2106.028"><img src="https://img.shields.io/badge/ascl-2106.028-blue.svg?colorB=262255" alt="ascl:2106.028" /></a>
   <img src="https://img.shields.io/badge/python-3.x-green"/>
