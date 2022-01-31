@@ -1,5 +1,7 @@
 # Contributor guidelines
 
+_**Disclaimer: This document is not up to date.**_
+
 The following guide is directed to contributors wishing to enrich the current **FRBSTATS** database.
 
 ### About the platform
