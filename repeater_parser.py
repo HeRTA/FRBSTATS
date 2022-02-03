@@ -85,7 +85,7 @@ labels = db.labels_
 
 # Dump clusters to JSON file
 cluster_json = ''
-for i in range(np.max(labels)):
+for i in range(np.max(labels)+1):
 	#print('-------- '+str(i)+' --------')
 	repeater_cluster = []
 	for j in np.where(labels == i)[0]:
