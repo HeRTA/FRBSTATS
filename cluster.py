@@ -233,6 +233,6 @@ for k, col in zip(unique_labels, colors):
 #plt.title('$\mathrm{Estimated \ number \ of \ repeaters: %d}$' % n_clusters_)
 plt.tight_layout(pad=7)
 
-plt.savefig('/home/herta-experiment/public_html/frbstats/figs/repeaters.svg', format='svg')
-plt.savefig('/home/herta-experiment/public_html/frbstats/figs/repeaters.pdf')
-plt.savefig('/home/herta-experiment/public_html/frbstats/figs/repeaters.png')
+plt.savefig('/home/herta-experiment/public_html/frbstats/figs/repeaters/repeaters.svg', format='svg')
+plt.savefig('/home/herta-experiment/public_html/frbstats/figs/repeaters/repeaters.pdf')
+plt.savefig('/home/herta-experiment/public_html/frbstats/figs/repeaters/repeaters.png')
