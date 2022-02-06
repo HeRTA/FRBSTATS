@@ -76,7 +76,7 @@ def dist(frb1, frb2):
 	y2 = dm2*np.cos(b2)*np.cos(l2)
 	z2 = dm2*np.sin(b2)
 
-	# Compuute Euclidean distance
+	# Compute Euclidean distance
 	distance = np.sqrt(((x1-x2)**2)+((y1-y2)**2)+((z1-z2)**2))
 	return distance
 
