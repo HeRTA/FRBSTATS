@@ -1,20 +1,4 @@
 <!DOCTYPE html>
-<?php
-if (!isset($_SERVER['PHP_AUTH_USER'])) {
-    header('WWW-Authenticate: Basic realm="My Realm"');
-    header('HTTP/1.0 401 Unauthorized');
-    echo 'Failed to authenticate.';
-    exit;
-} else {
-    if ($_SERVER['PHP_AUTH_USER'] == 'root' && $_SERVER['PHP_AUTH_PW'] == 'pass123') {
-        echo "";
-    }
-    else {
-        echo 'Authentication failed. Please check your credentials and try again.';
-        exit;
-    }
-}
-?>
 <html lang="en">
 
 <head>
