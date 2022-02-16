@@ -8,7 +8,7 @@ $searchfor = $_GET['frb'];
 $searchfor = str_ireplace(["frb", "_"], "", $searchfor);
 
 // Prevent HTML parsing
-//header('Content-type: application/json');
+header('Content-type: application/json');
 
 // Grab file conents
 $content = json_decode(file_get_contents($catalogue), true);
