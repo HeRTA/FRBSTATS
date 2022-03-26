@@ -1,5 +1,8 @@
 import requests
 import urllib.request
+from frbcat import TNS
+from csv import reader
+import numpy as np
 
 ### Download TNS HTML and compare with FRBSTATS count to check if DB is up to date
 # TNS
@@ -29,3 +32,31 @@ if str(tns_count) == str(frbstats_count):
 	print('[+] The FRBSTATS database is up to date!')
 else:
 	raise ValueError('[-] The FRBSTATS database is out of date!')
+
+# Read TNS catalogue
+tns = TNS(tns_name='my_user_name', tns_id='my_user_id')
+df = tns.df
+units = tns.units
+
+tns_frbs = df.values[:,26]
+
+# Read FRBSTATS CSV catalogue
+frbstats_frb = []
+with open('catalogue_count.csv', 'r') as read_obj:
+	csv_reader = reader(read_obj)
+	header = next(csv_reader)
+	# Skip header
+	if header != None:
+		for row in csv_reader:
+			frbstats_frbs.append(row[0])
+
+frbstats_frbs = np.array(frbstats_frbs)
+#print(tns_frbs)
+#print(frbstats_frbs)
+diff = np.in1d(tns_frbs, frbstats_frbs)
+
+for i, element in enumerate(diff):
+	if element == False:
+		#print(frbstats_frbs[i])
+		print(tns_frbs[i])
+		print('---')
