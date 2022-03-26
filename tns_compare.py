@@ -28,10 +28,11 @@ with open('catalogue_count.csv', 'rt') as fin:
 		#frbstats_count = str(len(fin))
 
 print('TNS: '+str(tns_count)+'\nFRBSTATS: '+str(frbstats_count))
+success = True
 if str(tns_count) == str(frbstats_count):
 	print('[+] The FRBSTATS database is up to date!')
 else:
-	raise ValueError('[-] The FRBSTATS database is out of date!')
+	success = False
 
 # Read TNS catalogue
 tns = TNS(tns_name='my_user_name', tns_id='my_user_id')
@@ -60,3 +61,5 @@ for i, element in enumerate(diff):
 		#print(frbstats_frbs[i])
 		print(tns_frbs[i])
 		print('---')
+if not success:
+	raise ValueError('[-] The FRBSTATS database is out of date!')
