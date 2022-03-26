@@ -13,4 +13,4 @@ jobs:
 
     steps:
     - name: Compare with TNS
-      run: echo "-------------------------";echo "Comparing TNS event count with FRBSTATS...";echo "-------------------------";sudo pip3 install requests;echo "-------------------------";git clone https://github.com/HeRTA/FRBSTATS.git;cd FRBSTATS;python3 tns_compare.py;echo "Job complete!";echo "-------------------------"
+      run: echo "-------------------------";echo "Comparing TNS event count with FRBSTATS...";echo "-------------------------";sudo pip3 install requests;sudo pip3 install frbcat;echo "-------------------------";git clone https://github.com/HeRTA/FRBSTATS.git;cd FRBSTATS;python3 tns_compare.py;echo "Job complete!";echo "-------------------------"
