@@ -42,7 +42,7 @@ units = tns.units
 tns_frbs = df.values[:,26]
 
 # Read FRBSTATS CSV catalogue
-frbstats_frb = []
+frbstats_frbs = []
 with open('catalogue_count.csv', 'r') as read_obj:
 	csv_reader = reader(read_obj)
 	header = next(csv_reader)
