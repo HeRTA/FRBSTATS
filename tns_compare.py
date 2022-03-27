@@ -35,7 +35,7 @@ else:
 	success = False
 
 # Read TNS catalogue
-tns = TNS(tns_name='my_user_name', tns_id='my_user_id')
+tns = TNS(path='/home/runner/', tns_name='my_user_name', tns_id='my_user_id')
 df = tns.df
 units = tns.units
 
