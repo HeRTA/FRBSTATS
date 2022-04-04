@@ -13,3 +13,4 @@ for parent in range(len(channels[0]['children'])):
 for repeater in parents:
 	print(repeater)
 	os.system('python3 plot_repeaters.py "' + repeater + '"')
+	os.system('python3 plot_tables.py "' + repeater + '"')
