@@ -308,6 +308,8 @@ function click(d) {
 						</center>
 						<i class="fas fa-code fa-sm" aria-hidden="true" style="font-size: 110%; color:#4e73df; margin-left:12px;"></i>
 						<a id="sourceCode" target="_blank" href="https://github.com/HeRTA/FRBSTATS/blob/main/figs" style="font-size: 110%">View Source</a>
+						<i class="fas fa-table fa-sm" aria-hidden="true" style="font-size: 110%; color:#4e73df; margin-left:48px;"></i>
+						<a id="Table" target="_blank" href="#" style="font-size: 110%">Repeater Table</a>
 						<a id="savePdf" style="margin-right: 4px; margin-left: 4px; font-size: 100%; float:right" href="figs/none_none.pdf" download="" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-file-pdf fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PDF</b></a>
 						<a id="saveSvg" style="margin-left: 4px; font-size: 100%; float:right" href="figs/none_none.svg" download="" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-download fa-sm text-white-50" aria-hidden="true"></i> Save as <b>SVG</b></a>
 						<a id="savePng" style="font-size: 100%; float:right" href="figs/none_none.png" download="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-file-image fa-sm text-white-50" aria-hidden="true"></i> Save as <b>PNG</b></a>
@@ -373,8 +375,10 @@ function click(d) {
 				document.fig.src = "figs/none_none.svg";
 				if (frb == "repeaters") {
 					document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/cluster.py";
+					document.getElementById("Table").href = "#";
 				} else {
 					document.getElementById("sourceCode").href = "https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py";
+					document.getElementById("Table").href = "figs/repeaters/" + frb + "_table.pdf";
 				}
             			document.getElementById("savePng").href = "figs/repeaters/" + frb + ".png";
 				document.getElementById("saveSvg").href = "figs/repeaters/" + frb + ".svg";
