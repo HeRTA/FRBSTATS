@@ -99,6 +99,7 @@
 						<li>Gal. Lat. <b>[deg]</b></li>
 						<li>Center Frequency <b>[MHz]</b></li>
 						<li>DM <b>[pc cm⁻³]</b></li>
+						<li>Redshift</li>
 						<li>Peak Flux Density <b>[Jy]</b></li>
 						<li>Burst Width (FWHM) <b>[ms]</b></li>
 						<li>Fluence <b>[Jy ms]</b></li>
@@ -153,7 +154,8 @@ if response.status_code == 200:
       "frequency": "1355",
       "ra": "21:57:40",
       "flux": "1.4",
-      "telescope": "Parkes"
+      "telescope": "Parkes",
+      "redshift": "0.5562"
    }
 ]</code></pre>
 </div>
@@ -180,7 +182,8 @@ if response.status_code == 200:
       "utc": "2020-06-07 10:37:22",
       "telescope": "UTMOST",
       "flux": "-",
-      "dec": "-5:08:24"
+      "dec": "-5:08:24",
+      "redshift": "0.4613"
    },
    {
       "fluence": "0.76",
@@ -197,7 +200,8 @@ if response.status_code == 200:
       "utc": "2020-06-16 6:31:13",
       "telescope": "Arecibo",
       "flux": "0.166",
-      "dec": "+16:12:32.53"
+      "dec": "+16:12:32.53",
+      "redshift": "0.625"
    },
    {
       "fluence": "28",
@@ -214,7 +218,8 @@ if response.status_code == 200:
       "utc": "2020-06-27 19:23:42",
       "telescope": "ASKAP",
       "flux": "-",
-      "dec": "-39:29:00"
+      "dec": "-39:29:00",
+      "redshift": "0.2954"
    }
 ]</code></pre>
 </div>
