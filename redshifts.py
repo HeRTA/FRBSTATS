@@ -63,8 +63,8 @@ for dm_value in dm:
 	frb = fruitbat.Frb(dm_value, gl=str(l[idx]), gb=str(b[idx]))
 	# Calculate the DM contribution from the Milky Way
 	frb.calc_dm_galaxy()
-	# Calculate the Redshift of the FRB using the relation from Zhang (2018)
-	redshift = float(frb.calc_redshift(method='Zhang2018', cosmology='Planck18'))
+	# Calculate the Redshift of the FRB
+	redshift = float(frb.calc_redshift())
 	# Round to 4 decimal places
 	redshift = round(redshift, 4)
 	redshifts.append(str(redshift))
