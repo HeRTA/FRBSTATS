@@ -78,7 +78,7 @@ for dm_value in dm:
 		redshift = round(redshift, 4)
 		float(str(redshift))
 		print(str(redshift))
-		if math.isnan(str(redshift)):
+		if math.isnan(redshift):
 			print('is nan entered. Redshift is:')
 			print(str(redshift))
 			redshifts.append('-')
