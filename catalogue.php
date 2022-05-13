@@ -164,6 +164,7 @@
                           <a style="font-weight: normal" id="b" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="7">Gal. Lat.</a> -
                           <a style="font-weight: normal" id="frequency" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="8">Center Frequency</a> -
                           <a style="font-weight: bold" id="dm" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="9">DM</a> -
+                          <a style="font-weight: normal" id="redshift" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="11">Redshift</a> -
                           <a style="font-weight: bold" id="flux" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="10">Peak Flux Density</a> -
                           <a style="font-weight: normal" id="width" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="11">Burst Width (FWHM)</a> -
                           <a style="font-weight: normal" id="fluence" onclick="if (document.getElementById(this.id).style.fontWeight == 'normal' || document.getElementById(this.id).style.fontWeight == '') {document.getElementById(this.id).style.fontWeight = 'bold'}else {document.getElementById(this.id).style.fontWeight = 'normal';}" class="toggle-vis" data-column="12">Fluence</a> -
@@ -185,6 +186,7 @@
                                             <th>Gal. Lat. (<i>b</i>)</th>
                                             <th>Frequency (MHz)</th>
                                             <th>DM (pc cm⁻³)</th>
+                                            <th>Redshift</th>
                                             <th>Flux (Jy)</th>
                                             <th>Width (ms)</th>
                                             <th>Fluence (Jy ms)</th>
@@ -218,6 +220,7 @@
                                         echo "<td>".$cursor['b']."</td>";
                                         echo "<td>".$cursor['frequency']."</td>";
                                         echo "<td>".$cursor['dm']."</td>";
+                                        echo "<td>".$cursor['redshift']."</td>";
                                         echo "<td>".$cursor['flux']."</td>";
                                         echo "<td>".$cursor['width']."</td>";
                                         echo "<td>".$cursor['fluence']."</td>";
