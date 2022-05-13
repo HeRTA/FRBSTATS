@@ -74,7 +74,14 @@ for dm_value in dm:
 	#print(dm_value)
 	#print(str(l[idx]), str(b[idx]))
 	#print(redshift)
-	redshifts.append(str(redshift))
+	try: 
+		float(str(redshift))
+		if math.isnan(str(redshift)):
+			redshifts.append('-')
+		else:
+			redshifts.append(str(redshift))
+	except: 
+		redshifts.append('-')
 	idx += 1
 
 print(redshifts)
