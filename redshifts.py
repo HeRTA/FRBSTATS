@@ -60,16 +60,17 @@ redshifts = []
 idx = 0
 for dm_value in dm:
 	# Create a Frb Object with DM and Galactic Coordinates
-	print(dm_value)
 	frb = fruitbat.Frb(dm_value, gl=str(l[idx]), gb=str(b[idx]))
-	print(str(l[idx]), str(b[idx]))
-	print(frb)
 	# Calculate the DM contribution from the Milky Way
 	frb.calc_dm_galaxy()
 	# Calculate the Redshift of the FRB
 	redshift = float(frb.calc_redshift())
 	# Round to 4 decimal places
 	redshift = round(redshift, 4)
+	print(frb)
+	print(dm_value)
+	print(str(l[idx]), str(b[idx]))
+	print(redshift)
 	redshifts.append(str(redshift))
 	idx += 1
 
