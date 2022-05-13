@@ -59,6 +59,9 @@ redshifts = []
 
 idx = 0
 for dm_value in dm:
+	print('--starting...---')
+	print(dm_value)
+	print(str(l[idx]), str(b[idx]))
 	# Create a Frb Object with DM and Galactic Coordinates
 	frb = fruitbat.Frb(dm_value, gl=str(l[idx]), gb=str(b[idx]))
 	# Calculate the DM contribution from the Milky Way
