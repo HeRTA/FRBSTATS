@@ -67,12 +67,14 @@ for dm_value in dm:
 	redshift = float(frb.calc_redshift())
 	# Round to 4 decimal places
 	redshift = round(redshift, 4)
-	print(frb)
-	print(dm_value)
-	print(str(l[idx]), str(b[idx]))
-	print(redshift)
+	#print(frb)
+	#print(dm_value)
+	#print(str(l[idx]), str(b[idx]))
+	#print(redshift)
 	redshifts.append(str(redshift))
 	idx += 1
+
+print(redshifts)
 
 # Open the input_file in read mode and output_file in write mode
 with open('catalogue.csv', 'r') as read_obj, open('catalogue_tmp.csv', 'w', newline='') as write_obj:
@@ -80,7 +82,7 @@ with open('catalogue.csv', 'r') as read_obj, open('catalogue_tmp.csv', 'w', newl
 	csv_reader = reader(read_obj)
 	header = next(csv_reader)
 	header.append("redshifts")
-	print(header,type(header))
+	#print(header,type(header))
 	# Create a writer object from the output file object
 	csv_writer = writer(write_obj)
 	for row in csv_reader:
