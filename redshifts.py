@@ -1,6 +1,7 @@
 from csv import reader, writer
 from shutil import move
 import fruitbat
+import math
 
 # Load data
 # Initiate empty parameter lists
@@ -76,6 +77,7 @@ for dm_value in dm:
 		# Round to 4 decimal places
 		redshift = round(redshift, 4)
 		float(str(redshift))
+		print(str(redshift))
 		if math.isnan(str(redshift)):
 			redshifts.append('-')
 		else:
