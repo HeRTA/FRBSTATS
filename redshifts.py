@@ -79,10 +79,13 @@ for dm_value in dm:
 		float(str(redshift))
 		print(str(redshift))
 		if math.isnan(str(redshift)):
+			print('is nan entered. Redshift is:')
+			print(str(redshift))
 			redshifts.append('-')
 		else:
 			redshifts.append(str(redshift))
-	except: 
+	except Exception as e:
+		print(e)
 		redshifts.append('-')
 	idx += 1
 
