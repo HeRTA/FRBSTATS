@@ -39,8 +39,9 @@ tns = TNS(path='/home/runner/', tns_name='my_user_name', tns_id='my_user_id')
 df = tns.df
 units = tns.units
 
-print(df.to_string())
-print('=======------======')
+# Print entire dataframe for debugging in case TNS index changes again
+#print(df.to_string())
+
 tns_frbs = df.values[:,27]
 
 # Read FRBSTATS CSV catalogue
