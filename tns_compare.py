@@ -39,7 +39,7 @@ tns = TNS(path='/home/runner/', tns_name='my_user_name', tns_id='my_user_id')
 df = tns.df
 units = tns.units
 
-print(df.values)
+print(df.to_string())
 print('=======------======')
 tns_frbs = df.values[:,26]
 
