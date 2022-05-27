@@ -41,7 +41,7 @@ units = tns.units
 
 print(df.to_string())
 print('=======------======')
-tns_frbs = df.values[:,26]
+tns_frbs = df.values[:,27]
 
 # Read FRBSTATS CSV catalogue
 frbstats_frbs = []
