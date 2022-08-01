@@ -42,12 +42,6 @@ for idx, val in enumerate(dm):
 	except ValueError:
 		idx_mask.add(idx)
 
-for idx, val in enumerate(frbs):
-	try:
-		frbs[idx] = float(val)
-	except ValueError:
-		idx_mask.add(idx)
-
 # Dump rows with missing data
 for idx in sorted(idx_mask, reverse=True):
 	del l[idx]
