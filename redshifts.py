@@ -97,7 +97,7 @@ for dm_value in dm:
 	idx += 1
 
 #print(redshifts)
-
+"""
 # Open the input_file in read mode and output_file in write mode
 with open('catalogue.csv', 'r') as read_obj, open('catalogue_tmp.csv', 'w', newline='') as write_obj:
 	# Create a reader object from the input file object
@@ -124,3 +124,4 @@ with open('catalogue.csv', 'r') as read_obj, open('catalogue_tmp.csv', 'w', newl
 
 # Rename and replace (finalize) CSV catalogue
 move('catalogue_tmp.csv', 'catalogue.csv')
+"""
