@@ -8,6 +8,7 @@ import math
 l = []
 b = []
 dm = []
+frbs = []
 
 # Read FRBSTATS CSV catalogue
 with open('catalogue.csv', 'r') as read_obj:
@@ -19,6 +20,7 @@ with open('catalogue.csv', 'r') as read_obj:
 			l.append(row[6])
 			b.append(row[7])
 			dm.append(row[9])
+			frbs.append(row[0])
 
 # Pre-process data (pick out incompatible rows)
 idx_mask = set()
@@ -40,11 +42,18 @@ for idx, val in enumerate(dm):
 	except ValueError:
 		idx_mask.add(idx)
 
+for idx, val in enumerate(frbs):
+	try:
+		frbs[idx] = float(val)
+	except ValueError:
+		idx_mask.add(idx)
+
 # Dump rows with missing data
 for idx in sorted(idx_mask, reverse=True):
 	del l[idx]
 	del b[idx]
 	del dm[idx]
+	def frbs[idx]
 
 # Delete last row (redshift) from csv
 with open('catalogue.csv', 'r') as read_obj:
@@ -60,9 +69,7 @@ redshifts = []
 
 idx = 0
 for dm_value in dm:
-	print('--starting...---')
-	print(dm_value)
-	print(str(l[idx]), str(b[idx]))
+	print('-----------')
 	# Create a Frb Object with DM and Galactic Coordinates
 	frb = fruitbat.Frb(dm_value, gl=str(l[idx]), gb=str(b[idx]))
 	# Calculate the DM contribution from the Milky Way
@@ -77,10 +84,10 @@ for dm_value in dm:
 		# Round to 4 decimal places
 		redshift = round(redshift, 4)
 		float(str(redshift))
-		print(str(redshift))
+		print(str(frbs[idx]) +':'+ str(redshift))
 		if math.isnan(redshift):
 			print('is nan entered. Redshift is:')
-			print(str(redshift))
+			print(str(frbs[idx]) +':'+ str(redshift))
 			redshifts.append('-')
 		else:
 			redshifts.append(str(redshift))
@@ -89,7 +96,7 @@ for dm_value in dm:
 		redshifts.append('-')
 	idx += 1
 
-print(redshifts)
+#print(redshifts)
 
 # Open the input_file in read mode and output_file in write mode
 with open('catalogue.csv', 'r') as read_obj, open('catalogue_tmp.csv', 'w', newline='') as write_obj:
