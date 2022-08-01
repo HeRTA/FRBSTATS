@@ -53,7 +53,7 @@ for idx in sorted(idx_mask, reverse=True):
 	del l[idx]
 	del b[idx]
 	del dm[idx]
-	def frbs[idx]
+	del frbs[idx]
 
 # Delete last row (redshift) from csv
 with open('catalogue.csv', 'r') as read_obj:
