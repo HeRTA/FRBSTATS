@@ -6,3 +6,6 @@
 5. [Fast radio bursts at the dawn of the 2020s](https://ui.adsabs.harvard.edu/abs/2021arXiv210710113P/abstract)
 6. [CHIME/FRB Catalog 1 results: statistical cross-correlations with large-scale structure](https://ui.adsabs.harvard.edu/abs/2021arXiv210604354R/abstract)
 7. [Fast radio bursts and the radio counterparts of neutron star mergers](https://dare.uva.nl/search?identifier=f06bc25a-4e32-4102-9078-4c13e9bf3447) _(Thesis)_ *[Not indexed by ADS]*
+8. High-frequency radio synchrotron maser emission from relativistic shocks
+9. Four New Fast Radio Bursts Discovered in the Parkes 70-cm Pulsar Survey Archive
+10. Mitigating radio frequency interference in CHIME/FRB real-time intensity data
