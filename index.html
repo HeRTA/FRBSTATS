@@ -144,7 +144,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div style="font-size: 0.82rem;" class="text-sm font-weight-bold text-primary text-uppercase mb-1">
-                                                Events Observed</div>
+                                                Events Observed (Sources)</div>
                                             <div id="events" class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">
@@ -361,14 +361,15 @@
             for (row of rows) {
                 lines = lines + 1
             }
-            document.getElementById("events").innerHTML = lines;
         });
         // FRB repeaters
         fetch("repeaters.json")
             .then(response => response.text())
             .then(jsonString => {
             var temp = jsonString;
+            var count_all = (temp.match(/parent/g) || []).length - 1;
             var count = (temp.match(/children/g) || []).length - 1;
+            document.getElementById("events").innerHTML = lines.toString() + " (" + (lines-count_all+count).toString() + ")";
             document.getElementById("repeaters").innerHTML = count;
         });
         // Event coverage
