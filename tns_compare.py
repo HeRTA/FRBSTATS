@@ -116,10 +116,8 @@ for i, element in enumerate(diff):
 		if ra != '-' and dec != '-':
 		    equatorial = SkyCoord(ra=ra, dec=dec, frame='icrs')
 		    galactic = equatorial.galactic
-
-                    l = str(round(galactic.l.deg, 2))
-                    b = str(round(galactic.b.deg, 2))
-
+		    l = str(round(galactic.l.deg, 2))
+		    b = str(round(galactic.b.deg, 2))
 		try:
 		    frequency = re.search(r'<td class=\"cell-ref_freq\">(.*?)</td><td class=\"cell-inst_bandwidth\">', html).group(1).split()[0]
 		except (ValueError,IndexError):
@@ -147,7 +145,7 @@ for i, element in enumerate(diff):
 
 		reference = frb_tns_url
 		redshift = '-'
-		print(utc, mjd, telescope, ra, dec, l,b, frequency, dm, flux, width, fluence, snr, reference, redshift)
+		print(utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift)
 		print('---')
 if not success:
 	raise ValueError('[-] The FRBSTATS database is out of date!')
