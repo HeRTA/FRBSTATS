@@ -67,7 +67,7 @@ for i, element in enumerate(diff):
 		response = requests.get(frb_tns_url, headers=headers)
 		html = str(response.content)
 
-		utc = html[html.find('<td class="cell-discovery_date">')+len(start):html.rfind('</td>')]
+		utc = html[html.find('<td class="cell-discovery_date">')+len('<td class="cell-discovery_date">'):html.rfind('</td>')]
 		print(utc)		
 		print('---')
 if not success:
