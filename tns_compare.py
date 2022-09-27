@@ -72,8 +72,8 @@ for i, element in enumerate(diff):
 
 		utc = re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html).group(1)
 		telescope = re.search(r'<td class=\"cell-tel_inst\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
-		ra = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1)
-		dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
+		ra = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[0] #[1] to get the error
+		dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[0] #[1] to get the error
 		frequency = re.search(r'<td class=\"cell-ref_freq\">(.*?)</td><td class=\"cell-inst_bandwidth\">', html).group(1)
 		dm = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1)
 
