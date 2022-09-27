@@ -35,7 +35,7 @@ with open('catalogue_count.csv', 'rt') as fin:
 
 print('TNS: '+str(tns_count)+'\nFRBSTATS: '+str(frbstats_count))
 success = True
-if str(tns_count) == str(frbstats_count):
+if str(tns_count) <= str(frbstats_count):
 	print('[+] The FRBSTATS database is up to date!')
 else:
 	success = False
