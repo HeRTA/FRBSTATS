@@ -70,8 +70,8 @@ for i, element in enumerate(diff):
 		response = requests.get(frb_tns_url, headers=headers)
 		html = str(response.content)
 
-		utc = re.search('<td class="cell-discovery_date">(.*)</td><td class="cell-flux">', html)
-		telescope = re.search('<td class="cell-tel_inst">(.*)</td><td class="cell-snr">', html)
+		utc = re.search('<td class="cell-discovery_date">(.*)</td><td class="cell-flux">', html).group(1)
+		telescope = re.search('<td class="cell-tel_inst">(.*)</td><td class="cell-snr">', html).group(1)
 		ra = html[html.find('<td class="cell-ra">')+len('<td class="cell-ra">'):html.rfind('</td><td class="cell-decl">')].split()[0]
 		dec = html[html.find('<td class="cell-decl">')+len('<td class="cell-decl">'):html.rfind('</td><td class="cell-discovery_date">')]
 		frequency = html[html.find('<td class="cell-ref_freq">')+len('<td class="cell-ref_freq">'):html.rfind('</td><td class="cell-inst_bandwidth">')]
