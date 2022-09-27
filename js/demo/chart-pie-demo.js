@@ -9,9 +9,9 @@ fetch("catalogue.csv")
   .then(csvString_pie => {
   // Split the csv into rows
   const rows_pie = csvString_pie.split("\n");
-  events_obseved_pie = -1 // Skip CSV catalogue header
+  lines = -1 // Skip CSV catalogue header
   for (row_pie of rows_pie) {
-    events_obseved_pie = events_obseved_pie + 1
+    lines = lines + 1
   }
 
 var repeater_parents_pie;
@@ -21,7 +21,7 @@ fetch("repeaters.json")
   .then(jsonString_pie => {
   var temp_pie = jsonString_pie;
   count_all = (temp_pie.match(/parent/g) || []).length - 1;
-  repeater_parents_pie = (temp_pie.match(/children/g) || []).length - 1;
+  count = (temp_pie.match(/children/g) || []).length - 1;
   repeater_children_pie = (temp_pie.match(/parent":"FRB/g) || []).length;
 
 //console.log('repeater_parents_pie: ');
@@ -37,7 +37,7 @@ var myPieChart = new Chart(ctx, {
     labels: ["One-off events", "Repeaters"],
     datasets: [{
       //data: [events_obseved_pie-(repeater_parents_pie+repeater_children_pie), repeater_parents_pie],
-      data: [events_obseved_pie-count_all+repeater_parents_pie-repeater_parents_pie, repeater_parents_pie],
+      data: [lines-count_all, count],
       backgroundColor: ['#4e73df', '#1cc88a'],
       hoverBackgroundColor: ['#2e59d9', '#17a673'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
