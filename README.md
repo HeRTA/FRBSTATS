@@ -65,6 +65,6 @@ by the server automatically.
 
 ---
 
-#### Data contribution guidelines
+### Data contribution guidelines
 
 To submit a burst to the FRBSTATS catalogue, please append the event's properties as a new row to the [FRBSTATS spreadsheet](https://docs.google.com/spreadsheets/d/1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY/edit?usp=sharing). If the FRB is already present in the sheet (i.e., an entry with the given designation already exists), the cell will turn red to inform you of the duplicate entry. The database gets updated on an hourly basis (and immediately when a commit is pushed), so the new entry may not be picked up immediately.
