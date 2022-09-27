@@ -20,6 +20,7 @@ fetch("repeaters.json")
   .then(response_rp_pie => response_rp_pie.text()) 
   .then(jsonString_pie => {
   var temp_pie = jsonString_pie;
+  count_all = (temp_pie.match(/parent/g) || []).length - 1;
   repeater_parents_pie = (temp_pie.match(/children/g) || []).length - 1;
   repeater_children_pie = (temp_pie.match(/parent":"FRB/g) || []).length;
 
@@ -35,7 +36,8 @@ var myPieChart = new Chart(ctx, {
   data: {
     labels: ["One-off events", "Repeaters"],
     datasets: [{
-      data: [events_obseved_pie-(repeater_parents_pie+repeater_children_pie), repeater_parents_pie],
+      //data: [events_obseved_pie-(repeater_parents_pie+repeater_children_pie), repeater_parents_pie],
+      data: [events_obseved_pie-count_all+repeater_parents_pie-repeater_parents_pie, repeater_parents_pie],
       backgroundColor: ['#4e73df', '#1cc88a'],
       hoverBackgroundColor: ['#2e59d9', '#17a673'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
