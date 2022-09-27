@@ -87,6 +87,16 @@ telescopes = {
         'WSRT/Apertif': 'WSRT/Apertif'
 }
 """
+SERVICE_ACCOUNT_FILE = "gsheets.json"
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+
+service = discovery.build('sheets', 'v4', credentials=credentials)
+spreadsheet_id = '1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY'
+range_ = 'Catalogue!A1:P1'
+value_input_option = 'USER_ENTERED'
+insert_data_option = 'INSERT_ROWS'
+
 for i, element in enumerate(diff):
 	if element == False:
 		#print(frbstats_frbs[i])
@@ -100,7 +110,7 @@ for i, element in enumerate(diff):
 		#try:
 		utc = re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html).group(1)
 		print(utc)
-		mjd = Time(utc, format='iso', scale='utc').mjd
+		mjd = str(Time(utc, format='iso', scale='utc').mjd)
 		#except (ValueError,IndexError):
 		#    utc = '-'
 		#    mjd = '-'
@@ -150,20 +160,10 @@ for i, element in enumerate(diff):
 		reference = frb_tns_url
 		redshift = '-'
 		print(utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift)
+		data = [[tns_frbs[i], utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift]]
+		res = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_, valueInputOption=value_input_option, insertDataOption=insert_data_option, body={"values": data}).execute()
+		print(res)
 		print('---')
-data = [[utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, 0]]
-
-SERVICE_ACCOUNT_FILE = "gsheets.json"
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-
-service = discovery.build('sheets', 'v4', credentials=credentials)
-spreadsheet_id = '1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY'
-range_ = 'Catalogue!A1:P1'
-value_input_option = 'USER_ENTERED'
-insert_data_option = 'INSERT_ROWS'
-res = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_, valueInputOption=value_input_option, insertDataOption=insert_data_option, body={"values": data}).execute()
-print(res)
 
 if not success:
 	raise ValueError('[-] The FRBSTATS database is out of date!')
