@@ -65,15 +65,6 @@ by the server automatically.
 
 ---
 
-#### Data contribution guidelines (checklist)
+#### Data contribution guidelines
 
-1. Append row with new FRB to the [FRBSTATS spreadsheet](https://docs.google.com/spreadsheets/d/1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY/edit?usp=sharing).
-- Useful conversion tools:
-- - UTC ⇄ MJD: https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/xTime/xTime.pl
-- - RA/Dec. ⇄ l, b: http://www.astrouw.edu.pl/~jskowron/ra-dec/
-3. Export to CSV and commit/submit PR/modify the [`catalogue.csv`](https://github.com/HeRTA/FRBSTATS/blob/main/catalogue.csv) file **(ensure there is no newline at the end of file)**.
-4. If new telescope (its first FRB): Append to dictionary [`plot_repeaters.py`](https://github.com/HeRTA/FRBSTATS/blob/main/figs/repeaters/plot_repeaters.py#L99).
-5. If galactic source: Add +1 to galactic sources ([`index.html`](https://github.com/HeRTA/FRBSTATS/blob/main/index.html#L182)).
-6. If repeater child: Add to [`repeaters.json`](https://github.com/HeRTA/FRBSTATS/blob/main/repeaters.json).
-7. Rerun `gitpull.php` with plot batch.
-8. Check changes/basic overall functional test.
+To submit a burst to the FRBSTATS catalogue, please append the event's properties as a new row to the [FRBSTATS spreadsheet](https://docs.google.com/spreadsheets/d/1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY/edit?usp=sharing). If the FRB is already present in the sheet (i.e., an entry with the given designation already exists), the cell will turn red to inform you of the duplicate entry. The database gets updated on an hourly basis (and immediately when a commit is pushed), so the new entry may not be picked up immediately.
