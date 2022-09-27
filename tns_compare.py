@@ -60,6 +60,28 @@ frbstats_frbs = np.array(frbstats_frbs)
 #print(frbstats_frbs)
 diff = np.in1d(tns_frbs, frbstats_frbs)
 
+"""
+telescopes = {
+	'Arecibo': 'Arecibo',
+	'ATA': 'ATA',
+	'CRAFT': 'ASKAP',
+	'CRAFT': 'ASKAP',
+	'Tianlai': 'Tianlai',
+	'CHIME': 'CHIME',
+	'DSA-10': 'DSA-10',
+	'Effelsberg': 'Effelsberg',
+	'FAST': 'FAST',
+	'GBT': 'GBT',
+	'GMRT': 'GMRT',
+	'INAF SRT': 'INAF SRT',
+	'Parkes': 'Parkes',
+	'Pushchino LPA': 'Pushchino LPA',
+	'Stockert': 'Stockert',
+	'UTMOST': 'UTMOST',
+        'VLA': 'VLA',
+        'WSRT/Apertif': 'WSRT/Apertif'
+}
+"""
 for i, element in enumerate(diff):
 	if element == False:
 		#print(frbstats_frbs[i])
@@ -74,10 +96,14 @@ for i, element in enumerate(diff):
 		telescope = re.search(r'<td class=\"cell-tel_inst\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
 		ra = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[0] #[1] to get the error
 		dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[0] #[1] to get the error
-		frequency = re.search(r'<td class=\"cell-ref_freq\">(.*?)</td><td class=\"cell-inst_bandwidth\">', html).group(1)
-		dm = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1)
+		frequency = re.search(r'<td class=\"cell-ref_freq\">(.*?)</td><td class=\"cell-inst_bandwidth\">', html).group(1).split()[0]
+		dm = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[0] #[1] to get error
+		flux = re.search(r'<td class=\"cell-flux\">(.*?)</td><td class=\"cell-unit_name\">', html).group(1).split()[0] #[1] to get error
+		width = re.search(r'<td class=\"cell-burst_width\">(.*?)</td><td class=\"cell-scattering_time\">', html).group(1).split()[0] #[1] to get error
+		fluence = re.search(r'<td class=\"cell-fluence\">(.*?)</td><td class=\"cell-burst_width\">', html).group(1).split()[0] #[1] to get error
+		snr = re.search(r'<td class=\"cell-snr\">(.*?)</td><td class=\"cell-fluence\">', html).group(1)
 
-		print(utc, telescope, ra, dec, frequency, dm)
+		print(utc, telescope, ra, dec, frequency, dm, flux, width, fluence, snr)
 		print('---')
 if not success:
 	raise ValueError('[-] The FRBSTATS database is out of date!')
