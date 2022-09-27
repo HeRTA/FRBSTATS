@@ -14,7 +14,6 @@ import time
 print('Running gitpull.php...')
 start = time.time()
 x = requests.get('http://www.herta-experiment.org/gitpull.php?plot=0', timeout=600) # 10 min timeout
-print(x.status_code)
 print(x.content)
 print(time.time() - start)
 print('Done')
