@@ -151,7 +151,7 @@ for i, element in enumerate(diff):
 		redshift = '-'
 		print(utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift)
 		print('---')
-data = [utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, 0]
+data = [[utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, 0]]
 
 SERVICE_ACCOUNT_FILE = "gsheets.json"
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
