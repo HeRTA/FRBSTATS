@@ -63,7 +63,8 @@ for i, element in enumerate(diff):
 	if element == False:
 		#print(frbstats_frbs[i])
 		print(tns_frbs[i])
-		frb_tns_url = 'https://www.wis-tns.org/object/'+(str(tns_frbs[i]).split('FRB')[1].lower())
+		frb_tns_url = 'https://www.wis-tns.org/object/'+([x.strip() for x in str(tns_frbs[i]).split('FRB')][1]).lower()
+
 		print(frb_tns_url)
 		response = requests.get(frb_tns_url, headers=headers)
 		html = str(response.content)
