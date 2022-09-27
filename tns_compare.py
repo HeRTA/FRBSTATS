@@ -3,6 +3,7 @@ import urllib.request
 from frbcat import TNS
 from csv import reader
 import numpy as np
+import re
 
 ### Download TNS HTML and compare with FRBSTATS count to check if DB is up to date
 # TNS
@@ -69,14 +70,14 @@ for i, element in enumerate(diff):
 		response = requests.get(frb_tns_url, headers=headers)
 		html = str(response.content)
 
-		utc = html[html.find('<td class="cell-discovery_date">')+len('<td class="cell-discovery_date">'):html.rfind('</td><td class="cell-flux">')]
-		telescope = html[html.find('<td class="cell-tel_inst">')+len('<td class="cell-tel_inst">'):html.rfind('</td><td class="cell-snr">')]
+		utc = re.search('<td class="cell-discovery_date">(.*)</td><td class="cell-flux">', html)
+		telescope = re.search('<td class="cell-tel_inst">(.*)</td><td class="cell-snr">', html)
 		ra = html[html.find('<td class="cell-ra">')+len('<td class="cell-ra">'):html.rfind('</td><td class="cell-decl">')].split()[0]
 		dec = html[html.find('<td class="cell-decl">')+len('<td class="cell-decl">'):html.rfind('</td><td class="cell-discovery_date">')]
 		frequency = html[html.find('<td class="cell-ref_freq">')+len('<td class="cell-ref_freq">'):html.rfind('</td><td class="cell-inst_bandwidth">')]
 		dm = html[html.find('<td class="cell-dm">')+len('<td class="cell-dm">'):html.rfind('</td><td class="cell-galactic_max_dm">')]
 
-		print(utc, telescope, ra, dec, frequency, dm)
+		print(utc, telescope)
 		print('---')
 if not success:
 	raise ValueError('[-] The FRBSTATS database is out of date!')
