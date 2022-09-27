@@ -167,11 +167,11 @@ for i, element in enumerate(diff):
 
 print('Running gitpull.php...')
 import time
-start = time.process_time()
+start = time.time()
 x = requests.get('http://www.herta-experiment.org/gitpull.php?plot=0', timeout=600) # 10 min timeout
 print(x.status_code)
 print(x.content)
-print(time.process_time() - start)
+print(time.time() - start)
 print('Done')
 if not success:
 	raise ValueError('[-] The FRBSTATS database is out of date/has been modified!')
