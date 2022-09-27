@@ -95,12 +95,13 @@ for i, element in enumerate(diff):
 		response = requests.get(frb_tns_url, headers=headers)
 		html = str(response.content)
 
-		try:
-		    utc = re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html).group(1)
-		    mjd = Time(utc, format='isot', scale='utc').mjd
-		except (ValueError,IndexError):
-		    utc = '-'
-		    mjd = '-'
+		#try:
+		utc = re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html).group(1)
+		print(utc)
+		mjd = Time(utc, format='isot', scale='utc').mjd
+		#except (ValueError,IndexError):
+		#    utc = '-'
+		#    mjd = '-'
 		try:
 		    telescope = re.search(r'<td class=\"cell-tel_inst\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
 		except (ValueError,IndexError):
