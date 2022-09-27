@@ -63,6 +63,12 @@ for i, element in enumerate(diff):
 	if element == False:
 		#print(frbstats_frbs[i])
 		print(tns_frbs[i])
+		frb_tns_url = 'https://www.wis-tns.org/object/'+str(tns_frbs[i]).split('FRB')[1].lower()
+		response = requests.get(frb_tns_url, headers=headers)
+		html = str(response.content)
+
+		utc = html[html.find('<td class="cell-discovery_date">')+len(start):html.rfind('</td>')]
+		print(utc)		
 		print('---')
 if not success:
 	raise ValueError('[-] The FRBSTATS database is out of date!')
