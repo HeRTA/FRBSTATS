@@ -98,7 +98,7 @@ for i, element in enumerate(diff):
 		#try:
 		utc = re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html).group(1)
 		print(utc)
-		mjd = Time(utc, format='isot', scale='utc').mjd
+		mjd = Time(utc, format='iso', scale='utc').mjd
 		#except (ValueError,IndexError):
 		#    utc = '-'
 		#    mjd = '-'
