@@ -155,7 +155,7 @@ data = [utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence,
 
 SERVICE_ACCOUNT_FILE = "gsheets.json"
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-credentials = service_account.Credentials.from_service_accoutn_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 
 service = discovery.build('sheets', 'v4', credentials=credentials)
 spreadsheet_id = '1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY'
