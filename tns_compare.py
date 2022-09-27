@@ -10,6 +10,15 @@ import re
 from googleapiclient import discovery
 from google.oauth2 import service_account
 
+print('Running gitpull.php...')
+import time
+start = time.time()
+x = requests.get('http://www.herta-experiment.org/gitpull.php?plot=0', timeout=600) # 10 min timeout
+print(x.status_code)
+print(x.content)
+print(time.time() - start)
+print('Done')
+
 ### Download TNS HTML and compare with FRBSTATS count to check if DB is up to date
 # TNS
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"}
