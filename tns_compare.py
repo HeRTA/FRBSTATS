@@ -2,6 +2,9 @@ import requests
 import urllib.request
 from frbcat import TNS
 from csv import reader
+from astropy.time import Time
+from astropy.coordinates import SkyCoord, EarthLocation, AltAz
+import astropy.units as u
 import numpy as np
 import re
 
@@ -94,8 +97,10 @@ for i, element in enumerate(diff):
 
 		try:
 		    utc = re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html).group(1)
+		    mjd = Time(utc, format='isot', scale='utc').mjd
 		except (ValueError,IndexError):
 		    utc = '-'
+		    mjd = '-'
 		try:
 		    telescope = re.search(r'<td class=\"cell-tel_inst\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
 		except (ValueError,IndexError):
@@ -108,6 +113,13 @@ for i, element in enumerate(diff):
 		    dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[0] #[1] to get the error
 		except (ValueError,IndexError):
 		    dec = '-'
+		if ra != '-' and dec != '-':
+		    equatorial = SkyCoord(ra=ra, dec=dec, frame='icrs')
+		    galactic = equatorial.galactic
+
+                    l = str(round(galactic.l.deg, 2))
+                    b = str(round(galactic.b.deg, 2))
+
 		try:
 		    frequency = re.search(r'<td class=\"cell-ref_freq\">(.*?)</td><td class=\"cell-inst_bandwidth\">', html).group(1).split()[0]
 		except (ValueError,IndexError):
@@ -133,7 +145,9 @@ for i, element in enumerate(diff):
 		except (ValueError,IndexError):
 		    snr = '-'
 
-		print(utc, telescope, ra, dec, frequency, dm, flux, width, fluence, snr)
+		reference = frb_tns_url
+		redshift = '-'
+		print(utc, mjd, telescope, ra, dec, l,b, frequency, dm, flux, width, fluence, snr, reference, redshift)
 		print('---')
 if not success:
 	raise ValueError('[-] The FRBSTATS database is out of date!')
