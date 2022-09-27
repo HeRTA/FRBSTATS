@@ -115,7 +115,7 @@ for i, element in enumerate(diff):
 		    dec = '-'
 		if ra != '-' and dec != '-':
 		    print(ra,dec)
-		    equatorial = SkyCoord(ra=ra*u.hour, dec=dec*u.deg, frame='icrs')
+		    equatorial = SkyCoord(ra=ra, dec=dec, unit=(u.hourangle, u.deg))
 		    galactic = equatorial.galactic
 		    l = str(round(galactic.l.deg, 2))
 		    b = str(round(galactic.b.deg, 2))
