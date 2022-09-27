@@ -72,12 +72,12 @@ for i, element in enumerate(diff):
 
 		utc = re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html).group(1)
 		telescope = re.search(r'<td class=\"cell-tel_inst\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
-		ra = html[html.find('<td class="cell-ra">')+len('<td class="cell-ra">'):html.rfind('</td><td class="cell-decl">')].split()[0]
-		dec = html[html.find('<td class="cell-decl">')+len('<td class="cell-decl">'):html.rfind('</td><td class="cell-discovery_date">')]
-		frequency = html[html.find('<td class="cell-ref_freq">')+len('<td class="cell-ref_freq">'):html.rfind('</td><td class="cell-inst_bandwidth">')]
-		dm = html[html.find('<td class="cell-dm">')+len('<td class="cell-dm">'):html.rfind('</td><td class="cell-galactic_max_dm">')]
+		ra = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1)
+		dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
+		frequency = re.search(r'<td class=\"cell-ref_freq\">(.*?)</td><td class=\"cell-inst_bandwidth\">', html).group(1)
+		dm = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1)
 
-		print(utc, telescope)
+		print(utc, telescope, ra, dec, frequency, dm)
 		print('---')
 if not success:
 	raise ValueError('[-] The FRBSTATS database is out of date!')
