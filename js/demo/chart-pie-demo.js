@@ -34,7 +34,7 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["One-off events", "Repeaters"],
+    labels: ["One-off FRBs", "Repeaters"],
     datasets: [{
       //data: [events_obseved_pie-(repeater_parents_pie+repeater_children_pie), repeater_parents_pie],
       data: [lines-count_all, count],
