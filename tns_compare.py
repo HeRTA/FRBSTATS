@@ -104,7 +104,7 @@ spreadsheet_id = '1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY'
 range_ = 'Catalogue!A1:P1'
 value_input_option = 'USER_ENTERED'
 insert_data_option = 'INSERT_ROWS'
-
+print(diff)
 for i, element in enumerate(diff):
 	if element == False:
 		#print(frbstats_frbs[i])
