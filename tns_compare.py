@@ -174,13 +174,13 @@ for i, element in enumerate(diff):
 		print('---')
 
 print('Sorting...')
-requests = {
+req = {
     "requests": [
         {
             "sortRange": {
                 "range": {
                     "sheetId": 1560822367,
-                    "startRowIndex": 2,
+                    "startRowIndex": 1,
                     "startColumnIndex": 0
                 },
                 "sortSpecs": [
@@ -195,7 +195,7 @@ requests = {
         }
     ]
 }
-res = service.spreadsheets().batchUpdate(body=requests, spreadsheetId=spreadsheet_id).execute()
+res = service.spreadsheets().batchUpdate(body=req, spreadsheetId=spreadsheet_id).execute()
 print(res)
 
 print('Running gitpull.php...')
