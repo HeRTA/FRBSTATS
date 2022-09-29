@@ -365,9 +365,8 @@
             for (row of rows) {
                 lines = lines + 1
             }
-        });
-        // FRB repeaters
-        fetch("repeaters.json")
+        }).then(function (response){
+            fetch("repeaters.json")
             .then(response => response.text())
             .then(jsonString => {
             var temp = jsonString;
@@ -375,9 +374,10 @@
             var count = (temp.match(/children/g) || []).length - 1;
             document.getElementById("events").innerHTML = lines.toString() + " (" + (lines-count_all+count).toString() + ")";
             document.getElementById("repeaters").innerHTML = count;
-        });
-        // Event coverage
-        fetch("catalogue.json")
+
+            });
+        }).then(function (response){
+            fetch("catalogue.json")
             .then(response => response.text())
             .then(jsonString => {
             var temp = jsonString;
@@ -452,6 +452,10 @@
             document.getElementById("coverage").innerHTML = coverage + "%";
             $('#coverage_progressbar').attr('aria-valuenow', coverage).css('width', coverage+'%');
         })
+
+        });
+
+       
     });
     </script>
     <!-- Bootstrap core JavaScript-->
