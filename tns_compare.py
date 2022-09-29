@@ -173,6 +173,31 @@ for i, element in enumerate(diff):
 		print(res)
 		print('---')
 
+print('Sorting...')
+requests = {
+    "requests": [
+        {
+            "sortRange": {
+                "range": {
+                    "sheetId": 1560822367,
+                    "startRowIndex": 2,
+                    "startColumnIndex": 0
+                },
+                "sortSpecs": [
+                    {
+                        "dataSourceColumnReference": {
+                            "name": "A"
+                        },
+                        "sortOrder": "ASCENDING"
+                    }
+                ]
+            }
+        }
+    ]
+}
+res = service.spreadsheets().batchUpdate(body=requests, spreadsheetId=spreadsheet_id).execute()
+print(res)
+
 print('Running gitpull.php...')
 start = time.time()
 x = requests.get('http://www.herta-experiment.org/gitpull.php?plot=0', timeout=600) # 10 min timeout
