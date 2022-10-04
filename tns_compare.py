@@ -118,6 +118,8 @@ for i, element in enumerate(diff):
 		html = str(response.content)
 
 		#try:
+		print(html)
+		print(re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html))
 		utc = re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html).group(1)
 		print(utc)
 		mjd = str(Time(utc, format='iso', scale='utc').mjd)
@@ -217,7 +219,7 @@ for i, element in enumerate(diff):
 			redshift = '-'
 		
 		print(utc, mjd, telescope, str(ra), str(dec), l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, redshift_measured, ra_error, dec_error, dm_error)
-		data = [[tns_frbs[i], utc, mjd, telescope, str(ra), str(dec), l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, redshift_measured, ra_error, dec_error, dm_error]]
+		data = [[tns_frbs[i], utc, mjd, telescope, str(ra), '="'+str(dec)+'"', l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, redshift_measured, ra_error, dec_error, dm_error]]
 		res = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_, valueInputOption=value_input_option, insertDataOption=insert_data_option, body={"values": data}).execute()
 		print(res)
 		print('---')
