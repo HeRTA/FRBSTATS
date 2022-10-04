@@ -142,8 +142,7 @@ for i, element in enumerate(diff):
 				ra_error = ra_error.replace('(','').replace(')','')
 				ra_error = str(round(Angle(ra_error).arcmin, 2))
 				print(ra_error)
-				if ra_error == '0':
-					print('IN_IF')
+				if ra_error == '0' or ra_error == '0.0':
 					ra_error = '-'
 			else:
 				ra_error = '-'
@@ -159,7 +158,7 @@ for i, element in enumerate(diff):
 				dec_error = dec_error + re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1).split()[2]
 				dec_error = dec_error.replace('(','').replace(')','')
 				dec_error = str(round(Angle(dec_error).arcmin, 2))
-				if dec_error == '0':
+				if dec_error == '0' or dec_error == '0.0':
 					dec_error = '-'
 			else:
 				dec_error = '-'
@@ -183,7 +182,7 @@ for i, element in enumerate(diff):
 			if '(' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1) and ')' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1):
 				dm_error = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[1].replace('(','').replace(')','')
 				dm_error = str(dm_error)
-				if dm_error == '0':
+				if dm_error == '0' or dm_error == '0.0':
 					dm_error = '-'
 			else:
 				dm_error = '-'
