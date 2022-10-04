@@ -196,6 +196,24 @@ for i, element in enumerate(diff):
 		reference = frb_tns_url
 		redshift = '-'
 		redshift_measured = '-'
+		
+		frb = fruitbat.Frb(dm_value, gl=l, gb=b)
+		frb.calc_dm_galaxy()
+		try: 
+			# Calculate the Redshift of the FRB
+			redshift = float(frb.calc_redshift())
+			# Round to 4 decimal places
+			redshift = round(redshift, 4)
+			if math.isnan(redshift):
+				print('is nan entered. Redshift is:')
+				print(str(frbs[idx]) +':'+ str(redshift))
+				redshift = '-'
+			else:
+				redshift = str(redshift)
+		except Exception as e:
+			print(e)
+			redshift = '-'
+		
 		print(utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, redshift_measured, ra_error, dec_error, dm_error)
 		data = [[tns_frbs[i], utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, redshift_measured, ra_error, dec_error, dm_error]]
 		res = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_, valueInputOption=value_input_option, insertDataOption=insert_data_option, body={"values": data}).execute()
