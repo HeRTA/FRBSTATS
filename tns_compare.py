@@ -199,7 +199,7 @@ for i, element in enumerate(diff):
 		redshift = '-'
 		redshift_measured = '-'
 		
-		frb = fruitbat.Frb(dm, gl=l, gb=b)
+		frb = fruitbat.Frb(float(dm), gl=l, gb=b)
 		frb.calc_dm_galaxy()
 		try: 
 			# Calculate the Redshift of the FRB
