@@ -141,13 +141,13 @@ for i, element in enumerate(diff):
 		except (ValueError,IndexError):
 			ra_error = '-'
 		try:
-			dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[0] #[1] to get the error
+			dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1).split()[0] #[1] to get the error
 		except (ValueError,IndexError):
 			dec = '-'
 		try:
-			if '(' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1) and ')' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1):				
-				dec_error = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[1]
-				dec_error = dec_error + re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[2]
+			if '(' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1) and ')' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1):				
+				dec_error = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1).split()[1]
+				dec_error = dec_error + re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1).split()[2]
 				dec_error = dec_error.replace('(','').replace(')','')
 				dec_error = str(round(Angle(dec_error).arcmin, 2))
 			else:
