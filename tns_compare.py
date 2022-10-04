@@ -107,6 +107,7 @@ range_ = 'Catalogue!A1:P1'
 value_input_option = 'USER_ENTERED'
 insert_data_option = 'INSERT_ROWS'
 print(diff)
+count = 0
 for i, element in enumerate(diff):
 	if element == False:
 		#print(frbstats_frbs[i])
@@ -140,6 +141,8 @@ for i, element in enumerate(diff):
 				ra_error = ra_error + re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[2]
 				ra_error = ra_error.replace('(','').replace(')','')
 				ra_error = str(round(Angle(ra_error).arcmin, 2))
+				if ra_error == '0':
+					ra_error = '-'
 			else:
 				ra_error = '-'
 		except (ValueError,IndexError):
@@ -154,6 +157,8 @@ for i, element in enumerate(diff):
 				dec_error = dec_error + re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1).split()[2]
 				dec_error = dec_error.replace('(','').replace(')','')
 				dec_error = str(round(Angle(dec_error).arcmin, 2))
+				if dec_error == '0':
+					dec_error = '-'
 			else:
 				dec_error = '-'
 		except (ValueError,IndexError):
@@ -176,6 +181,8 @@ for i, element in enumerate(diff):
 			if '(' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1) and ')' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1):
 				dm_error = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[1].replace('(','').replace(')','')
 				dm_error = str(dm_error)
+				if dm_error == '0':
+					dm_error = '-'
 			else:
 				dm_error = '-'
 		except (ValueError,IndexError):
@@ -223,6 +230,10 @@ for i, element in enumerate(diff):
 		res = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_, valueInputOption=value_input_option, insertDataOption=insert_data_option, body={"values": data}).execute()
 		print(res)
 		print('---')
+		count += 1
+		if count > 10:
+			count = 0
+			time.sleep(60)
 
 print('Sorting...')
 req = {
