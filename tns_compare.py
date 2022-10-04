@@ -141,7 +141,9 @@ for i, element in enumerate(diff):
 				ra_error = ra_error + re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[2]
 				ra_error = ra_error.replace('(','').replace(')','')
 				ra_error = str(round(Angle(ra_error).arcmin, 2))
+				print(ra_error)
 				if ra_error == '0':
+					print('IN_IF')
 					ra_error = '-'
 			else:
 				ra_error = '-'
