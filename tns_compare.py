@@ -216,8 +216,8 @@ for i, element in enumerate(diff):
 			print(e)
 			redshift = '-'
 		
-		print(utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, redshift_measured, ra_error, dec_error, dm_error)
-		data = [[tns_frbs[i], utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, redshift_measured, ra_error, dec_error, dm_error]]
+		print(utc, mjd, telescope, str(ra), str(dec), l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, redshift_measured, ra_error, dec_error, dm_error)
+		data = [[tns_frbs[i], utc, mjd, telescope, str(ra), str(dec), l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, redshift_measured, ra_error, dec_error, dm_error]]
 		res = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_, valueInputOption=value_input_option, insertDataOption=insert_data_option, body={"values": data}).execute()
 		print(res)
 		print('---')
