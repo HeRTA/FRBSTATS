@@ -132,8 +132,11 @@ for i, element in enumerate(diff):
 			ra = '-'
 		try:
 			if '(' in re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1) and ')' in re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1):
-				ra_error = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[1].replace('(','').replace(')','')
+				ra_error = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[1]
+				ra_error = ra_error + re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[2]
+				ra_error = ra_error.replace('(','').replace(')','')
 				ra_error = str(round(Angle(ra_error).arcmin, 2))
+				print(ra_error)
 			else:
 				ra_error = '-'
 		except (ValueError,IndexError):
