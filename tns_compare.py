@@ -3,7 +3,7 @@ import urllib.request
 from frbcat import TNS
 from csv import reader
 from astropy.time import Time
-from astropy.coordinates import SkyCoord, EarthLocation, AltAz
+from astropy.coordinates import SkyCoord, EarthLocation, AltAz, Angle
 import astropy.units as u
 import numpy as np
 import re
