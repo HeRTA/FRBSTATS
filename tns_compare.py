@@ -1,5 +1,7 @@
 import requests
 import urllib.request
+import fruitbat
+import math
 from frbcat import TNS
 from csv import reader
 from astropy.time import Time
