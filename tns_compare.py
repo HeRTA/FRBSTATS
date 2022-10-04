@@ -232,9 +232,10 @@ for i, element in enumerate(diff):
 		print(res)
 		print('---')
 		count += 1
+		time.sleep(5)
 		if count > 4:
 			count = 0
-			time.sleep(60)
+			time.sleep(30)
 
 print('Sorting...')
 req = {
