@@ -136,7 +136,6 @@ for i, element in enumerate(diff):
 				ra_error = ra_error + re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[2]
 				ra_error = ra_error.replace('(','').replace(')','')
 				ra_error = str(round(Angle(ra_error).arcmin, 2))
-				print(ra_error)
 			else:
 				ra_error = '-'
 		except (ValueError,IndexError):
@@ -146,8 +145,10 @@ for i, element in enumerate(diff):
 		except (ValueError,IndexError):
 			dec = '-'
 		try:
-			if '(' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1) and ')' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1):
-				dec_error = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[1].replace('(','').replace(')','')
+			if '(' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1) and ')' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1):				
+				dec_error = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[1]
+				dec_error = dec_error + re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[2]
+				dec_error = dec_error.replace('(','').replace(')','')
 				dec_error = str(round(Angle(dec_error).arcmin, 2))
 			else:
 				dec_error = '-'
@@ -170,7 +171,7 @@ for i, element in enumerate(diff):
 		try:
 			if '(' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1) and ')' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1):
 				dm_error = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[1].replace('(','').replace(')','')
-				dm_error = str(round(Angle(dm_error).arcmin, 2))
+				dm_error = str(dm_error)
 			else:
 				dm_error = '-'
 		except (ValueError,IndexError):
