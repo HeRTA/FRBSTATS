@@ -231,7 +231,7 @@ for i, element in enumerate(diff):
 		print(res)
 		print('---')
 		count += 1
-		if count > 10:
+		if count > 4:
 			count = 0
 			time.sleep(60)
 
