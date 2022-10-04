@@ -91,8 +91,8 @@ telescopes = {
 	'Pushchino LPA': 'Pushchino LPA',
 	'Stockert': 'Stockert',
 	'UTMOST': 'UTMOST',
-        'VLA': 'VLA',
-        'WSRT/Apertif': 'WSRT/Apertif'
+		'VLA': 'VLA',
+		'WSRT/Apertif': 'WSRT/Apertif'
 }
 """
 SERVICE_ACCOUNT_FILE = "gsheets.json"
@@ -123,71 +123,71 @@ for i, element in enumerate(diff):
 		#    utc = '-'
 		#    mjd = '-'
 		try:
-		    telescope = re.search(r'<td class=\"cell-tel_inst\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
+			telescope = re.search(r'<td class=\"cell-tel_inst\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
 		except (ValueError,IndexError):
-		    telescope = '-'
+			telescope = '-'
 		try:
-		    ra = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[0] #[1] to get the error
+			ra = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[0] #[1] to get the error
 		except (ValueError,IndexError):
-		    ra = '-'
+			ra = '-'
 		try:
-		    if '(' in re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1) and ')' in re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1):
-		        ra_error = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[1].replace('(','').replace(')','')
-			ra_error = str(round(Angle(ra_error).arcmin, 2))
-		    else:
+			if '(' in re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1) and ')' in re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1):
+				ra_error = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[1].replace('(','').replace(')','')
+				ra_error = str(round(Angle(ra_error).arcmin, 2))
+			else:
+				ra_error = '-'
+		except (ValueError,IndexError):
 			ra_error = '-'
-		except (ValueError,IndexError):
-		    ra_error = '-'
 		try:
-		    dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[0] #[1] to get the error
+			dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[0] #[1] to get the error
 		except (ValueError,IndexError):
-		    dec = '-'
+			dec = '-'
 		try:
-		    if '(' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1) and ')' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1):
-		        dec_error = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[1].replace('(','').replace(')','')
-			dec_error = str(round(Angle(dec_error).arcmin, 2))
-		    else:
+			if '(' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1) and ')' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1):
+				dec_error = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[1].replace('(','').replace(')','')
+				dec_error = str(round(Angle(dec_error).arcmin, 2))
+			else:
+				dec_error = '-'
+		except (ValueError,IndexError):
 			dec_error = '-'
-		except (ValueError,IndexError):
-		    dec_error = '-'
 		if ra != '-' and dec != '-':
-		    print(ra,dec)
-		    equatorial = SkyCoord(ra=ra, dec=dec, unit=(u.hourangle, u.deg))
-		    galactic = equatorial.galactic
-		    l = str(round(galactic.l.deg, 2))
-		    b = str(round(galactic.b.deg, 2))
+			print(ra,dec)
+			equatorial = SkyCoord(ra=ra, dec=dec, unit=(u.hourangle, u.deg))
+			galactic = equatorial.galactic
+			l = str(round(galactic.l.deg, 2))
+			b = str(round(galactic.b.deg, 2))
 		try:
-		    frequency = re.search(r'<td class=\"cell-ref_freq\">(.*?)</td><td class=\"cell-inst_bandwidth\">', html).group(1).split()[0]
+			frequency = re.search(r'<td class=\"cell-ref_freq\">(.*?)</td><td class=\"cell-inst_bandwidth\">', html).group(1).split()[0]
 		except (ValueError,IndexError):
-		    frequency = '-'
+			frequency = '-'
 		try:
-		    dm = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[0] #[1] to get error
+			dm = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[0] #[1] to get error
 		except (ValueError,IndexError):
-		    dm = '-'
+			dm = '-'
 		try:
-		    if '(' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1) and ')' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1):
-		        dm_error = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[1].replace('(','').replace(')','')
-			dm_error = str(round(Angle(dm_error).arcmin, 2))
-		    else:
+			if '(' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1) and ')' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1):
+				dm_error = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[1].replace('(','').replace(')','')
+				dm_error = str(round(Angle(dm_error).arcmin, 2))
+			else:
+				dm_error = '-'
+		except (ValueError,IndexError):
 			dm_error = '-'
-		except (ValueError,IndexError):
-		    dm_error = '-'
 		try:
-		    flux = re.search(r'<td class=\"cell-flux\">(.*?)</td><td class=\"cell-unit_name\">', html).group(1).split()[0] #[1] to get error
+			flux = re.search(r'<td class=\"cell-flux\">(.*?)</td><td class=\"cell-unit_name\">', html).group(1).split()[0] #[1] to get error
 		except (ValueError,IndexError):
-		    flux = '-'
+			flux = '-'
 		try:
-		    width = re.search(r'<td class=\"cell-burst_width\">(.*?)</td><td class=\"cell-scattering_time\">', html).group(1).split()[0] #[1] to get error
+			width = re.search(r'<td class=\"cell-burst_width\">(.*?)</td><td class=\"cell-scattering_time\">', html).group(1).split()[0] #[1] to get error
 		except (ValueError,IndexError):
-		    width = '-'
+			width = '-'
 		try:
-		    fluence = re.search(r'<td class=\"cell-fluence\">(.*?)</td><td class=\"cell-burst_width\">', html).group(1).split()[0] #[1] to get error
+			fluence = re.search(r'<td class=\"cell-fluence\">(.*?)</td><td class=\"cell-burst_width\">', html).group(1).split()[0] #[1] to get error
 		except (ValueError,IndexError):
-		    fluence = '-'
+			fluence = '-'
 		try:
-		    snr = re.search(r'<td class=\"cell-snr\">(.*?)</td><td class=\"cell-fluence\">', html).group(1)
+			snr = re.search(r'<td class=\"cell-snr\">(.*?)</td><td class=\"cell-fluence\">', html).group(1)
 		except (ValueError,IndexError):
-		    snr = '-'
+			snr = '-'
 
 		reference = frb_tns_url
 		redshift = '-'
@@ -200,25 +200,25 @@ for i, element in enumerate(diff):
 
 print('Sorting...')
 req = {
-    "requests": [
-        {
-            "sortRange": {
-                "range": {
-                    "sheetId": 1560822367,
-                    "startRowIndex": 1,
-                    "startColumnIndex": 0
-                },
-                "sortSpecs": [
-                    {
-                        "dataSourceColumnReference": {
-                            "name": "A"
-                        },
-                        "sortOrder": "ASCENDING"
-                    }
-                ]
-            }
-        }
-    ]
+	"requests": [
+		{
+			"sortRange": {
+				"range": {
+					"sheetId": 1560822367,
+					"startRowIndex": 1,
+					"startColumnIndex": 0
+				},
+				"sortSpecs": [
+					{
+						"dataSourceColumnReference": {
+							"name": "A"
+						},
+						"sortOrder": "ASCENDING"
+					}
+				]
+			}
+		}
+	]
 }
 res = service.spreadsheets().batchUpdate(body=req, spreadsheetId=spreadsheet_id).execute()
 print(res)
