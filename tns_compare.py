@@ -131,9 +131,25 @@ for i, element in enumerate(diff):
 		except (ValueError,IndexError):
 		    ra = '-'
 		try:
+		    if '(' in re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1) and ')' in re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1):
+		        ra_error = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[1].replace('(','').replace(')','')
+			ra_error = str(round(Angle(ra_error).arcmin, 2))
+		    else:
+			ra_error = '-'
+		except (ValueError,IndexError):
+		    ra_error = '-'
+		try:
 		    dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[0] #[1] to get the error
 		except (ValueError,IndexError):
 		    dec = '-'
+		try:
+		    if '(' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1) and ')' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1):
+		        dec_error = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-snr\">', html).group(1).split()[1].replace('(','').replace(')','')
+			dec_error = str(round(Angle(dec_error).arcmin, 2))
+		    else:
+			dec_error = '-'
+		except (ValueError,IndexError):
+		    dec_error = '-'
 		if ra != '-' and dec != '-':
 		    print(ra,dec)
 		    equatorial = SkyCoord(ra=ra, dec=dec, unit=(u.hourangle, u.deg))
@@ -148,6 +164,14 @@ for i, element in enumerate(diff):
 		    dm = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[0] #[1] to get error
 		except (ValueError,IndexError):
 		    dm = '-'
+		try:
+		    if '(' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1) and ')' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1):
+		        dm_error = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[1].replace('(','').replace(')','')
+			dm_error = str(round(Angle(dm_error).arcmin, 2))
+		    else:
+			dm_error = '-'
+		except (ValueError,IndexError):
+		    dm_error = '-'
 		try:
 		    flux = re.search(r'<td class=\"cell-flux\">(.*?)</td><td class=\"cell-unit_name\">', html).group(1).split()[0] #[1] to get error
 		except (ValueError,IndexError):
@@ -167,7 +191,8 @@ for i, element in enumerate(diff):
 
 		reference = frb_tns_url
 		redshift = '-'
-		print(utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift)
+		redshift_measured = '-'
+		print(utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift, redshift_measured, ra_error, dec_error, dm_error)
 		data = [[tns_frbs[i], utc, mjd, telescope, ra, dec, l, b, frequency, dm, flux, width, fluence, snr, reference, redshift]]
 		res = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_, valueInputOption=value_input_option, insertDataOption=insert_data_option, body={"values": data}).execute()
 		print(res)
