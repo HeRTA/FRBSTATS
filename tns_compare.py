@@ -75,8 +75,8 @@ frbstats_frbs = np.array(frbstats_frbs)
 #print(frbstats_frbs)
 diff = np.in1d(tns_frbs, frbstats_frbs)
 
-"""
-telescopes = {
+
+telescope_dict = {
 	'Arecibo': 'Arecibo',
 	'ATA': 'ATA',
 	'CRAFT': 'ASKAP',
@@ -88,15 +88,16 @@ telescopes = {
 	'FAST': 'FAST',
 	'GBT': 'GBT',
 	'GMRT': 'GMRT',
-	'INAF SRT': 'INAF SRT',
+	'SRT_LP': 'INAF SRT',
 	'Parkes': 'Parkes',
 	'Pushchino LPA': 'Pushchino LPA',
 	'Stockert': 'Stockert',
 	'UTMOST': 'UTMOST',
-		'VLA': 'VLA',
-		'WSRT/Apertif': 'WSRT/Apertif'
+	'VLA': 'VLA',
+	'WSRT': 'WSRT/Apertif',
+	'Apertif': 'WSRT/Apertif'
 }
-"""
+
 SERVICE_ACCOUNT_FILE = "gsheets.json"
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -129,6 +130,9 @@ for i, element in enumerate(diff):
 		#    mjd = '-'
 		try:
 			telescope = re.search(r'<td class=\"cell-tel_inst\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
+			for key, value in telescope_dict.items() :
+				if telescope.lower() in key.lower():
+					telescope = value
 			if str(telescope) == '0' or str(telescope) == '0.0':
 				telescope = '-'
 		except (ValueError,IndexError):
