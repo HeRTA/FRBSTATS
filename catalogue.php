@@ -305,7 +305,7 @@
       "columnDefs": [
         {
             // Hide columns
-            "visible": false, "targets": [1,2,6,7,8,11,12,13]
+            "visible": false, "targets": [1,2,5,7,8,9,10,12,13,14,16,17,18]
         }
       ]
     } );
