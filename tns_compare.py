@@ -129,10 +129,14 @@ for i, element in enumerate(diff):
 		#    mjd = '-'
 		try:
 			telescope = re.search(r'<td class=\"cell-tel_inst\">(.*?)</td><td class=\"cell-snr\">', html).group(1)
+			if str(telescope) == '0' or str(telescope) == '0.0':
+				telescope = '-'
 		except (ValueError,IndexError):
 			telescope = '-'
 		try:
 			ra = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[0] #[1] to get the error
+			if str(ra) == '0' or str(ra) == '0.0':
+				ra = '-'
 		except (ValueError,IndexError):
 			ra = '-'
 		try:
@@ -150,6 +154,8 @@ for i, element in enumerate(diff):
 			ra_error = '-'
 		try:
 			dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1).split()[0] #[1] to get the error
+			if str(dec) == '0' or str(dec) == '0.0':
+				dec = '-'
 		except (ValueError,IndexError):
 			dec = '-'
 		try:
@@ -172,10 +178,14 @@ for i, element in enumerate(diff):
 			b = str(round(galactic.b.deg, 2))
 		try:
 			frequency = re.search(r'<td class=\"cell-ref_freq\">(.*?)</td><td class=\"cell-inst_bandwidth\">', html).group(1).split()[0]
+			if str(frequency) == '0' or str(frequency) == '0.0':
+				frequency = '-'
 		except (ValueError,IndexError):
 			frequency = '-'
 		try:
 			dm = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[0] #[1] to get error
+			if str(dm) == '0' or str(dm) == '0.0':
+				dm = '-'
 		except (ValueError,IndexError):
 			dm = '-'
 		try:
@@ -190,18 +200,26 @@ for i, element in enumerate(diff):
 			dm_error = '-'
 		try:
 			flux = re.search(r'<td class=\"cell-flux\">(.*?)</td><td class=\"cell-unit_name\">', html).group(1).split()[0] #[1] to get error
+			if str(flux) == '0' or str(flux) == '0.0':
+				flux = '-'
 		except (ValueError,IndexError):
 			flux = '-'
 		try:
 			width = re.search(r'<td class=\"cell-burst_width\">(.*?)</td><td class=\"cell-scattering_time\">', html).group(1).split()[0] #[1] to get error
+			if str(width) == '0' or str(width) == '0.0':
+				width = '-'
 		except (ValueError,IndexError):
 			width = '-'
 		try:
 			fluence = re.search(r'<td class=\"cell-fluence\">(.*?)</td><td class=\"cell-burst_width\">', html).group(1).split()[0] #[1] to get error
+			if str(fluence) == '0' or str(fluence) == '0.0':
+				fluence = '-'
 		except (ValueError,IndexError):
 			fluence = '-'
 		try:
 			snr = re.search(r'<td class=\"cell-snr\">(.*?)</td><td class=\"cell-fluence\">', html).group(1)
+			if str(snr) == '0' or str(snr) == '0.0':
+				snr = '-'
 		except (ValueError,IndexError):
 			snr = '-'
 
