@@ -79,13 +79,18 @@ diff = np.in1d(tns_frbs, frbstats_frbs)
 telescope_dict = {
 	'Arecibo': 'Arecibo',
 	'ATA': 'ATA',
+	'ASKAP': 'ASKAP',
 	'CRAFT': 'ASKAP',
-	'CRAFT': 'ASKAP',
+	'SKA': 'SKA',
 	'Tianlai': 'Tianlai',
 	'CHIME': 'CHIME',
-	'DSA-10': 'DSA-10',
+	'DSA': 'DSA',
 	'Effelsberg': 'Effelsberg',
+	'Meer', 'MeerKAT',
 	'FAST': 'FAST',
+	'GMRT': 'GMRT',
+	'LPA_LPA', 'LPA',
+	'LPA', 'LPA',
 	'GBT': 'GBT',
 	'GMRT': 'GMRT',
 	'SRT_LP': 'INAF SRT',
@@ -93,9 +98,11 @@ telescope_dict = {
 	'Pushchino LPA': 'Pushchino LPA',
 	'Stockert': 'Stockert',
 	'UTMOST': 'UTMOST',
+	'MOST', 'UTMOST',
 	'VLA': 'VLA',
 	'WSRT': 'WSRT/Apertif',
-	'Apertif': 'WSRT/Apertif'
+	'Apertif': 'WSRT/Apertif',
+	'Other': 'Other'
 }
 
 SERVICE_ACCOUNT_FILE = "gsheets.json"
