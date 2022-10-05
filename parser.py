@@ -2,7 +2,7 @@ import csv
 import json
 
 # Catalogue headers
-fieldnames = ('frb', 'utc', 'mjd', 'telescope', 'ra', 'dec', 'l', 'b', 'frequency', 'dm', 'flux', 'width', 'fluence', 'snr', 'ref', 'redshift')
+fieldnames = ('frb', 'utc', 'mjd', 'telescope', 'ra', 'dec', 'l', 'b', 'frequency', 'dm', 'flux', 'width', 'fluence', 'snr', 'ref', 'redshift', 'redshift_measured', 'ra_error', 'dec_error', 'dm_error')
 
 # Load CSV catalogue
 with open('catalogue.csv', 'r') as csvfile:
