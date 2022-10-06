@@ -1,4 +1,4 @@
-eps = 87
+eps = 86
 
 import json
 import random
@@ -32,7 +32,7 @@ with open('/home/herta-experiment/public_html/frbstats/catalogue.csv', 'r') as r
                         ra_error.append(row[17])
                         dec.append(row[5])
                         dec_error.append(row[18])
-                        dm.append(row[9])
+                        dm.append(float(row[9]))
                         dm_error.append(row[19])
 
 ### Pre-process data
@@ -69,6 +69,8 @@ for i in range(len(dec_error)):
 for i in range(len(dm_error)):
         if dm_error[i] == '-':
                 dm_error[i] = 0
+        else:
+                dm_error[i] = float(dm_error[i])
 
 X = np.array([[ra[i], ra_error[i], dec[i], dec_error[i], dm[i], dm_error[i]] for i in range(len(frb))])
 
