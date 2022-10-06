@@ -1,8 +1,10 @@
+import json
 import random
 import numpy as np
-from sklearn.cluster import *
 from csv import reader
-import json
+from sklearn.cluster import *
+from astropy import units as u
+from astropy.coordinates import Angle
 from matplotlib.ticker import EngFormatter
 
 ### Load data
@@ -10,8 +12,8 @@ from matplotlib.ticker import EngFormatter
 
 frb = []
 dm = []
-long = []
-lat = []
+ra = []
+dec = []
 
 # Read FRBSTATS CSV catalogue
 with open('/home/herta-experiment/public_html/frbstats/catalogue.csv', 'r') as read_obj:
@@ -21,9 +23,12 @@ with open('/home/herta-experiment/public_html/frbstats/catalogue.csv', 'r') as r
 	if header != None:
 		for row in csv_reader:
 			frb.append(row[0])
+			ra.append(row[4])
+			ra_error.append(row[17])
+			dec.append(row[5])
+			dec_error.append(row[18])
 			dm.append(row[9])
-			lat.append(row[7])
-			long.append(row[6])
+			dm_error.append(row[19])
 
 ### Pre-process data
 # Pick out incompatible rows
@@ -36,13 +41,13 @@ for idx, val in enumerate(dm):
 
 for idx, val in enumerate(long):
 	try:
-		long[idx] = float(val)
+		ra[idx] = float(val)
 	except ValueError:
 		idx_mask.add(idx)
 
 for idx, val in enumerate(lat):
 	try:
-		lat[idx] = float(val)
+		dec[idx] = float(val)
 	except ValueError:
 		idx_mask.add(idx)
 
@@ -50,35 +55,120 @@ for idx, val in enumerate(lat):
 for idx in sorted(idx_mask, reverse=True):
 	del frb[idx]
 	del dm[idx]
-	del long[idx]
-	del lat[idx]
+	del ra[idx]
+	del dec[idx]
 
-X = np.array([[long[i], lat[i], dm[i]] for i in range(len(frb))])
+# Convert coordinates to rad and turn '-' (N/A) to +/- 0 uncertainty
+for i in range(len(ra)):
+	ra[i] = Angle(str(ra[i])+' hr').rad
+for i in range(len(ra_error)):
+	if ra_error[i] == '-':
+		ra_error[i] = 0
+	ra_error[i] = Angle(str(ra_error)+ 'arcmin').rad
+
+for i in range(len(dec)):
+	dec[i] = Angle(str(dec[i])+' deg').rad
+for i in range(len(dec_error)):
+	if dec_error[i] == '-':
+		dec_error[i] = 0
+	dec_error[i] = Angle(str(dec_error)+ 'arcmin').rad
+
+for i in range(len(dm_error)):
+	if dm_error[i] == '-':
+		dm_error[i] = 0
+
+X = np.array([[ra[i], ra_error[i], dec[i], dec_error[i], dm[i], dm_error[i]] for i in range(len(frb))])
 
 def dist(frb1, frb2):
 	# Point A
-	l1 = np.deg2rad(frb1[0])
-	b1 = np.deg2rad(frb1[1])
-	dm1 = frb1[2]
+	ra1 = frb1[0]
+	dec1 = frb1[2]
+	dm1 = frb1[4]
+
+	# Errors
+	ra_error1 = frb1[1]
+	dec_error1 = frb1[3]
+	dm_error1 = frb1[5]
 
 	# Point B
-	l2 = np.deg2rad(frb2[0])
-	b2 = np.deg2rad(frb2[1])
+	ra2 = frb2[0]
+	dec2 = frb2[2]
 	dm2 = frb2[2]
 
+	# Errors
+	ra_error2 = frb2[1]
+	dec_error2 = frb2[3]
+	dm_error2 = frb2[5]
+
 	# Coordinate A
-	x1 = dm1*np.cos(b1)*np.sin(l1)
-	y1 = dm1*np.cos(b1)*np.cos(l1)
-	z1 = dm1*np.sin(b1)
+	x1 = dm1*np.cos(dec1)*np.sin(ra1)
+	y1 = dm1*np.cos(dec1)*np.cos(ra1)
+	z1 = dm1*np.sin(dec1)
+
+	# Partial derivatives
+	dx_dRA1 = dm1*np.cos(dec1)*np.cos(ra1)
+	dy_dRA1 = -dm1*np.cos(dec1)*np.sin(ra1)
+	dz_dRA1 = 0
+
+	dx_dDec1 = -dm1*np.sin(ra1)*np.sin(dec1)
+	dy_dDec1 = -dm1*np.cos(ra1)*np.sin(dec1)
+	dz_dDec1 = dm1*np.cos(dec1)
+
+	dx_dDM1 = np.cos(dec1)*np.sin(ra1)
+	dy_dDM1 = np.cos(dec1)*np.cos(ra1)
+	dz_dDM1 = np.sin(dec1)
+
+	# Uncertainties
+	Dx1 = np.sqrt((dx_dRA1**2) * (ra_error1**2) + (dx_dDec1**2) * (dec_error1)**2 + (dx_dDM1**2) * (dm_error1)**2)
+	Dy1 = np.sqrt((dy_dRA1**2) * (ra_error1**2) + (dy_dDec1**2) * (dec_error1)**2 + (dy_dDM1**2) * (dm_error1)**2)
+	Dz1 = np.sqrt((dz_dRA1**2) * (ra_error1**2) + (dz_dDec1**2) * (dec_error1)**2 + (dz_dDM1**2) * (dm_error1)**2)
 
 	# Coordinate B
-	x2 = dm2*np.cos(b2)*np.sin(l2)
-	y2 = dm2*np.cos(b2)*np.cos(l2)
-	z2 = dm2*np.sin(b2)
+	x2 = dm2*np.cos(dec2)*np.sin(ra2)
+	y2 = dm2*np.cos(dec2)*np.cos(ra2)
+	z2 = dm2*np.sin(dec2)
+
+	# Partial derivatives
+	dx_dRA2 = dm2*np.cos(dec2)*np.cos(ra2)
+	dy_dRA2 = -dm2*np.cos(dec2)*np.sin(ra2)
+	dz_dRA2 = 0
+
+	dx_dDec2 = -dm2*np.sin(ra2)*np.sin(dec2)
+	dy_dDec2 = -dm2*np.cos(ra2)*np.sin(dec2)
+	dz_dDec2 = dm2*np.cos(dec2)
+
+	dx_dDM2 = np.cos(dec2)*np.sin(ra2)
+	dy_dDM2 = np.cos(dec2)*np.cos(ra2)
+	dz_dDM2 = np.sin(dec2)
+
+	# Uncertainties
+	Dx2 = np.sqrt((dx_dRA2**2) * (ra_error2**2) + (dx_dDec2**2) * (dec_error2)**2 + (dx_dDM2**2) * (dm_error2)**2)
+	Dy2 = np.sqrt((dy_dRA2**2) * (ra_error2**2) + (dy_dDec2**2) * (dec_error2)**2 + (dy_dDM2**2) * (dm_error2)**2)
+	Dz2 = np.sqrt((dz_dRA2**2) * (ra_error2**2) + (dz_dDec2**2) * (dec_error2)**2 + (dz_dDM2**2) * (dm_error2)**2)
 
 	# Compute Euclidean distance
-	distance = np.sqrt(((x1-x2)**2)+((y1-y2)**2)+((z1-z2)**2))
-	return distance
+	d = np.sqrt(((x1-x2)**2)+((y1-y2)**2)+((z1-z2)**2))
+
+	# Compute error
+	dd_dx1 = (x1-x2)/np.sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)
+	dd_dy1 = (y1-y2)/np.sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)
+	dd_dz1 = (z1-z2)/np.sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)
+
+	dd_dx2 = -(x1-x2)/np.sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)
+	dd_dy2 = -(y1-y2)/np.sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)
+	dd_dz2 = -(z1-z2)/np.sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)
+
+	Dd = np.sqrt(
+		((dd_dx1)**2) * Dx1**2 +
+		((dd_dy1)**2) * Dy1**2 +
+		((dd_dz1)**2) * Dz1**2 +
+		
+		((dd_dx2)**2) * Dx2**2 +
+		((dd_dy2)**2) * Dy2**2 +
+		((dd_dz2)**2) * Dz2**2
+	)
+
+	return d/Dd
 
 # Cluster FRB repeaters
 db = DBSCAN(eps=15, min_samples=2, metric=dist, n_jobs=-1).fit(X)
