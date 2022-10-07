@@ -1,4 +1,4 @@
-eps = 86
+eps = 0.9
 
 import json
 import random
@@ -51,26 +51,46 @@ for idx in sorted(idx_mask, reverse=True):
         del ra[idx]
         del dec[idx]
 
+ra_hhmmss = ra.copy()
+dec_ddmmss = dec.copy()
+
 # Convert coordinates to rad and turn '-' (N/A) to +/- 0 uncertainty
 for i in range(len(ra)):
         ra[i] = Angle(str(ra[i])+' hr').rad
 for i in range(len(ra_error)):
         if ra_error[i] == '-':
-                ra_error[i] = 0
-        ra_error[i] = Angle(str(ra_error[i])+ ' arcmin').rad
+                ra_error[i] = np.nan
+        else:
+                ra_error[i] = Angle(str(ra_error[i])+ ' arcmin').rad
+
+ra_error = np.array(ra_error)
+ra_error_avg = np.nanmean(ra_error)
+ra_error[np.isnan(ra_error)] = ra_error_avg
 
 for i in range(len(dec)):
         dec[i] = Angle(str(dec[i])+' deg').rad
 for i in range(len(dec_error)):
         if dec_error[i] == '-':
-                dec_error[i] = 0
-        dec_error[i] = Angle(str(dec_error[i])+ ' arcmin').rad
+                dec_error[i] = np.nan
+        else:
+                dec_error[i] = Angle(str(dec_error[i])+ ' arcmin').rad
+
+dec_error = np.array(dec_error)
+dec_error_avg = np.nanmean(dec_error)
+dec_error[np.isnan(dec_error)] = dec_error_avg
 
 for i in range(len(dm_error)):
         if dm_error[i] == '-':
-                dm_error[i] = 0
+                dm_error[i] = np.nan
         else:
                 dm_error[i] = float(dm_error[i])
+
+                # DM variability threshold: 1.03 = +/-3% /(Dai et al. 2022)
+                dm_error[i] = max(dm_error[i], 1.03*dm[i]-dm[i])
+
+dm_error = np.array(dm_error)
+dm_error_avg = np.nanmean(dm_error)
+dm_error[np.isnan(dm_error)] = dm_error_avg
 
 X = np.array([[ra[i], ra_error[i], dec[i], dec_error[i], dm[i], dm_error[i]] for i in range(len(frb))])
 
@@ -88,7 +108,7 @@ def dist(frb1, frb2):
         # Point B
         ra2 = frb2[0]
         dec2 = frb2[2]
-        dm2 = frb2[2]
+        dm2 = frb2[4]
 
         # Errors
         ra_error2 = frb2[1]
@@ -144,6 +164,9 @@ def dist(frb1, frb2):
         # Compute Euclidean distance
         d = np.sqrt(((x1-x2)**2)+((y1-y2)**2)+((z1-z2)**2))
 
+        if d == 0:
+            return d
+
         # Compute error
         dd_dx1 = (x1-x2)/np.sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)
         dd_dy1 = (y1-y2)/np.sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)
@@ -163,12 +186,15 @@ def dist(frb1, frb2):
                 ((dd_dz2)**2) * Dz2**2
         )
 
-        return d, d/Dd
+        if Dd == 0:
+            return d
+
+        return d/Dd
 
 # RA, RA_error, Dec., Dec_error, DM, DM_error
-frb1 = [0, 0.1*0.0174533, 0, 0, 100, 0]
-frb2 = [1*0.0174533, 0, 0, 0, 100, 0]
-print(dist(frb1, frb2))
+#frb1 = [0, 0.1*0.0174533, 0, 0, 100, 0]
+#frb2 = [1*0.0174533, 0.1*0.0174533, 0, 0, 100, 0]
+#print(dist(frb1, frb2))
 
 
 # Cluster FRB repeaters
@@ -182,7 +208,7 @@ for i in range(np.max(labels)+1):
         print('-------- '+str(i)+' --------')
         repeater_cluster = []
         for j in np.where(labels == i)[0]:
-                print(frb[j]+':'+str(ra[j])+','+str(dec[j])+','+str(dm[j]))
+                print(frb[j]+':'+str(ra_hhmmss[j])+','+str(dec_ddmmss[j])+','+str(dm[j]))
                 repeater_cluster.append(frb[j])
         parent = True
         for k in repeater_cluster:
@@ -231,14 +257,14 @@ fig = plt.figure(figsize=(24, 12))
 ### Repeaters
 ax = fig.add_subplot(1, 2, 2, projection='3d')
 
-ax.set_xlim3d(0,360)
+ax.set_xlim3d(0,24)
 ax.set_ylim3d(-90,90)
 
-ax.xaxis.set_major_formatter(EngFormatter(unit=u'°'))
+ax.xaxis.set_major_formatter(EngFormatter(unit=u'$\mathrm{h}$'))
 ax.yaxis.set_major_formatter(EngFormatter(unit=u'°'))
 
-ax.set_xlabel(r'$\mathrm{Galactic \ Longitude\ } (l)$', fontsize=24, labelpad=18)
-ax.set_ylabel(r'$\mathrm{Galactic \ Latitude\ } (b)$', fontsize=24, labelpad=18)
+ax.set_xlabel(r'$\mathrm{Right \ Ascension\ } (\alpha)$', fontsize=24, labelpad=18)
+ax.set_ylabel(r'$\mathrm{Declination\ } (\delta)$', fontsize=24, labelpad=18)
 ax.set_zlabel(r'$\mathrm{Dispersion \ Measure \ }\bigg[\mathrm{pc \ cm}^{-3}\bigg]$', fontsize=24, labelpad=23)
 
 ax.tick_params(axis='both', which='major', labelsize=22)
@@ -270,9 +296,9 @@ for k, col in zip(unique_labels, colors):
 
         xy = X[class_member_mask & core_samples_mask]
         ax.plot(
-                xy[:, 0],
-                xy[:, 1],
-                xy[:, 2],
+                Angle(xy[:, 0]*u.rad).hour,
+                Angle(xy[:, 2]*u.rad).deg,
+                xy[:, 4],
                 'o',
                 markerfacecolor=tuple(col),
                 markeredgecolor='k',
@@ -283,14 +309,14 @@ for k, col in zip(unique_labels, colors):
 ### One-offs
 ax = fig.add_subplot(1, 2, 1, projection='3d')
 
-ax.set_xlim3d(0,360)
+ax.set_xlim3d(0,24)
 ax.set_ylim3d(-90,90)
 
-ax.xaxis.set_major_formatter(EngFormatter(unit=u'°'))
+ax.xaxis.set_major_formatter(EngFormatter(unit=u'$\mathrm{h}$'))
 ax.yaxis.set_major_formatter(EngFormatter(unit=u'°'))
 
-ax.set_xlabel(r'$\mathrm{Galactic \ Longitude\ } (l)$', fontsize=24, labelpad=18)
-ax.set_ylabel(r'$\mathrm{Galactic \ Latitude\ } (b)$', fontsize=24, labelpad=18)
+ax.set_xlabel(r'$\mathrm{Right \ Ascension\ } (\alpha)$', fontsize=24, labelpad=18)
+ax.set_ylabel(r'$\mathrm{Declination\ } (\delta)$', fontsize=24, labelpad=18)
 ax.set_zlabel(r'$\mathrm{Dispersion \ Measure \ }\bigg[\mathrm{pc \ cm}^{-3}\bigg]$', fontsize=24, labelpad=25)
 
 ax.tick_params(axis='both', which='major', labelsize=22)
@@ -311,9 +337,9 @@ for k, col in zip(unique_labels, colors):
                 col = tuple(col)
         xy = X[class_member_mask & ~core_samples_mask]
         ax.plot(
-                xy[:, 0],
-                xy[:, 1],
-                xy[:, 2],
+                Angle(xy[:, 0]*u.rad).hour,
+                Angle(xy[:, 2]*u.rad).deg,
+                xy[:, 4],
                 'o',
                 markerfacecolor=tuple(col),
                 markeredgecolor='k',
