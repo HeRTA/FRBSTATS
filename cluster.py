@@ -1,5 +1,3 @@
-eps = 0.9
-
 import json
 import random
 import numpy as np
@@ -198,6 +196,8 @@ def dist(frb1, frb2):
 
 
 # Cluster FRB repeaters
+eps = 1.15
+
 db = DBSCAN(eps=eps, min_samples=2, metric=dist, n_jobs=-1).fit(X)
 core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
 core_samples_mask[db.core_sample_indices_] = True
