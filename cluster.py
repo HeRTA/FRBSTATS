@@ -1,5 +1,3 @@
-eps = 0.9
-
 import json
 import random
 import numpy as np
@@ -8,6 +6,55 @@ from sklearn.cluster import *
 from astropy import units as u
 from astropy.coordinates import Angle
 from matplotlib.ticker import EngFormatter
+
+truths = [
+'FRB 20121102A',
+'FRB 20180814A',
+'FRB 20180908A',
+'FRB 20180916B',
+'FRB 20181017A',
+'FRB 20181030A',
+'FRB 20181119A',
+'FRB 20181128A',
+'FRB 20190116A',
+'FRB 20190117A',
+'FRB 20190208A',
+'FRB 20190209A',
+'FRB 20190212A',
+'FRB 20190213A',
+'FRB 20190222A',
+'FRB 20190303A',
+'FRB 20190417A',
+'FRB 20190604A',
+'FRB 20190711A',
+'FRB 20190907A',
+'FRB 20200120E',
+'FRB 20201124A'
+]
+
+def fnr(predictions, truths):
+    tp = len(list(set(predictions).intersection(truths)))
+    fn = len(list(set(truths)-set(predictions)))
+
+    return round(100*fn/(fn+tp), 2)
+
+
+def perf_measure(y_hat, y_actual, frb):
+    TP = len(list(set(predictions).intersection(truths)))
+    FN = len(list(set(truths)-set(predictions)))
+    FP = len(list(set(predictions)-set(truths)))
+
+    N_list = [e for e in frb if e not in set(y_actual)]
+    NP_list = [e for e in frb if e not in set(y_hat)]
+
+    TN = len(list(set(NP_list).intersection(N_list)))
+
+    TPR = round(100*TP/(TP+FN), 2)
+    TNR = round(100*TN/(TN+FP), 2)
+    FPR = round(100*FP/(FP+TN), 2)
+    FNR = round(100*FN/(FN+TP), 2)
+
+    return {'TPR': TPR, 'TNR': TNR, 'FPR': FPR, 'FNR': FNR}
 
 ### Load data
 # Initiate empty parameter lists
@@ -198,30 +245,44 @@ def dist(frb1, frb2):
 
 
 # Cluster FRB repeaters
-db = DBSCAN(eps=eps, min_samples=2, metric=dist, n_jobs=-1).fit(X)
-core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
-core_samples_mask[db.core_sample_indices_] = True
-labels = db.labels_
-# Dump clusters to JSON file
-cluster_json = ''
-for i in range(np.max(labels)+1):
-        print('-------- '+str(i)+' --------')
-        repeater_cluster = []
-        for j in np.where(labels == i)[0]:
-                print(frb[j]+':'+str(ra_hhmmss[j])+','+str(dec_ddmmss[j])+','+str(dm[j]))
-                repeater_cluster.append(frb[j])
-        parent = True
-        for k in repeater_cluster:
-                if parent:
-                        parent_frb = k
-                        cluster_json += '{"name":"'+k+'","parent":"Repeaters","children":['
-                        parent = False
-                else:
-                        cluster_json += '{"name":"'+k+'","parent":"'+parent_frb+'"},'
-        cluster_json = cluster_json[:-1] + ']},'
-cluster_json = cluster_json[:-1]
+print('eps|TPR,TNR,FPR,FNR')
+print('=======')
+#print(np.linspace(0.1,10,100))
+for eps in np.linspace(0.1,3,200):
+    db = DBSCAN(eps=eps, min_samples=2, metric=dist, n_jobs=-1).fit(X)
+    core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
+    core_samples_mask[db.core_sample_indices_] = True
+    labels = db.labels_
 
-repeaters = '[{"name":"Repeaters","parent":"null","children":['+cluster_json+']}]'
+    # Dump clusters to JSON file
+    cluster_json = ''
+    predictions = []
+    for i in range(np.max(labels)+1):
+            #print('-------- '+str(i)+' --------')
+            repeater_cluster = []
+            for j in np.where(labels == i)[0]:
+                    predictions.append(frb[j])
+                    #print(frb[j]+':'+str(ra_hhmmss[j])+'('+str(ra_error[j]*57)+'),'+str(dec_ddmmss[j])+'('+str(dec_error[j]*57)+'),'+str(dm[j])+'('+str(dm_error[j])+')')
+                    break
+                    repeater_cluster.append(frb[j])
+            parent = True
+            for k in repeater_cluster:
+                    if parent:
+                            parent_frb = k
+                            cluster_json += '{"name":"'+k+'","parent":"Repeaters","children":['
+                            parent = False
+                    else:
+                            cluster_json += '{"name":"'+k+'","parent":"'+parent_frb+'"},'
+            cluster_json = cluster_json[:-1] + ']},'
+    cluster_json = cluster_json[:-1]
+
+    repeaters = '[{"name":"Repeaters","parent":"null","children":['+cluster_json+']}]'
+
+    print(str(eps)+':'+
+          str(perf_measure(predictions, truths, frb)['TPR'])+'%'+','+
+          str(perf_measure(predictions, truths, frb)['TNR'])+'%'+','+
+          str(perf_measure(predictions, truths, frb)['FPR'])+'%'+','+
+          str(perf_measure(predictions, truths, frb)['FNR'])+'%')
 
 with open('repeaters.json', 'w') as f:
         json.dump(json.loads(repeaters), f, indent=3, sort_keys=False)
