@@ -108,8 +108,11 @@ for idx in sorted(idx_mask, reverse=True):
         del snr[idx]
         del mjd[idx]
         del dm[idx]
+        del dm_error[idx]
         del ra[idx]
+        del ra_error[idx]
         del dec[idx]
+        del dec_error[idx]
 
 ### Initiate table plot
 column_labels = ['FRB','MJD','Telescope','RA','RA Error','Dec.','Dec. Error','DM','DM Error','S:N']
