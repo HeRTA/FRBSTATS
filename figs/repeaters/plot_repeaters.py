@@ -110,7 +110,7 @@ telescope_clr = {
 	'FAST': 'cyan',
 	'GBT': 'purple',
 	'GMRT': 'yellow',
-	'INAF SRT': 'olive',
+	'SRT': 'olive',
 	'Parkes': 'royalblue',
 	'Pushchino LPA': 'lightcoral',
 	'Stockert': 'brown',
