@@ -127,7 +127,7 @@ snr_np = np.array(snr)
 data = np.column_stack([frb_np, mjd_np, telescope_np, ra_np, ra_error_np, dec_np, dec_error_np, dm_np, dm_error_np, snr_np])
 plt.axis('tight')
 plt.axis('off')
-plt.table(cellText=data,colLabels=column_labels,cellLoc="center",loc="center",colColours=["lightskyblue"]*7,colWidths=[1/22,1/26,1/22,1/24,1/24,1/34,1/34])
+plt.table(cellText=data,colLabels=column_labels,cellLoc="center",loc="center",colColours=["lightskyblue"]*10,colWidths=[1/22,1/26,1/22,1/24,1/34,1/24,1/34,1/34,1/34,1/34])
 
 plt.tight_layout()
 
