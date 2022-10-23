@@ -55,8 +55,11 @@ telescope = []
 snr = []
 mjd = []
 ra = []
+ra_error = []
 dec = []
+dec_error = []
 dm = []
+dm_error = []
 
 # Read FRBSTATS CSV catalogue
 with open('../../catalogue.csv', 'r') as read_obj:
@@ -69,8 +72,11 @@ with open('../../catalogue.csv', 'r') as read_obj:
                                 telescope.append(row[3])
                                 snr.append(row[13])
                                 ra.append(row[4])
+                                ra_error.append(row[17])
                                 dec.append(row[5])
+                                dec_error.append(row[18])
                                 dm.append(row[9])
+                                dm_error.append(row[19])
                                 mjd.append(row[2])
 
 ### Pre-process data
@@ -106,16 +112,19 @@ for idx in sorted(idx_mask, reverse=True):
         del dec[idx]
 
 ### Initiate table plot
-column_labels = ['FRB','MJD','Telescope','RA','Dec.','DM','S:N']
+column_labels = ['FRB','MJD','Telescope','RA','RA Error','Dec.','Dec. Error','DM','DM Error','S:N']
 frb_np = np.array(frb)
 mjd_np = np.array(mjd)
 telescope_np = np.array(telescope)
 ra_np = np.array(ra)
+ra_error_np = np.array(ra_error)
 dec_np = np.array(dec)
+dec_error_np = np.array(dec_error)
 dm_np = np.array(dm)
+dm_error_np = np.array(dm_error)
 snr_np = np.array(snr)
 
-data = np.column_stack([frb_np, mjd_np, telescope_np, ra_np, dec_np, dm_np, snr_np])
+data = np.column_stack([frb_np, mjd_np, telescope_np, ra_np, ra_error_np, dec_np, dec_error_np, dm_np, dm_error_np, snr_np])
 plt.axis('tight')
 plt.axis('off')
 plt.table(cellText=data,colLabels=column_labels,cellLoc="center",loc="center",colColours=["lightskyblue"]*7,colWidths=[1/22,1/26,1/22,1/24,1/24,1/34,1/34])
