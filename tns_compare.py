@@ -111,13 +111,13 @@ credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCO
 
 service = discovery.build('sheets', 'v4', credentials=credentials)
 spreadsheet_id = '1W27KNa6yJzYA_b8HLSz4hxtWEZQtxUhGTXfQjlXgpzY'
-range_ = 'Catalogue!A1:P1'
+range_ = 'redshifts!A1:P1'
 value_input_option = 'USER_ENTERED'
 insert_data_option = 'INSERT_ROWS'
 print(diff)
 count = 0
 for i, element in enumerate(diff):
-	if element == False:
+	if element == False or True:
 		#print(frbstats_frbs[i])
 		print(tns_frbs[i])
 		frb_tns_url = 'https://www.wis-tns.org/object/'+([x.strip() for x in str(tns_frbs[i]).split('FRB')][1]).lower()
@@ -235,8 +235,16 @@ for i, element in enumerate(diff):
 			snr = '-'
 
 		reference = frb_tns_url
+		if "Host Redshift" in html:
+			try:
+				redshift_measured = re.search(r'<span class=\"name\">Host Redshift</span><div class=\"value\"><b>(.*?)</b></div></div><div class=\"field field-filter_name\">', html).group(1)
+				if str(redshift_measured) == '0' or str(redshift_measured) == '0.0':
+					redshift_measured = '-'
+			except (ValueError,IndexError):
+				redshift_measured = '-'
+		else:
+			redshift_measured = '-'
 		redshift = '-'
-		redshift_measured = '-'
 		
 		frb = fruitbat.Frb(float(dm), gl=l, gb=b)
 		frb.calc_dm_galaxy()
