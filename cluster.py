@@ -249,10 +249,20 @@ for i in range(np.max(labels)+1):
 cluster_json = cluster_json[:-1]
 
 repeaters = '[{"name":"Repeaters","parent":"null","children":['+cluster_json+']}]'
+
 print('Truths:')
 print(truths)
 print('Predicted:')
 print(predicted)
+
+FN = list(set(truths)-set(predicted))
+FP = list(set(predicted)-set(truths))
+
+print('FN:')
+print(FN)
+print('FP:')
+print(FP)
+
 with open('repeaters.json', 'w') as f:
         json.dump(json.loads(repeaters), f, indent=3, sort_keys=False)
 
