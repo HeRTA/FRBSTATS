@@ -221,7 +221,7 @@ def dist(frb1, frb2):
 
 
 # Cluster FRB repeaters
-eps = 1.163
+eps = 1.15
 
 db = DBSCAN(eps=eps, min_samples=2, metric=dist, n_jobs=-1).fit(X)
 core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
