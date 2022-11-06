@@ -7,6 +7,31 @@ from astropy import units as u
 from astropy.coordinates import Angle
 from matplotlib.ticker import EngFormatter
 
+truths = [
+'FRB 20121102A',
+'FRB 20180814A',
+'FRB 20180908A',
+'FRB 20180916B',
+'FRB 20181017A',
+'FRB 20181030A',
+'FRB 20181119A',
+'FRB 20181128A',
+'FRB 20190116A',
+'FRB 20190117A',
+'FRB 20190208A',
+'FRB 20190209A',
+'FRB 20190212A',
+'FRB 20190213A',
+'FRB 20190222A',
+'FRB 20190303A',
+'FRB 20190417A',
+'FRB 20190604A',
+'FRB 20190711A',
+'FRB 20190907A',
+'FRB 20200120E',
+'FRB 20201124A'
+]
+
 ### Load data
 # Initiate empty parameter lists
 
@@ -204,6 +229,7 @@ core_samples_mask[db.core_sample_indices_] = True
 labels = db.labels_
 # Dump clusters to JSON file
 cluster_json = ''
+predicted = []
 for i in range(np.max(labels)+1):
         print('-------- '+str(i)+' --------')
         repeater_cluster = []
@@ -214,6 +240,7 @@ for i in range(np.max(labels)+1):
         for k in repeater_cluster:
                 if parent:
                         parent_frb = k
+                        predicted.append(str(parent_frb))
                         cluster_json += '{"name":"'+k+'","parent":"Repeaters","children":['
                         parent = False
                 else:
@@ -222,7 +249,10 @@ for i in range(np.max(labels)+1):
 cluster_json = cluster_json[:-1]
 
 repeaters = '[{"name":"Repeaters","parent":"null","children":['+cluster_json+']}]'
-
+print('Truths:')
+print(truths)
+print('Predicted:')
+print(predicted)
 with open('repeaters.json', 'w') as f:
         json.dump(json.loads(repeaters), f, indent=3, sort_keys=False)
 
