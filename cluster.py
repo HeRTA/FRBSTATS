@@ -77,7 +77,7 @@ for idx in sorted(idx_mask, reverse=True):
 ra_hhmmss = ra.copy()
 dec_ddmmss = dec.copy()
 
-# Convert coordinates to rad and turn '-' (N/A) to +/- 0 uncertainty
+# Convert coordinates to rad and turn '-' (N/A) to np.nan
 for i in range(len(ra)):
         ra[i] = Angle(str(ra[i])+' hr').rad
 for i in range(len(ra_error)):
@@ -108,7 +108,7 @@ for i in range(len(dm_error)):
         else:
                 dm_error[i] = float(dm_error[i])
 
-                # DM variability threshold: 1.03 = +/-3% /(Dai et al. 2022)
+                # DM variability threshold: 1.03 = +/- 3% (Dai et al. 2022)
                 dm_error[i] = max(dm_error[i], 1.03*dm[i]-dm[i])
 
 dm_error = np.array(dm_error)
@@ -221,7 +221,7 @@ def dist(frb1, frb2):
 
 
 # Cluster FRB repeaters
-eps = 1.15
+eps = 1.2
 
 db = DBSCAN(eps=eps, min_samples=2, metric=dist, n_jobs=-1).fit(X)
 core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
