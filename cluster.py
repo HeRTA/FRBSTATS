@@ -214,14 +214,8 @@ def dist(frb1, frb2):
 
         return d/Dd
 
-# RA, RA_error, Dec., Dec_error, DM, DM_error
-#frb1 = [0, 0.1*0.0174533, 0, 0, 100, 0]
-#frb2 = [1*0.0174533, 0.1*0.0174533, 0, 0, 100, 0]
-#print(dist(frb1, frb2))
-
-
 # Cluster FRB repeaters
-eps = 1.2
+eps = 1.15
 
 db = DBSCAN(eps=eps, min_samples=2, metric=dist, n_jobs=-1).fit(X)
 core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
