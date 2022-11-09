@@ -291,15 +291,15 @@ fig = plt.figure(figsize=(24, 12))
 ### Repeaters
 ax = fig.add_subplot(1, 2, 2, projection='3d')
 
-ax.set_xlim3d(0,24)
-ax.set_ylim3d(-90,90)
+#ax.set_xlim3d(0,24)
+#ax.set_ylim3d(-90,90)
 
-ax.xaxis.set_major_formatter(EngFormatter(unit=u'$\mathrm{h}$'))
-ax.yaxis.set_major_formatter(EngFormatter(unit=u'°'))
+#ax.xaxis.set_major_formatter(EngFormatter(unit=u'$\mathrm{h}$'))
+#ax.yaxis.set_major_formatter(EngFormatter(unit=u'°'))
 
-ax.set_xlabel(r'$\mathrm{Right \ Ascension\ } (\alpha)$', fontsize=24, labelpad=18)
-ax.set_ylabel(r'$\mathrm{Declination\ } (\delta)$', fontsize=24, labelpad=18)
-ax.set_zlabel(r'$\mathrm{Dispersion \ Measure \ }\bigg[\mathrm{pc \ cm}^{-3}\bigg]$', fontsize=24, labelpad=23)
+ax.set_xlabel(r'$x$', fontsize=24, labelpad=18)
+ax.set_ylabel(r'$y$', fontsize=24, labelpad=18)
+ax.set_zlabel(r'$z$', fontsize=24, labelpad=23)
 
 ax.tick_params(axis='both', which='major', labelsize=22)
 ax.tick_params(axis='both', which='minor', labelsize=22)
@@ -330,9 +330,9 @@ for k, col in zip(unique_labels, colors):
 
         xy = X[class_member_mask & core_samples_mask]
         ax.plot(
-                Angle(xy[:, 0]*u.rad).hour,
-                Angle(xy[:, 2]*u.rad).deg,
-                xy[:, 4],
+                xy[:, 4]*np.cos(xy[:, 2])*np.sin(xy[:, 0]*u.rad), #Angle(xy[:, 0]*u.rad).hour,
+                xy[:, 4]*np.cos(xy[:, 2])*np.cos(xy[:, 0]*u.rad), #Angle(xy[:, 2]*u.rad).deg,
+                xy[:, 4]*np.sin(xy[:, 2]), #xy[:, 4],
                 'o',
                 markerfacecolor=tuple(col),
                 markeredgecolor='k',
@@ -343,15 +343,15 @@ for k, col in zip(unique_labels, colors):
 ### One-offs
 ax = fig.add_subplot(1, 2, 1, projection='3d')
 
-ax.set_xlim3d(0,24)
-ax.set_ylim3d(-90,90)
+#ax.set_xlim3d(0,24)
+#ax.set_ylim3d(-90,90)
 
-ax.xaxis.set_major_formatter(EngFormatter(unit=u'$\mathrm{h}$'))
-ax.yaxis.set_major_formatter(EngFormatter(unit=u'°'))
+#ax.xaxis.set_major_formatter(EngFormatter(unit=u'$\mathrm{h}$'))
+#ax.yaxis.set_major_formatter(EngFormatter(unit=u'°'))
 
-ax.set_xlabel(r'$\mathrm{Right \ Ascension\ } (\alpha)$', fontsize=24, labelpad=18)
-ax.set_ylabel(r'$\mathrm{Declination\ } (\delta)$', fontsize=24, labelpad=18)
-ax.set_zlabel(r'$\mathrm{Dispersion \ Measure \ }\bigg[\mathrm{pc \ cm}^{-3}\bigg]$', fontsize=24, labelpad=25)
+ax.set_xlabel(r'$x$', fontsize=24, labelpad=18)
+ax.set_ylabel(r'$y$', fontsize=24, labelpad=18)
+ax.set_zlabel(r'$z$', fontsize=24, labelpad=25)
 
 ax.tick_params(axis='both', which='major', labelsize=22)
 ax.tick_params(axis='both', which='minor', labelsize=22)
@@ -371,9 +371,12 @@ for k, col in zip(unique_labels, colors):
                 col = tuple(col)
         xy = X[class_member_mask & ~core_samples_mask]
         ax.plot(
-                Angle(xy[:, 0]*u.rad).hour,
-                Angle(xy[:, 2]*u.rad).deg,
-                xy[:, 4],
+                xy[:, 4]*np.cos(xy[:, 2])*np.sin(xy[:, 0]*u.rad), #Angle(xy[:, 0]*u.rad).hour,
+                xy[:, 4]*np.cos(xy[:, 2])*np.cos(xy[:, 0]*u.rad), #Angle(xy[:, 2]*u.rad).deg,
+                xy[:, 4]*np.sin(xy[:, 2]), #xy[:, 4],
+                #Angle(xy[:, 0]*u.rad).hour,
+                #Angle(xy[:, 2]*u.rad).deg,
+                #xy[:, 4],
                 'o',
                 markerfacecolor=tuple(col),
                 markeredgecolor='k',
