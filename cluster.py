@@ -315,6 +315,7 @@ n_noise_ = list(labels).count(-1)
 # Use black as noise points (one-offs)
 unique_labels = set(labels)
 colors = [plt.cm.Spectral(each) for each in np.linspace(0, 1, len(unique_labels))]
+random.Random(18).shuffle(colors)
 
 for k, col in zip(unique_labels, colors):
         if k == -1:
@@ -359,6 +360,8 @@ ax.tick_params(axis='z', which='major', pad=12)
 ax.tick_params(axis='z', which='minor', pad=12)
 
 ax.set_title(r'$\mathrm{One}$-$\mathrm{Off \ Events}$', fontdict={'fontsize':36})
+
+colors = [plt.cm.Spectral(each) for each in np.linspace(0, 1, len(unique_labels))]
 
 for k, col in zip(unique_labels, colors):
         if k == -1:
