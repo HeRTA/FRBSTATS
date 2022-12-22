@@ -73,7 +73,7 @@ with open('catalogue_count.csv', 'r') as read_obj:
 	if header != None:
 		for row in csv_reader:
 			frbstats_frbs.append(row[0])
-
+print(frbstats_frbs)
 frbstats_frbs = np.array(frbstats_frbs)
 #print(tns_frbs)
 #print(frbstats_frbs)
