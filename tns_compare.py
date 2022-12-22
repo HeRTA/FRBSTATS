@@ -65,7 +65,9 @@ tns_frbs = df.values[:,27]
 # Read FRBSTATS CSV catalogue
 blacklist = ['FRB 20180908B']
 frbstats_frbs = []
-frbstats_frbs.append(blacklist)
+for blacklisted_frb in blacklist:
+	frbstats_frbs.append(blacklisted_frb)
+
 with open('catalogue_count.csv', 'r') as read_obj:
 	csv_reader = reader(read_obj)
 	header = next(csv_reader)
