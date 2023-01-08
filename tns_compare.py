@@ -53,7 +53,7 @@ else:
 	success = False
 
 # Read TNS catalogue
-tns = TNS(path='/home/runner/', tns_name='my_user_name', tns_id='my_user_id')
+tns = TNS(path='/home/runner/', tns_name='user1', tns_id='id1')
 df = tns.df
 units = tns.units
 
@@ -133,10 +133,7 @@ for i, element in enumerate(diff):
 		html = str(response.content)
 
 		#try:
-		print(html)
-		print(re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html))
 		utc = re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html).group(1)
-		print(utc)
 		mjd = str(Time(utc, format='iso', scale='utc').mjd)
 		#except (ValueError,IndexError):
 		#    utc = '-'
@@ -162,7 +159,6 @@ for i, element in enumerate(diff):
 				ra_error = ra_error + re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[2]
 				ra_error = ra_error.replace('(','').replace(')','')
 				ra_error = str(round(Angle(ra_error).arcmin, 2))
-				print(ra_error)
 				if ra_error == '0' or ra_error == '0.0':
 					ra_error = '-'
 			else:
@@ -188,7 +184,6 @@ for i, element in enumerate(diff):
 		except (ValueError,IndexError):
 			dec_error = '-'
 		if ra != '-' and dec != '-':
-			print(ra,dec)
 			equatorial = SkyCoord(ra=ra, dec=dec, unit=(u.hourangle, u.deg))
 			galactic = equatorial.galactic
 			l = str(round(galactic.l.deg, 2))
