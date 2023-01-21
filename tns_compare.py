@@ -53,7 +53,7 @@ else:
 	success = False
 
 # Read TNS catalogue
-tns = TNS(path='/home/apostolos/', tns_name='user1', tns_id='id1')
+tns = TNS(path='/home/runner/', tns_name='user1', tns_id='id1')
 df = tns.df
 units = tns.units
 print(df.to_string())
