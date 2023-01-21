@@ -53,15 +53,17 @@ else:
 	success = False
 
 # Read TNS catalogue
-tns = TNS(path='/home/runner/', tns_name='user1', tns_id='id1')
+tns = TNS(path='/home/apostolos/', tns_name='user1', tns_id='id1')
 df = tns.df
 units = tns.units
-
+print(df.to_string())
 # Print entire dataframe for debugging in case TNS index changes again
 #print(df.to_string())
 
-tns_frbs = df.values[:,27]
-
+tns_frbs = df.values[:,21]
+print('__--__-_--_-_-_-_')
+print(tns_frbs)
+print('__-_----_-_-__')
 # Read FRBSTATS CSV catalogue
 blacklist = ['FRB 20180908B']
 frbstats_frbs = []
@@ -126,6 +128,7 @@ for i, element in enumerate(diff):
 	if element == False:
 		#print(frbstats_frbs[i])
 		print(tns_frbs[i])
+		print(x)
 		frb_tns_url = 'https://www.wis-tns.org/object/'+([x.strip() for x in str(tns_frbs[i]).split('FRB')][1]).lower()
 
 		print(frb_tns_url)
@@ -135,7 +138,7 @@ for i, element in enumerate(diff):
 		#try:
 		utc = re.search(r'<td class=\"cell-discovery_date\">(.*?)</td><td class=\"cell-flux\">', html).group(1)
 		mjd = str(Time(utc, format='iso', scale='utc').mjd)
-		#except (ValueError,IndexError):
+		#except (AttributeError,ValueError,IndexError):
 		#    utc = '-'
 		#    mjd = '-'
 		try:
@@ -145,13 +148,13 @@ for i, element in enumerate(diff):
 					telescope = value
 			if str(telescope) == '0' or str(telescope) == '0.0':
 				telescope = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			telescope = '-'
 		try:
 			ra = re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1).split()[0] #[1] to get the error
 			if str(ra) == '0' or str(ra) == '0.0':
 				ra = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			ra = '-'
 		try:
 			if '(' in re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1) and ')' in re.search(r'<td class=\"cell-ra\">(.*?)</td><td class=\"cell-decl\">', html).group(1):
@@ -163,13 +166,13 @@ for i, element in enumerate(diff):
 					ra_error = '-'
 			else:
 				ra_error = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			ra_error = '-'
 		try:
 			dec = re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1).split()[0] #[1] to get the error
 			if str(dec) == '0' or str(dec) == '0.0':
 				dec = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			dec = '-'
 		try:
 			if '(' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1) and ')' in re.search(r'<td class=\"cell-decl\">(.*?)</td><td class=\"cell-discovery_date\">', html).group(1):				
@@ -181,7 +184,7 @@ for i, element in enumerate(diff):
 					dec_error = '-'
 			else:
 				dec_error = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			dec_error = '-'
 		if ra != '-' and dec != '-':
 			equatorial = SkyCoord(ra=ra, dec=dec, unit=(u.hourangle, u.deg))
@@ -192,13 +195,13 @@ for i, element in enumerate(diff):
 			frequency = re.search(r'<td class=\"cell-ref_freq\">(.*?)</td><td class=\"cell-inst_bandwidth\">', html).group(1).split()[0]
 			if str(frequency) == '0' or str(frequency) == '0.0':
 				frequency = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			frequency = '-'
 		try:
 			dm = re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1).split()[0] #[1] to get error
 			if str(dm) == '0' or str(dm) == '0.0':
 				dm = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			dm = '-'
 		try:
 			if '(' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1) and ')' in re.search(r'<td class=\"cell-dm\">(.*?)</td><td class=\"cell-galactic_max_dm\">', html).group(1):
@@ -208,31 +211,31 @@ for i, element in enumerate(diff):
 					dm_error = '-'
 			else:
 				dm_error = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			dm_error = '-'
 		try:
 			flux = re.search(r'<td class=\"cell-flux\">(.*?)</td><td class=\"cell-unit_name\">', html).group(1).split()[0] #[1] to get error
 			if str(flux) == '0' or str(flux) == '0.0':
 				flux = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			flux = '-'
 		try:
 			width = re.search(r'<td class=\"cell-burst_width\">(.*?)</td><td class=\"cell-scattering_time\">', html).group(1).split()[0] #[1] to get error
 			if str(width) == '0' or str(width) == '0.0':
 				width = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			width = '-'
 		try:
 			fluence = re.search(r'<td class=\"cell-fluence\">(.*?)</td><td class=\"cell-burst_width\">', html).group(1).split()[0] #[1] to get error
 			if str(fluence) == '0' or str(fluence) == '0.0':
 				fluence = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			fluence = '-'
 		try:
 			snr = re.search(r'<td class=\"cell-snr\">(.*?)</td><td class=\"cell-fluence\">', html).group(1)
 			if str(snr) == '0' or str(snr) == '0.0':
 				snr = '-'
-		except (ValueError,IndexError):
+		except (AttributeError,ValueError,IndexError):
 			snr = '-'
 
 		reference = frb_tns_url
@@ -241,7 +244,7 @@ for i, element in enumerate(diff):
 				redshift_measured = re.search(r'<span class=\"name\">Host Redshift</span><div class=\"value\"><b>(.*?)</b></div></div><div class=\"field field', html).group(1)
 				if str(redshift_measured) == '0' or str(redshift_measured) == '0.0':
 					redshift_measured = '-'
-			except (ValueError,IndexError):
+			except (AttributeError,ValueError,IndexError):
 				redshift_measured = '-'
 		else:
 			redshift_measured = '-'
@@ -256,7 +259,7 @@ for i, element in enumerate(diff):
 			redshift = round(redshift, 4)
 			if math.isnan(redshift):
 				print('is nan entered. Redshift is:')
-				print(str(frbs[idx]) +':'+ str(redshift))
+				print(str(redshift))
 				redshift = '-'
 			else:
 				redshift = str(redshift)
