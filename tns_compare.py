@@ -60,7 +60,7 @@ print(df.to_string())
 # Print entire dataframe for debugging in case TNS index changes again
 #print(df.to_string())
 
-tns_frbs = df.values[:,21]
+tns_frbs = df.values[:,20]
 print('__--__-_--_-_-_-_')
 print(tns_frbs)
 print('__-_----_-_-__')
